@@ -97,6 +97,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\Login_Style.css" />
     <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
