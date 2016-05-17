@@ -1,0 +1,349 @@
+﻿#cssmenu {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  width: auto;
+}
+#cssmenu ul,
+#cssmenu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#cssmenu ul {
+  position: relative;
+  z-index: 597;
+}
+#cssmenu ul li {
+  float: left;
+  min-height: 1px;
+  vertical-align: middle;
+}
+#cssmenu ul li.hover,
+#cssmenu ul li:hover {
+  position: relative;
+  z-index: 599;
+  cursor: default;
+}
+#cssmenu ul ul {
+  visibility: hidden;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 598;
+  width: 100%;
+}
+#cssmenu ul ul li {
+  float: none;
+}
+#cssmenu ul ul ul {
+  top: 0;
+  left: 500px;
+  width: 500px;
+}
+#cssmenu ul li:hover > ul {
+  visibility: visible;
+}
+#cssmenu ul ul {
+  bottom: 0;
+  left: 0;
+}
+#cssmenu ul ul {
+  margin-top: 0;
+}
+#cssmenu ul ul li {
+  font-weight: normal;
+}
+#cssmenu a {
+  display: block;
+  line-height: 1em;
+  text-decoration: none;
+}
+/* Custom CSS Styles */
+#cssmenu {
+  background: #333333;
+  /*border-bottom: 4px solid #4184b8;*/
+  font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+  font-size: 20px;
+}
+#cssmenu > ul {
+  display: inline-block;
+}
+#cssmenu:after,
+#cssmenu ul:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#cssmenu ul {
+  text-transform: uppercase;
+}
+#cssmenu ul ul {
+  border-top: 4px solid #008000;
+  /*text-transform: none;*/
+  min-width: 500px;
+}
+#cssmenu ul ul a {
+  background: #4184b8;
+  color: #ffffff;
+  border: 1px solid #346992;
+  border-top: 0 none;
+  line-height: 150%;
+  padding: 16px 20px;
+  font-size: 18px;
+}
+#cssmenu ul ul ul {
+  border-top: 0 none;
+}
+#cssmenu ul ul li {
+  position: relative;
+}
+#cssmenu ul ul li:first-child > a {
+  border-top: 1px solid #346992;
+}
+#cssmenu ul ul li:hover > a {
+  background: #649cc8;
+  color: #ffffff;
+}
+#cssmenu ul ul li:last-child > a {
+  -moz-border-radius: 0 0 3px 3px;
+  -webkit-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  -moz-box-shadow: 0 1px 0 #4184b8;
+  -webkit-box-shadow: 0 1px 0 #4184b8;
+  box-shadow: 0 1px 0 #4184b8;
+}
+#cssmenu ul ul li:last-child:hover > a {
+  -moz-border-radius: 0 0 0 3px;
+  -webkit-border-radius: 0 0 0 3px;
+  border-radius: 0 0 0 3px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+#cssmenu ul ul li.has-sub > a:after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  right: 18px;
+  margin-top: -8px;
+}
+#cssmenu ul li:hover > a,
+#cssmenu ul li.active > a {
+  background: #4184b8;
+  color: #ffffff;
+}
+#cssmenu ul li.has-sub > a:after {
+  content: '+';
+  margin-left: 5px;
+}
+#cssmenu ul li.last ul {
+  left: auto;
+  right: 0;
+}
+#cssmenu ul li.last ul ul {
+  left: auto;
+  right: 99.5%;
+}
+#cssmenu a {
+  background: #333333;
+  color: #CBCBCB;
+  padding: 0 20px;
+}
+#cssmenu > ul > li > a {
+  line-height: 48px;
+  font-size: 18px;
+}
+
+.dropDownList  {
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#888;
+    border:1px solid black;
+    outline:none;
+    display: inline-block;
+    /*-webkit-appearance:/*none;
+    -moz-appearance:none;*/
+    cursor:pointer;
+    font-size:20px;
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+
+h1 {
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+    h1#header {
+        color:white;
+    }
+h2 {
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+h3 {
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+hr {
+   display: block;
+   position: relative;
+   padding: 0;
+   margin: 8px auto;
+   height: 2px;
+   width: 100%;
+   max-height: 0;
+   font-size: 1px;
+   line-height: 0;
+   clear: both;
+   border: none;
+   border-top: #000 2px solid ;
+}
+table {
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+
+.underLine {
+    width: 100%; 
+    border-top: solid 1px #000; 
+}
+
+.textBox
+{
+    padding:3px;
+    margin: 0;
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    background: #f8f8f8;
+    color:#000;
+    border:1px solid black;
+    outline:none;
+    display: inline-block;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    cursor:pointer;
+    font-size:20px;
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+
+/*.button { 
+
+    -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-webkit-border-top-left-radius:6px;
+	-moz-border-radius-topleft:6px;
+	border-top-left-radius:6px;
+	-webkit-border-top-right-radius:6px;
+	-moz-border-radius-topright:6px;
+	border-top-right-radius:6px;
+	-webkit-border-bottom-right-radius:6px;
+	-moz-border-radius-bottomright:6px;
+	border-bottom-right-radius:6px;
+	-webkit-border-bottom-left-radius:6px;
+	-moz-border-radius-bottomleft:6px;
+	border-bottom-left-radius:6px;
+	text-indent:0px;
+	border:1px solid #888;
+	display:inline-block;
+	color:#666;
+	font-size:20px;
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+	font-weight:bold;
+	font-style:normal;
+	line-height:25px;
+	text-decoration:none;
+	text-align:center;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.button:hover {
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}*/
+
+.button {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+  color: #ffffff;
+  font-size: 20px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  min-width: 100px;
+}
+
+.button:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+body {
+    line-height: 1;
+    font-size:20px;
+    background-color:#efeeef;
+    border-top:solid 10px #000;
+    margin:0;
+    padding:0;
+}
+
+/* main layout
+----------------------------------------------------------*/
+.content-wrapper {
+    margin: 0 auto;
+    max-width: 960px;
+
+}
+
+#body {
+    background-color: #efeeef;
+    clear: both;
+    padding-bottom: 35px;
+}
+.main-content {
+    background: url("../Images/d3.png") no-repeat center;
+    height: 130px;
+}
+header {
+    padding-top: 20px; 
+    background: url("../Images/hd1.png") no-repeat center;
+    height: 205px;
+}
+    
+footer {
+    clear: both;
+    background-color: #e2e2e2;
+    font-size: .8em;
+    height: 100px;
+}
+
