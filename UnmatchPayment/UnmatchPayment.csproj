@@ -191,9 +191,9 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database\dbAccount.dbml.layout">
+    <None Include="Database\dbAccount.dbml.layout">
       <DependentUpon>dbAccount.dbml</DependentUpon>
-    </Content>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Class\" />
