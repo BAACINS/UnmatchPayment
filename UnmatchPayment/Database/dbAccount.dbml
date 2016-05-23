@@ -26,4 +26,36 @@
       <Column Name="FileTypeName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="UP.VW_TellerPaymentDetail" Member="VW_TellerPaymentDetails">
+    <Type Name="VW_TellerPaymentDetail">
+      <Column Name="TellerPaymentDetailID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecordType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="SequenceNo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BankCode" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="CompanyAccount" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="PaymentDate" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="PaymentTime" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="PaymentDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Ref1" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Ref2" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="Ref3" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="BranchCode" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="TellerNo" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="KindOfTransaction" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="PaymentBy" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="ChequeNo" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="ChequeBankCode" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="Filler" Type="System.String" DbType="NVarChar(77)" CanBeNull="true" />
+      <Column Name="CompCode" Type="System.String" DbType="NVarChar(12)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="MatchingID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="DivisionAreaCode" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="UpperDivisionCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatchingDateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>
