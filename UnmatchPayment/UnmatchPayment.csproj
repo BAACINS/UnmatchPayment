@@ -127,6 +127,7 @@
     <Content Include="UI\MenuMng.aspx" />
     <Content Include="UI\RoleMenu.aspx" />
     <Content Include="UI\W001_UnmatchListBranch.aspx" />
+    <Content Include="UI\W003_UnmatchListHQ.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="UI\W001_UnmatchListBranch.aspx.designer.cs">
       <DependentUpon>W001_UnmatchListBranch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\W003_UnmatchListHQ.aspx.cs">
+      <DependentUpon>W003_UnmatchListHQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\W003_UnmatchListHQ.aspx.designer.cs">
+      <DependentUpon>W003_UnmatchListHQ.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

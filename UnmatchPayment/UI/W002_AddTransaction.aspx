@@ -59,9 +59,6 @@
     </div>
 
         <%--//----------------------------------------------------%>
-    <asp:ModalPopupExtender ID="ModalUploadFile" runat="server" TargetControlID="" PopupControlID="PanelUploadFile"
-        BackgroundCssClass="modalBackground">
-    </asp:ModalPopupExtender>
     <asp:Panel ID="PanelUploadFile" runat="server" BorderColor="Black" Height="380px"
         Width="800px" HorizontalAlign="Left" BorderStyle="Double" BackColor="InactiveCaption" ><%--Style="display: none;"--%>
         <table style="width: 100%;">

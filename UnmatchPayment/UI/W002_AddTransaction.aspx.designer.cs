@@ -67,15 +67,6 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.Button bntCancle;
         
         /// <summary>
-        /// ModalUploadFile control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender ModalUploadFile;
-        
-        /// <summary>
         /// PanelUploadFile control.
         /// </summary>
         /// <remarks>
