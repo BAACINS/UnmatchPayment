@@ -110,6 +110,21 @@
       <Column Name="DistrictName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="UP.UnmatchCause" Member="UnmatchCauses">
+    <Type Name="UnmatchCause">
+      <Column Name="CauseID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CauseDescription" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="isSpinCreate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isCompCode" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isAmount" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isRef1" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isRef2" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isRefName" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isPaymentdate" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isRefund" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="isUploadFile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="UP.EMPLOYEE_SELECT" Method="EMPLOYEE_SELECT">
     <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.String" DbType="NVarChar(7)" />
     <Parameter Name="USER_PASSWORD" Parameter="uSER_PASSWORD" Type="System.String" DbType="NVarChar(50)" />
