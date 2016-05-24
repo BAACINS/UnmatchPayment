@@ -21,7 +21,7 @@
             }
             .body {
                 margin-top:7%;
-                margin-left:30%;
+                margin-left:35%;
             }
             .footer {
                 background-color: yellow;
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: center" colspan="2">
-                            <asp:Button ID="btnLogin" runat="server" Text="เข้าสู่ระบบ" Height="30px" Width="101px" />
+                            <asp:Button ID="btnLogin" runat="server" Text="เข้าสู่ระบบ" Height="30px" Width="101px" OnClick="btnLogin_Click" />
                         </td>
                     </tr>
                 </table>
