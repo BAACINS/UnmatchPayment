@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\C001_DataMng.cs" />
+    <Compile Include="Class\C002_GetDataDDL.cs" />
     <Compile Include="Database\dbAccount.cs">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </Compile>

@@ -58,6 +58,58 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_REGION" Member="VW_REGIONs">
+    <Type Name="VW_REGION">
+      <Column Name="REGION_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_PROVINCE" Member="VW_PROVINCEs">
+    <Type Name="VW_PROVINCE">
+      <Column Name="REGION_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_BRANCH" Member="VW_BRANCHes">
+    <Type Name="VW_BRANCH">
+      <Column Name="REGION_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="BRANCH_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BASE_CODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_Title" Member="VW_Titles">
+    <Type Name="VW_Title">
+      <Column Name="TitleCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="TitleName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_addrAmphur" Member="VW_addrAmphurs">
+    <Type Name="VW_addrAmphur">
+      <Column Name="StateCode" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="CityCode" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="CityName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_addrProvince" Member="VW_addrProvinces">
+    <Type Name="VW_addrProvince">
+      <Column Name="StateCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="StateName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VW_addrTambon" Member="VW_addrTambons">
+    <Type Name="VW_addrTambon">
+      <Column Name="StateCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CityCode" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="DistrictCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="DistrictName" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="UP.EMPLOYEE_SELECT" Method="EMPLOYEE_SELECT">
     <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.String" DbType="NVarChar(7)" />
     <Parameter Name="USER_PASSWORD" Parameter="uSER_PASSWORD" Type="System.String" DbType="NVarChar(50)" />

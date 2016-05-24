@@ -20,10 +20,52 @@
         <elementListCompartment Id="e0f98054-ce8f-4451-8334-ae43f72e6829" absoluteBounds="0.51500000000000012, 1.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="13962463-9965-445e-b81f-b88a0a41189f" isExpanded="false" absoluteBounds="0.5, 2.125, 2, 0.45">
+    <classShape Id="13962463-9965-445e-b81f-b88a0a41189f" isExpanded="false" absoluteBounds="4.75, 0.5, 2, 0.45">
       <DataClassMoniker Name="/dbAccountDataContext/VW_TellerPaymentDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="d2d82594-d1c9-4396-92db-89f0239c9142" absoluteBounds="0.51500000000000012, 2.585, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d2d82594-d1c9-4396-92db-89f0239c9142" absoluteBounds="4.7650000000000006, 0.96, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aabf8f69-1518-4733-8034-e528ea9224a6" isExpanded="false" absoluteBounds="2.625, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_REGION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec83a1d1-5af6-4a66-a28a-a8e43bb60314" absoluteBounds="2.64, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13351a51-0ff1-431f-aa56-e3a094e428a2" isExpanded="false" absoluteBounds="2.625, 1, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_PROVINCE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6ab61b16-7d62-4bc5-8de7-adbc10949641" absoluteBounds="2.6399999999999997, 1.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6358e132-d1d2-4f68-b5d9-98b0498c6b2a" isExpanded="false" absoluteBounds="2.625, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_BRANCH" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee6805a6-f15c-4eeb-a8f5-9ca15e2ceef7" absoluteBounds="2.64, 1.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2309379d-f3d4-4eec-b465-c1e2ca904ecb" isExpanded="false" absoluteBounds="2.625, 2, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_Title" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e2dc7bf6-74b8-4424-86f4-8a3c2e24b5ec" absoluteBounds="2.64, 2.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60450570-d252-478b-84d3-3032a52added" isExpanded="false" absoluteBounds="2.625, 2.5, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_addrAmphur" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2196eb27-d72d-4a94-bd68-6b600084bdcd" absoluteBounds="2.64, 2.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="13367644-736c-4529-a9e9-17d4a9633a29" isExpanded="false" absoluteBounds="2.625, 3, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_addrProvince" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4f0f281-2087-4022-a09b-5cd4a64a3bbc" absoluteBounds="2.64, 3.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="eb40afb0-bf78-455c-8263-1eda143a3422" isExpanded="false" absoluteBounds="2.625, 3.5, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_addrTambon" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f858b0d3-9684-4da3-ba03-e9504cae3161" absoluteBounds="2.64, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

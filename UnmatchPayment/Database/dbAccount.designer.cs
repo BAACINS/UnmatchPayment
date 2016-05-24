@@ -103,6 +103,62 @@ namespace UnmatchPayment.Database
 			}
 		}
 		
+		public System.Data.Linq.Table<VW_REGION> VW_REGIONs
+		{
+			get
+			{
+				return this.GetTable<VW_REGION>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_PROVINCE> VW_PROVINCEs
+		{
+			get
+			{
+				return this.GetTable<VW_PROVINCE>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_BRANCH> VW_BRANCHes
+		{
+			get
+			{
+				return this.GetTable<VW_BRANCH>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_Title> VW_Titles
+		{
+			get
+			{
+				return this.GetTable<VW_Title>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_addrAmphur> VW_addrAmphurs
+		{
+			get
+			{
+				return this.GetTable<VW_addrAmphur>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_addrProvince> VW_addrProvinces
+		{
+			get
+			{
+				return this.GetTable<VW_addrProvince>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_addrTambon> VW_addrTambons
+		{
+			get
+			{
+				return this.GetTable<VW_addrTambon>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="UP.EMPLOYEE_SELECT")]
 		public ISingleResult<EMPLOYEE_SELECTResult> EMPLOYEE_SELECT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="NVarChar(7)")] string uSER_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_PASSWORD", DbType="NVarChar(50)")] string uSER_PASSWORD)
 		{
@@ -1069,6 +1125,501 @@ namespace UnmatchPayment.Database
 				if ((this._ModifyDate != value))
 				{
 					this._ModifyDate = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_REGION")]
+	public partial class VW_REGION
+	{
+		
+		private string _REGION_NO;
+		
+		private string _REGION_NAME;
+		
+		public VW_REGION()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NO", DbType="NVarChar(100)")]
+		public string REGION_NO
+		{
+			get
+			{
+				return this._REGION_NO;
+			}
+			set
+			{
+				if ((this._REGION_NO != value))
+				{
+					this._REGION_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME", DbType="NVarChar(100)")]
+		public string REGION_NAME
+		{
+			get
+			{
+				return this._REGION_NAME;
+			}
+			set
+			{
+				if ((this._REGION_NAME != value))
+				{
+					this._REGION_NAME = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_PROVINCE")]
+	public partial class VW_PROVINCE
+	{
+		
+		private string _REGION_NO;
+		
+		private string _REGION_NAME;
+		
+		private string _PROVINCE_NO;
+		
+		private string _PROVINCE_NAME;
+		
+		public VW_PROVINCE()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NO", DbType="NVarChar(100)")]
+		public string REGION_NO
+		{
+			get
+			{
+				return this._REGION_NO;
+			}
+			set
+			{
+				if ((this._REGION_NO != value))
+				{
+					this._REGION_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME", DbType="NVarChar(100)")]
+		public string REGION_NAME
+		{
+			get
+			{
+				return this._REGION_NAME;
+			}
+			set
+			{
+				if ((this._REGION_NAME != value))
+				{
+					this._REGION_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NO", DbType="NVarChar(100)")]
+		public string PROVINCE_NO
+		{
+			get
+			{
+				return this._PROVINCE_NO;
+			}
+			set
+			{
+				if ((this._PROVINCE_NO != value))
+				{
+					this._PROVINCE_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NAME", DbType="NVarChar(100)")]
+		public string PROVINCE_NAME
+		{
+			get
+			{
+				return this._PROVINCE_NAME;
+			}
+			set
+			{
+				if ((this._PROVINCE_NAME != value))
+				{
+					this._PROVINCE_NAME = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_BRANCH")]
+	public partial class VW_BRANCH
+	{
+		
+		private string _REGION_NO;
+		
+		private string _REGION_NAME;
+		
+		private string _PROVINCE_NO;
+		
+		private string _PROVINCE_NAME;
+		
+		private string _BRANCH_NO;
+		
+		private string _BRANCH_NAME;
+		
+		private string _BASE_CODE;
+		
+		public VW_BRANCH()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NO", DbType="NVarChar(100)")]
+		public string REGION_NO
+		{
+			get
+			{
+				return this._REGION_NO;
+			}
+			set
+			{
+				if ((this._REGION_NO != value))
+				{
+					this._REGION_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME", DbType="NVarChar(100)")]
+		public string REGION_NAME
+		{
+			get
+			{
+				return this._REGION_NAME;
+			}
+			set
+			{
+				if ((this._REGION_NAME != value))
+				{
+					this._REGION_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NO", DbType="NVarChar(100)")]
+		public string PROVINCE_NO
+		{
+			get
+			{
+				return this._PROVINCE_NO;
+			}
+			set
+			{
+				if ((this._PROVINCE_NO != value))
+				{
+					this._PROVINCE_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NAME", DbType="NVarChar(100)")]
+		public string PROVINCE_NAME
+		{
+			get
+			{
+				return this._PROVINCE_NAME;
+			}
+			set
+			{
+				if ((this._PROVINCE_NAME != value))
+				{
+					this._PROVINCE_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NO", DbType="NVarChar(4)")]
+		public string BRANCH_NO
+		{
+			get
+			{
+				return this._BRANCH_NO;
+			}
+			set
+			{
+				if ((this._BRANCH_NO != value))
+				{
+					this._BRANCH_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NAME", DbType="NVarChar(100)")]
+		public string BRANCH_NAME
+		{
+			get
+			{
+				return this._BRANCH_NAME;
+			}
+			set
+			{
+				if ((this._BRANCH_NAME != value))
+				{
+					this._BRANCH_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BASE_CODE", DbType="NVarChar(50)")]
+		public string BASE_CODE
+		{
+			get
+			{
+				return this._BASE_CODE;
+			}
+			set
+			{
+				if ((this._BASE_CODE != value))
+				{
+					this._BASE_CODE = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_Title")]
+	public partial class VW_Title
+	{
+		
+		private string _TitleCode;
+		
+		private string _TitleName;
+		
+		public VW_Title()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TitleCode", DbType="NVarChar(10)")]
+		public string TitleCode
+		{
+			get
+			{
+				return this._TitleCode;
+			}
+			set
+			{
+				if ((this._TitleCode != value))
+				{
+					this._TitleCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TitleName", DbType="NVarChar(50)")]
+		public string TitleName
+		{
+			get
+			{
+				return this._TitleName;
+			}
+			set
+			{
+				if ((this._TitleName != value))
+				{
+					this._TitleName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_addrAmphur")]
+	public partial class VW_addrAmphur
+	{
+		
+		private string _StateCode;
+		
+		private string _CityCode;
+		
+		private string _CityName;
+		
+		public VW_addrAmphur()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateCode", DbType="NVarChar(2)")]
+		public string StateCode
+		{
+			get
+			{
+				return this._StateCode;
+			}
+			set
+			{
+				if ((this._StateCode != value))
+				{
+					this._StateCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityCode", DbType="NVarChar(40)")]
+		public string CityCode
+		{
+			get
+			{
+				return this._CityCode;
+			}
+			set
+			{
+				if ((this._CityCode != value))
+				{
+					this._CityCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityName", DbType="NVarChar(500)")]
+		public string CityName
+		{
+			get
+			{
+				return this._CityName;
+			}
+			set
+			{
+				if ((this._CityName != value))
+				{
+					this._CityName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_addrProvince")]
+	public partial class VW_addrProvince
+	{
+		
+		private string _StateCode;
+		
+		private string _StateName;
+		
+		public VW_addrProvince()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateCode", DbType="NVarChar(10)")]
+		public string StateCode
+		{
+			get
+			{
+				return this._StateCode;
+			}
+			set
+			{
+				if ((this._StateCode != value))
+				{
+					this._StateCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateName", DbType="NVarChar(500)")]
+		public string StateName
+		{
+			get
+			{
+				return this._StateName;
+			}
+			set
+			{
+				if ((this._StateName != value))
+				{
+					this._StateName = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_addrTambon")]
+	public partial class VW_addrTambon
+	{
+		
+		private string _StateCode;
+		
+		private string _CityCode;
+		
+		private string _DistrictCode;
+		
+		private string _DistrictName;
+		
+		public VW_addrTambon()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StateCode", DbType="NVarChar(10)")]
+		public string StateCode
+		{
+			get
+			{
+				return this._StateCode;
+			}
+			set
+			{
+				if ((this._StateCode != value))
+				{
+					this._StateCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CityCode", DbType="NVarChar(40)")]
+		public string CityCode
+		{
+			get
+			{
+				return this._CityCode;
+			}
+			set
+			{
+				if ((this._CityCode != value))
+				{
+					this._CityCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DistrictCode", DbType="NVarChar(10)")]
+		public string DistrictCode
+		{
+			get
+			{
+				return this._DistrictCode;
+			}
+			set
+			{
+				if ((this._DistrictCode != value))
+				{
+					this._DistrictCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DistrictName", DbType="NVarChar(500)")]
+		public string DistrictName
+		{
+			get
+			{
+				return this._DistrictName;
+			}
+			set
+			{
+				if ((this._DistrictName != value))
+				{
+					this._DistrictName = value;
 				}
 			}
 		}
