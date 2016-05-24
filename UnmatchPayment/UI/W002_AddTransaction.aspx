@@ -13,13 +13,11 @@
 
             <tr>
                 <td>
-                    <asp:RadioButtonList ID="RadioButtonList1" runat="server"></asp:RadioButtonList>
-                </td>
-                <td>
-                    <asp:RadioButtonList ID="RadioButtonList2" runat="server"></asp:RadioButtonList>
-                </td>
-                <td>
-                    <asp:RadioButtonList ID="RadioButtonList3" runat="server"></asp:RadioButtonList>
+                    <asp:RadioButtonList ID="rdbUnmatchCause" runat="server">
+                        <asp:ListItem>ref</asp:ListItem>
+                        <asp:ListItem></asp:ListItem>
+                        <asp:ListItem></asp:ListItem>
+                    </asp:RadioButtonList>
                 </td>
             </tr>
     </table>
