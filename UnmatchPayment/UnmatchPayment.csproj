@@ -138,6 +138,9 @@
   <ItemGroup>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="UC\Calendar.ascx" />
+    <Content Include="UC\I006_calendar.png" />
+    <Content Include="UC\I007_eraser.png" />
     <Content Include="UI\W002_AddTransaction.aspx" />
     <Content Include="UI\Default.aspx" />
     <Content Include="UI\MenuMng.aspx" />
@@ -149,6 +152,8 @@
   <ItemGroup>
     <Compile Include="Class\C001_DataMng.cs" />
     <Compile Include="Class\C002_GetDataDDL.cs" />
+    <Compile Include="Class\C003_ReportLogin.cs" />
+    <Compile Include="Class\C004_DatabaseInfo.cs" />
     <Compile Include="Database\dbAccount.cs">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </Compile>
@@ -184,6 +189,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>R001_AddEditPayment.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar.ascx.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UC\Calendar.ascx.designer.cs">
+      <DependentUpon>Calendar.ascx</DependentUpon>
     </Compile>
     <Compile Include="UI\W002_AddTransaction.aspx.cs">
       <DependentUpon>W002_AddTransaction.aspx</DependentUpon>

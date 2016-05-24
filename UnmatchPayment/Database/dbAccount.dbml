@@ -128,4 +128,13 @@
       <Column Name="isBranch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.GETUSERBYHQ_SELECT" Method="GETUSERBYHQ_SELECT">
+    <Parameter Name="BRANCH_NO" Parameter="bRANCH_NO" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="GETUSERBYHQ_SELECTResult">
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="USERFULLNAME" Type="System.String" DbType="NVarChar(251)" CanBeNull="true" />
+      <Column Name="HRCODE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

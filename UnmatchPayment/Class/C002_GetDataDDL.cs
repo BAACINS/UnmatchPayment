@@ -222,5 +222,33 @@ namespace UnmatchPayment.Class
                 throw ex;
             }
         }
+
+        public DataTable GetDDLByRoleCode(string roleCode, string branchNo)
+        {
+            try
+            {
+                var dtAcc = from tb in dbAcc.GETUSERBYHQ_SELECT(branchNo)
+                            orderby tb.USERID
+                            select tb;
+
+                DataTable _dt = LINQToDataTable(dtAcc);
+                if (_dt.Columns.Count == 0)
+                {
+                    _dt.Columns.Add("USERID", typeof(string));
+                    _dt.Columns.Add("USERFULLNAME", typeof(string));
+                }
+                DataRow row;
+                row = _dt.NewRow();
+                row["USERFULLNAME"] = "รวมทั้งหมด";
+                row["USERID"] = "00";
+                _dt.Rows.InsertAt(row, 0);
+                return _dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

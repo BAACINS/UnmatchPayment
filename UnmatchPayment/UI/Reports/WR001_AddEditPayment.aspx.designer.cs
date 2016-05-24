@@ -67,6 +67,24 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.DropDownList ddlUserID;
         
         /// <summary>
+        /// txtDateFrom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UnmatchPayment.UC.WebUserControl1 txtDateFrom;
+        
+        /// <summary>
+        /// txtDateTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::UnmatchPayment.UC.WebUserControl1 txtDateTo;
+        
+        /// <summary>
         /// btnPrint control.
         /// </summary>
         /// <remarks>
