@@ -19,7 +19,7 @@
                 <input id="username" type="text" placeholder="Username" runat="server" maxlength="7"/>
                 <input id="password" type="password" placeholder="Password" runat="server" maxlength="20"/>
                 <button type="submit" id="login-button" >Login</button>
-                <asp:Button ID="btnLogin" runat="server" Text="" style="display: none;" />
+                <asp:Button ID="btnLogin" runat="server" Text="" style="display: none;" OnClick="btnLogin_Click" />
                 <br />
                 <asp:Label ID="lblloginError" ForeColor="Red" runat="server" Text=""></asp:Label>
             </form>

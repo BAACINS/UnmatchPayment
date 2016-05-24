@@ -58,4 +58,22 @@
       <Column Name="ModifyDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
+  <Function Name="UP.EMPLOYEE_SELECT" Method="EMPLOYEE_SELECT">
+    <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.String" DbType="NVarChar(7)" />
+    <Parameter Name="USER_PASSWORD" Parameter="uSER_PASSWORD" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="EMPLOYEE_SELECTResult">
+      <Column Name="USER_ID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="USER_NAME" Type="System.String" DbType="NVarChar(251)" CanBeNull="true" />
+      <Column Name="POSITIONNAME" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ROLECODE" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ROLENAME" Type="System.String" DbType="NVarChar(521)" CanBeNull="true" />
+      <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="BRANCH_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="REGION_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PROVINCE_NAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="isBranch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>
