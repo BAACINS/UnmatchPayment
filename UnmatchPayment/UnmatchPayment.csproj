@@ -119,6 +119,8 @@
     <Content Include="CSS\Popup.css" />
     <Content Include="CSS\Sitemaster.css" />
     <Content Include="Images\bgforie2.png" />
+    <Content Include="Images\hd1.png" />
+    <Content Include="Images\logo Unmatch payment.png" />
     <Content Include="Login.aspx" />
     <Content Include="LoginForIE8.aspx" />
     <Content Include="packages.config" />
@@ -154,6 +156,7 @@
     <Compile Include="Class\C002_GetDataDDL.cs" />
     <Compile Include="Class\C003_ReportLogin.cs" />
     <Compile Include="Class\C004_DatabaseInfo.cs" />
+    <Compile Include="Class\C005_Calculator.cs" />
     <Compile Include="Database\dbAccount.cs">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </Compile>

@@ -16,6 +16,7 @@ namespace UnmatchPayment.UI
     {
         CultureInfo us = System.Globalization.CultureInfo.GetCultureInfo("en-US");
         CultureInfo th = System.Globalization.CultureInfo.GetCultureInfo("th-TH");
+        C005_Calculator calculator = new C005_Calculator();
         C002_GetDataDDL GetData = new C002_GetDataDDL();
 
         private EMPLOYEE_SELECTResult UserLogin
@@ -40,24 +41,24 @@ namespace UnmatchPayment.UI
             {
                 GetRegion();
 
-                if (UserLogin.isBranch == 1)
-                {
-                    ddlRegion.SelectedValue = UserLogin.REGION_NO;
-                    ddlRegion.Enabled = false;
-                    this.GetProvince();
-                    ddlProvince.SelectedValue = UserLogin.PROVINCE_NO;
-                    ddlProvince.Enabled = false;
-                    this.GetBranch();
-                    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
-                    ddlBranch.Enabled = false;
-                    GetUserDDL();
-                }
-                else
-                {
-                    GetProvince();
-                    GetBranch();
-                    GetUserDDL();
-                }
+                //if (UserLogin.isBranch == 1)
+                //{
+                //    ddlRegion.SelectedValue = UserLogin.REGION_NO;
+                //    ddlRegion.Enabled = false;
+                //    this.GetProvince();
+                //    ddlProvince.SelectedValue = UserLogin.PROVINCE_NO;
+                //    ddlProvince.Enabled = false;
+                //    this.GetBranch();
+                //    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
+                //    ddlBranch.Enabled = false;
+                //    GetUserDDL();
+                //}
+                //else
+                //{
+                //    GetProvince();
+                //    GetBranch();
+                //    GetUserDDL();
+                //}
             }
         }
 
@@ -100,7 +101,7 @@ namespace UnmatchPayment.UI
             string _pathReport = Server.MapPath("~/Reports/R001_AddEditClaim.rpt");
             ReportDocument rpt = new ReportDocument();
             rpt.Load(_pathReport);
-            C006_ReportLogin _login = new C006_ReportLogin(rpt, C007_DatabaseInfo.Instance);
+            C003_ReportLogin _login = new C003_ReportLogin(rpt, C004_DatabaseInfo.Instance);
 
             string DateFrom = string.Empty;
             string DateTo = string.Empty;
@@ -114,7 +115,6 @@ namespace UnmatchPayment.UI
             rpt.SetParameterValue("@INPUT_DATE_FROM", DateFrom);
             rpt.SetParameterValue("@INPUT_DATE_TO", DateTo);
             rpt.SetParameterValue("@INPUT_PROJECT", ddlProject.SelectedValue);
-            rpt.SetParameterValue("@INPUT_TYPE", ddlClaimDetail.SelectedValue);
             rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
 
             rpt.Load(_pathReport);

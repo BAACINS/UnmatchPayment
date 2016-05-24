@@ -49,15 +49,6 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.DropDownList ddlProject;
         
         /// <summary>
-        /// ddlClaimDetail control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlClaimDetail;
-        
-        /// <summary>
         /// ddlUserID control.
         /// </summary>
         /// <remarks>
