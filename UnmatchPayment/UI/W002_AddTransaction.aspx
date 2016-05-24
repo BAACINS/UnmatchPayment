@@ -63,7 +63,7 @@
         BackgroundCssClass="modalBackground">
     </asp:ModalPopupExtender>
     <asp:Panel ID="PanelUploadFile" runat="server" BorderColor="Black" Height="380px"
-        Width="800px" HorizontalAlign="Left" BorderStyle="Double" BackColor="InactiveCaption" Style="display: none;">
+        Width="800px" HorizontalAlign="Left" BorderStyle="Double" BackColor="InactiveCaption" ><%--Style="display: none;"--%>
         <table style="width: 100%;">
             <tr>
                 <td></td>
@@ -76,32 +76,29 @@
             <tr>
                 <td style="text-align: right">Slip pay in :</td>
                 <td align="center">
-                    <asp:DropDownList ID="ddlSlip" runat="server" CssClass="dropDownList" AutoPostBack="True">
-                    </asp:DropDownList>
+                    <asp:FileUpload ID="FileSlip" runat="server" Height="28px" Width="450px" CssClass="textBox" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td style="text-align: right">ใบคำขอ/ใบแจ้ง :</td>
                 <td align="center">
-                    <asp:DropDownList ID="ddlClaim" runat="server" CssClass="dropDownList">
-                    </asp:DropDownList>
+                    <asp:FileUpload ID="FileClaim" runat="server" Height="28px" Width="450px" CssClass="textBox" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td style="text-align: right">หน้าสมุด/Statement :</td>
                 <td align="center">
-                    <asp:DropDownList ID="ddlStatement" runat="server" CssClass="dropDownList">
-                    </asp:DropDownList>
+                    <asp:FileUpload ID="FileStatement" runat="server" Height="28px" Width="450px" CssClass="textBox" />
                 </td>
                 <td>&nbsp;</td>
             </tr>
             <tr id="trFileUpload6" runat="server">
                 <td></td>
-                <td align="center">
+<%--                <td align="center">
                     <asp:FileUpload ID="FileUpload1" runat="server" Height="28px" Width="450px" CssClass="textBox" />
-                </td>
+                </td>--%>
                 <td>
                     <asp:Label ID="lblFileUpload1" runat="server" ForeColor="Red"></asp:Label></td>
             </tr>

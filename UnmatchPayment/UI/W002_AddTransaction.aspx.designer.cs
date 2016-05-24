@@ -85,31 +85,31 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.Panel PanelUploadFile;
         
         /// <summary>
-        /// ddlSlip control.
+        /// FileSlip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSlip;
+        protected global::System.Web.UI.WebControls.FileUpload FileSlip;
         
         /// <summary>
-        /// ddlClaim control.
+        /// FileClaim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlClaim;
+        protected global::System.Web.UI.WebControls.FileUpload FileClaim;
         
         /// <summary>
-        /// ddlStatement control.
+        /// FileStatement control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlStatement;
+        protected global::System.Web.UI.WebControls.FileUpload FileStatement;
         
         /// <summary>
         /// trFileUpload6 control.
@@ -119,15 +119,6 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow trFileUpload6;
-        
-        /// <summary>
-        /// FileUpload1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
         /// lblFileUpload1 control.
