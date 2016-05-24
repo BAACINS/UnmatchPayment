@@ -7,7 +7,7 @@ using System.Web;
 
 namespace UnmatchPayment.Class
 {
-    public class DataMng
+    public class C001_DataMng
     {
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
         {

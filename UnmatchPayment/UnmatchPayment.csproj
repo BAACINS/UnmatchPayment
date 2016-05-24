@@ -143,10 +143,11 @@
     <Content Include="UI\MenuMng.aspx" />
     <Content Include="UI\RoleMenu.aspx" />
     <Content Include="UI\W001_UnmatchListBranch.aspx" />
+    <Content Include="UI\Reports\WR001_AddEditPayment.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\DataMng.cs" />
+    <Compile Include="Class\C001_DataMng.cs" />
     <Compile Include="Database\dbAccount.cs">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </Compile>
@@ -177,6 +178,12 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\R001_AddEditPayment.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>R001_AddEditPayment.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\W002_AddTransaction.aspx.cs">
       <DependentUpon>W002_AddTransaction.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -212,18 +219,29 @@
     <Compile Include="UI\W001_UnmatchListBranch.aspx.designer.cs">
       <DependentUpon>W001_UnmatchListBranch.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\WR001_AddEditPayment.aspx.cs">
+      <DependentUpon>WR001_AddEditPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\WR001_AddEditPayment.aspx.designer.cs">
+      <DependentUpon>WR001_AddEditPayment.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Database\dbAccount.dbml.layout">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Class\" />
-    <Folder Include="Reports\" />
+    <EmbeddedResource Include="Reports\R001_AddEditPayment.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>R001_AddEditPayment.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -13,7 +13,7 @@ namespace UnmatchPayment.UI
     public partial class UnmatchListBranch : System.Web.UI.Page
     {
         dbAccountDataContext dbAcc = new dbAccountDataContext();
-        DataMng DataMNG = new DataMng();
+        C001_DataMng DataMNG = new C001_DataMng();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
