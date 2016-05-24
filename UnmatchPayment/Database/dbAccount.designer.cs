@@ -102,6 +102,13 @@ namespace UnmatchPayment.Database
 				return this.GetTable<VW_TellerPaymentDetail>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="UP.EMPLOYEE_SELECT")]
+		public ISingleResult<EMPLOYEE_SELECTResult> EMPLOYEE_SELECT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="NVarChar(7)")] string uSER_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_PASSWORD", DbType="NVarChar(50)")] string uSER_PASSWORD)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), uSER_ID, uSER_PASSWORD);
+			return ((ISingleResult<EMPLOYEE_SELECTResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.AppMenu")]
@@ -1062,6 +1069,230 @@ namespace UnmatchPayment.Database
 				if ((this._ModifyDate != value))
 				{
 					this._ModifyDate = value;
+				}
+			}
+		}
+	}
+	
+	public partial class EMPLOYEE_SELECTResult
+	{
+		
+		private string _USER_ID;
+		
+		private string _USER_NAME;
+		
+		private string _POSITIONNAME;
+		
+		private string _ROLECODE;
+		
+		private string _ROLENAME;
+		
+		private string _BRANCH_NO;
+		
+		private string _BRANCH_NAME;
+		
+		private string _REGION_NO;
+		
+		private string _REGION_NAME;
+		
+		private string _PROVINCE_NO;
+		
+		private string _PROVINCE_NAME;
+		
+		private int _isBranch;
+		
+		public EMPLOYEE_SELECTResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_ID", DbType="NVarChar(10)")]
+		public string USER_ID
+		{
+			get
+			{
+				return this._USER_ID;
+			}
+			set
+			{
+				if ((this._USER_ID != value))
+				{
+					this._USER_ID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USER_NAME", DbType="NVarChar(251)")]
+		public string USER_NAME
+		{
+			get
+			{
+				return this._USER_NAME;
+			}
+			set
+			{
+				if ((this._USER_NAME != value))
+				{
+					this._USER_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSITIONNAME", DbType="NVarChar(255)")]
+		public string POSITIONNAME
+		{
+			get
+			{
+				return this._POSITIONNAME;
+			}
+			set
+			{
+				if ((this._POSITIONNAME != value))
+				{
+					this._POSITIONNAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLECODE", DbType="NVarChar(30)")]
+		public string ROLECODE
+		{
+			get
+			{
+				return this._ROLECODE;
+			}
+			set
+			{
+				if ((this._ROLECODE != value))
+				{
+					this._ROLECODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLENAME", DbType="NVarChar(521)")]
+		public string ROLENAME
+		{
+			get
+			{
+				return this._ROLENAME;
+			}
+			set
+			{
+				if ((this._ROLENAME != value))
+				{
+					this._ROLENAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NO", DbType="NVarChar(30)")]
+		public string BRANCH_NO
+		{
+			get
+			{
+				return this._BRANCH_NO;
+			}
+			set
+			{
+				if ((this._BRANCH_NO != value))
+				{
+					this._BRANCH_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NAME", DbType="NVarChar(100)")]
+		public string BRANCH_NAME
+		{
+			get
+			{
+				return this._BRANCH_NAME;
+			}
+			set
+			{
+				if ((this._BRANCH_NAME != value))
+				{
+					this._BRANCH_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NO", DbType="NVarChar(100)")]
+		public string REGION_NO
+		{
+			get
+			{
+				return this._REGION_NO;
+			}
+			set
+			{
+				if ((this._REGION_NO != value))
+				{
+					this._REGION_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_REGION_NAME", DbType="NVarChar(100)")]
+		public string REGION_NAME
+		{
+			get
+			{
+				return this._REGION_NAME;
+			}
+			set
+			{
+				if ((this._REGION_NAME != value))
+				{
+					this._REGION_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NO", DbType="NVarChar(100)")]
+		public string PROVINCE_NO
+		{
+			get
+			{
+				return this._PROVINCE_NO;
+			}
+			set
+			{
+				if ((this._PROVINCE_NO != value))
+				{
+					this._PROVINCE_NO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PROVINCE_NAME", DbType="NVarChar(100)")]
+		public string PROVINCE_NAME
+		{
+			get
+			{
+				return this._PROVINCE_NAME;
+			}
+			set
+			{
+				if ((this._PROVINCE_NAME != value))
+				{
+					this._PROVINCE_NAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isBranch", DbType="Int NOT NULL")]
+		public int isBranch
+		{
+			get
+			{
+				return this._isBranch;
+			}
+			set
+			{
+				if ((this._isBranch != value))
+				{
+					this._isBranch = value;
 				}
 			}
 		}
