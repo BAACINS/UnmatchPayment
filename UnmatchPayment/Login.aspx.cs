@@ -66,7 +66,6 @@ namespace UnmatchPayment
             {
                 lblloginError.Text = "รหัสพนักงาน หรือ รหัสผ่านไม่ถูกต้อง";
             }
-
         }
 
         public static string CheckLogin(string userName, string passWord)
