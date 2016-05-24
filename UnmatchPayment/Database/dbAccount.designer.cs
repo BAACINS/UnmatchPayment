@@ -39,6 +39,9 @@ namespace UnmatchPayment.Database
     partial void InsertFileType(FileType instance);
     partial void UpdateFileType(FileType instance);
     partial void DeleteFileType(FileType instance);
+    partial void InsertUnmatchCause(UnmatchCause instance);
+    partial void UpdateUnmatchCause(UnmatchCause instance);
+    partial void DeleteUnmatchCause(UnmatchCause instance);
     #endregion
 		
 		public dbAccountDataContext() : 
@@ -156,6 +159,14 @@ namespace UnmatchPayment.Database
 			get
 			{
 				return this.GetTable<VW_addrTambon>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UnmatchCause> UnmatchCauses
+		{
+			get
+			{
+				return this.GetTable<UnmatchCause>();
 			}
 		}
 		
@@ -1628,6 +1639,308 @@ namespace UnmatchPayment.Database
 				{
 					this._DistrictName = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.UnmatchCause")]
+	public partial class UnmatchCause : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _CauseID;
+		
+		private string _CauseDescription;
+		
+		private System.Nullable<bool> _isSpinCreate;
+		
+		private System.Nullable<bool> _isCompCode;
+		
+		private System.Nullable<bool> _isAmount;
+		
+		private System.Nullable<bool> _isRef1;
+		
+		private System.Nullable<bool> _isRef2;
+		
+		private System.Nullable<bool> _isRefName;
+		
+		private System.Nullable<bool> _isPaymentdate;
+		
+		private System.Nullable<bool> _isRefund;
+		
+		private System.Nullable<bool> _isUploadFile;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCauseIDChanging(int value);
+    partial void OnCauseIDChanged();
+    partial void OnCauseDescriptionChanging(string value);
+    partial void OnCauseDescriptionChanged();
+    partial void OnisSpinCreateChanging(System.Nullable<bool> value);
+    partial void OnisSpinCreateChanged();
+    partial void OnisCompCodeChanging(System.Nullable<bool> value);
+    partial void OnisCompCodeChanged();
+    partial void OnisAmountChanging(System.Nullable<bool> value);
+    partial void OnisAmountChanged();
+    partial void OnisRef1Changing(System.Nullable<bool> value);
+    partial void OnisRef1Changed();
+    partial void OnisRef2Changing(System.Nullable<bool> value);
+    partial void OnisRef2Changed();
+    partial void OnisRefNameChanging(System.Nullable<bool> value);
+    partial void OnisRefNameChanged();
+    partial void OnisPaymentdateChanging(System.Nullable<bool> value);
+    partial void OnisPaymentdateChanged();
+    partial void OnisRefundChanging(System.Nullable<bool> value);
+    partial void OnisRefundChanged();
+    partial void OnisUploadFileChanging(System.Nullable<bool> value);
+    partial void OnisUploadFileChanged();
+    #endregion
+		
+		public UnmatchCause()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CauseID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int CauseID
+		{
+			get
+			{
+				return this._CauseID;
+			}
+			set
+			{
+				if ((this._CauseID != value))
+				{
+					this.OnCauseIDChanging(value);
+					this.SendPropertyChanging();
+					this._CauseID = value;
+					this.SendPropertyChanged("CauseID");
+					this.OnCauseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CauseDescription", DbType="NVarChar(150)")]
+		public string CauseDescription
+		{
+			get
+			{
+				return this._CauseDescription;
+			}
+			set
+			{
+				if ((this._CauseDescription != value))
+				{
+					this.OnCauseDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._CauseDescription = value;
+					this.SendPropertyChanged("CauseDescription");
+					this.OnCauseDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isSpinCreate", DbType="Bit")]
+		public System.Nullable<bool> isSpinCreate
+		{
+			get
+			{
+				return this._isSpinCreate;
+			}
+			set
+			{
+				if ((this._isSpinCreate != value))
+				{
+					this.OnisSpinCreateChanging(value);
+					this.SendPropertyChanging();
+					this._isSpinCreate = value;
+					this.SendPropertyChanged("isSpinCreate");
+					this.OnisSpinCreateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isCompCode", DbType="Bit")]
+		public System.Nullable<bool> isCompCode
+		{
+			get
+			{
+				return this._isCompCode;
+			}
+			set
+			{
+				if ((this._isCompCode != value))
+				{
+					this.OnisCompCodeChanging(value);
+					this.SendPropertyChanging();
+					this._isCompCode = value;
+					this.SendPropertyChanged("isCompCode");
+					this.OnisCompCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isAmount", DbType="Bit")]
+		public System.Nullable<bool> isAmount
+		{
+			get
+			{
+				return this._isAmount;
+			}
+			set
+			{
+				if ((this._isAmount != value))
+				{
+					this.OnisAmountChanging(value);
+					this.SendPropertyChanging();
+					this._isAmount = value;
+					this.SendPropertyChanged("isAmount");
+					this.OnisAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRef1", DbType="Bit")]
+		public System.Nullable<bool> isRef1
+		{
+			get
+			{
+				return this._isRef1;
+			}
+			set
+			{
+				if ((this._isRef1 != value))
+				{
+					this.OnisRef1Changing(value);
+					this.SendPropertyChanging();
+					this._isRef1 = value;
+					this.SendPropertyChanged("isRef1");
+					this.OnisRef1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRef2", DbType="Bit")]
+		public System.Nullable<bool> isRef2
+		{
+			get
+			{
+				return this._isRef2;
+			}
+			set
+			{
+				if ((this._isRef2 != value))
+				{
+					this.OnisRef2Changing(value);
+					this.SendPropertyChanging();
+					this._isRef2 = value;
+					this.SendPropertyChanged("isRef2");
+					this.OnisRef2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRefName", DbType="Bit")]
+		public System.Nullable<bool> isRefName
+		{
+			get
+			{
+				return this._isRefName;
+			}
+			set
+			{
+				if ((this._isRefName != value))
+				{
+					this.OnisRefNameChanging(value);
+					this.SendPropertyChanging();
+					this._isRefName = value;
+					this.SendPropertyChanged("isRefName");
+					this.OnisRefNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isPaymentdate", DbType="Bit")]
+		public System.Nullable<bool> isPaymentdate
+		{
+			get
+			{
+				return this._isPaymentdate;
+			}
+			set
+			{
+				if ((this._isPaymentdate != value))
+				{
+					this.OnisPaymentdateChanging(value);
+					this.SendPropertyChanging();
+					this._isPaymentdate = value;
+					this.SendPropertyChanged("isPaymentdate");
+					this.OnisPaymentdateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isRefund", DbType="Bit")]
+		public System.Nullable<bool> isRefund
+		{
+			get
+			{
+				return this._isRefund;
+			}
+			set
+			{
+				if ((this._isRefund != value))
+				{
+					this.OnisRefundChanging(value);
+					this.SendPropertyChanging();
+					this._isRefund = value;
+					this.SendPropertyChanged("isRefund");
+					this.OnisRefundChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isUploadFile", DbType="Bit")]
+		public System.Nullable<bool> isUploadFile
+		{
+			get
+			{
+				return this._isUploadFile;
+			}
+			set
+			{
+				if ((this._isUploadFile != value))
+				{
+					this.OnisUploadFileChanging(value);
+					this.SendPropertyChanging();
+					this._isUploadFile = value;
+					this.SendPropertyChanged("isUploadFile");
+					this.OnisUploadFileChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
