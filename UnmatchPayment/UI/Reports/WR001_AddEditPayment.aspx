@@ -30,10 +30,7 @@
         <tr>
             <td class="auto-style5">สาเหตุ :</td>
             <td>
-                <asp:DropDownList ID="ddlProject" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
-            <%--<td class="auto-style5">ประเภท :</td>
-            <td>
-                <asp:DropDownList ID="ddlClaimDetail" runat="server" CssClass="dropDownList"></asp:DropDownList></td>--%>
+                <asp:DropDownList ID="ddlCause" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
         </tr>
         <tr>
             <td class="auto-style5">ผู้บันทึก/แก้ไข :</td>

@@ -96,6 +96,14 @@ namespace UnmatchPayment.UI
             ddlUserID.DataBind();
         }
 
+        private void GetCause()
+        {
+            ddlCause.DataSource = GetData.GetCause(ddlCause.SelectedValue.ToString());
+            ddlCause.DataTextField = "CAUSEDESCRIPTION";
+            ddlCause.DataValueField = "CAUSEID";
+            ddlCause.DataBind();
+        }
+
         protected void LoadReport()
         {
             string _pathReport = Server.MapPath("~/Reports/R001_AddEditClaim.rpt");
