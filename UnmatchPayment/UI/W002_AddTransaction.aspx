@@ -3,23 +3,23 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script type="text/javascript">
+        function rdbChecked(id) {
+            document.getElementById('<%=hdCauseID.ClientID%>').value = id;
+        }
+    </script>
     <p>
         <h1>บันทึกรายการ Unmatch</h1>
     </p>
     <p class="underLine"></p>
 
     <div>
+        <h2>รายการ Unmatched</h2>
         <table width="100%">
-
-            <tr>
-                <td>
-                    <asp:RadioButtonList ID="rdbUnmatchCause" runat="server" CssClass="rbl">
-                    </asp:RadioButtonList>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
+                    <asp:HiddenField ID="hdCauseID" runat="server" />
                 </td>
             </tr>
     </table>
@@ -54,7 +54,7 @@
                 </asp:GridView>
     </div>
     <div style="text-align:center;">
-        <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" /> &nbsp
+        <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" OnClick="bntSave_Click" /> &nbsp
         <asp:Button ID="bntCancle" runat="server" Text="ยกเลิก" CssClass="button" />
     </div>
 

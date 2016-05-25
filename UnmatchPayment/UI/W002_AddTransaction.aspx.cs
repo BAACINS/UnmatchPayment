@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -18,14 +19,7 @@ namespace UnmatchPayment.UI
         {
             if (!IsPostBack)
             {
-                //this.GetUnmatchCause();
-                ltrbl.Text = @"
-<div>
-<input type=""radio"" name=""radio"" id=""radio1"" class=""radio"" checked/>
-<label for= ""radio1"" > First Option </label>
- </div>
-
- ";
+                this.GetUnmatchCause();
             }
         }
 
@@ -37,10 +31,36 @@ namespace UnmatchPayment.UI
 
             dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
 
-            rdbUnmatchCause.DataSource = dtUnmatch;
-            rdbUnmatchCause.DataTextField = "CauseDescription";
-            rdbUnmatchCause.DataValueField = "CauseID";
-            rdbUnmatchCause.DataBind();
+            StringBuilder strCause = new StringBuilder();
+
+            for(int i = 0; i < dtUnmatch.Rows.Count; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    strCause.Append(string.Format(@"
+                    <div>
+                    <span class='spanleft'>
+                    <input type = 'radio' name='radio' id='radio{0}' class='radio' onclick='rdbChecked({0})'/>
+                    <label for= 'radio{0}' > {1} </label>
+                    </span>", dtUnmatch.Rows[i]["CauseID"].ToString(), dtUnmatch.Rows[i]["CauseDescription"].ToString()));
+                }
+                else
+                {
+                    strCause.Append(string.Format(@"
+                    <span class='spanright'>
+                    <input type = 'radio' name='radio' id='radio{0}' class='radio' onclick='rdbChecked({0})'/>
+                    <label for= 'radio{0}' > {1} </label>
+                    </span>
+                    </div>", dtUnmatch.Rows[i]["CauseID"].ToString(), dtUnmatch.Rows[i]["CauseDescription"].ToString()));
+                }
+            }
+
+            ltrbl.Text = strCause.ToString();
+        }
+
+        protected void bntSave_Click(object sender, EventArgs e)
+        {
+            string a = hdCauseID.Value;
         }
     }
 }
