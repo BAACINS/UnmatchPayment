@@ -167,6 +167,30 @@ namespace UnmatchPayment.Class
             }
         }
 
+        public DataTable GetCause(string causeID)
+        {
+
+            try
+            {
+                var dtAcc = from cause in dbAcc.UnmatchCauses
+                            orderby cause.CauseID ascending
+                            select cause;
+
+                DataTable _dt = LINQToDataTable(dtAcc);
+                DataRow row;
+                row = _dt.NewRow();
+                row["CAUSEDESCRIPTION"] = "รวมทั้งหมด";
+                row["CAUSEID"] = "00";
+                _dt.Rows.InsertAt(row, 0);
+
+                return _dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable GetAddrProvince()
         {
             try
