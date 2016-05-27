@@ -122,7 +122,7 @@ namespace UnmatchPayment.UI
             rpt.SetParameterValue("@BRANCH_NO", ddlBranch.SelectedValue);
             rpt.SetParameterValue("@INPUT_DATE_FROM", DateFrom);
             rpt.SetParameterValue("@INPUT_DATE_TO", DateTo);
-            rpt.SetParameterValue("@INPUT_PROJECT", ddlProject.SelectedValue);
+            //rpt.SetParameterValue("@INPUT_PROJECT", ddlProject.SelectedValue);
             rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
 
             rpt.Load(_pathReport);

@@ -27,7 +27,7 @@ namespace UnmatchPayment.UI
         {
             DataTable dtUnmatch = new DataTable();
             var dtAcc = from Cause in dbAcc.UnmatchCauses
-                        select Cause;
+                        select new { Cause.CauseID,Cause.CauseDescription };
 
             dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
 
@@ -57,10 +57,14 @@ namespace UnmatchPayment.UI
 
             ltrbl.Text = strCause.ToString();
         }
+        private void GetTellerpaymentDetail()
+        {
+
+        }
 
         protected void bntSave_Click(object sender, EventArgs e)
         {
-            string a = hdCauseID.Value;
+            string _causeID = hdCauseID.Value;
         }
     }
 }
