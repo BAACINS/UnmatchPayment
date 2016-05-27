@@ -103,6 +103,11 @@
                         <td>เลขที่บัญชีเงินฝาก</td>
                         <td><asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                     </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            &nbsp;</td>
+                    </tr>
 				</tbody>
 		</table>
     </div>

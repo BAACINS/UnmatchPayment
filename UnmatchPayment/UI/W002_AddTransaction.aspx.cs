@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -19,7 +20,8 @@ namespace UnmatchPayment.UI
         {
             if (!IsPostBack)
             {
-                this.GetUnmatchCause();
+                GetUnmatchCause();
+                GetTellerpaymentDetail();
             }
         }
 
@@ -59,7 +61,27 @@ namespace UnmatchPayment.UI
         }
         private void GetTellerpaymentDetail()
         {
+            try
+            {
+                DateTimeFormatInfo fmt = (new CultureInfo("th-TH")).DateTimeFormat;
+                if (Application["TellerID"] != null)
+                {
+                    int TellerID = int.Parse(Application["TellerID"].ToString());
+                    var teller = (from tel in dbAcc.VW_TellerPaymentDetails
+                                 where tel.TellerPaymentDetailID == TellerID
+                                 select tel).FirstOrDefault();
+                    lblCompCode.Text = teller.CompCode;
+                    lblAmount.Text = teller.Amount.ToString();
+                    lblRef1.Text = teller.Ref1;
+                    lblRef2.Text = teller.Ref2;
+                    lblRefName.Text = teller.CustomerName;
+                    lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
+                }
+            }
+            catch
+            {
 
+            }
         }
 
         protected void bntSave_Click(object sender, EventArgs e)
