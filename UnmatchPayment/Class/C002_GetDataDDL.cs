@@ -284,6 +284,7 @@ namespace UnmatchPayment.Class
                                select new { FT.FileTypeID, FT.FileTypeName };
 
                 dtFileType = LINQToDataTable(FileType);
+                HttpContext.Current.Cache["dtFileType"] = dtFileType;
             }
             return dtFileType;
         }
