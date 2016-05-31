@@ -274,5 +274,18 @@ namespace UnmatchPayment.Class
                 throw ex;
             }
         }
+
+        public DataTable GetFileType()
+        {
+            DataTable dtFileType = HttpContext.Current.Cache["dtFileType"] as DataTable;
+            if (dtFileType == null)
+            {
+                var FileType = from FT in dbAcc.FileTypes
+                               select new { FT.FileTypeID, FT.FileTypeName };
+
+                dtFileType = LINQToDataTable(FileType);
+            }
+            return dtFileType;
+        }
     }
 }

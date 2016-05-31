@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using UnmatchPayment.Class;
 using UnmatchPayment.Database;
@@ -16,12 +18,14 @@ namespace UnmatchPayment.UI
     {
         dbAccountDataContext dbAcc = new dbAccountDataContext();
         C001_DataMng DataMNG = new C001_DataMng();
+        C002_GetDataDDL getDDL = new C002_GetDataDDL();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
+                GetFileType();
             }
         }
 
@@ -82,6 +86,13 @@ namespace UnmatchPayment.UI
             {
 
             }
+        }
+        private void GetFileType()
+        {
+            ddlFileType.DataSource = getDDL.GetFileType();
+            ddlFileType.DataTextField = "FileTypeName";
+            ddlFileType.DataValueField = "FileTypeID";
+            ddlFileType.DataBind();
         }
 
         protected void bntSave_Click(object sender, EventArgs e)

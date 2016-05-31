@@ -9,7 +9,6 @@
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
         }
     </script>
-    <li
 
     <p>
         <h1>บันทึกรายการ Unmatch</h1>
@@ -95,38 +94,32 @@
         <table class="features-table">
             <thead>
                 <tr>
-                    <td colspan="3">Upload File</td>
+                    <td colspan="3"></td>
                     <%--<td>ข้อมูลที่สาขาบันทึก</td>
 						<td>ข้อมูลที่ถูกต้อง</td>--%>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>Slip pay in</td>
-                    <td>
-                        <asp:FileUpload ID="FileSlip" runat="server" Height="28px" Width="450px" CssClass="textBox" /></td>
-                </tr>
-                <tr>
-                    <td>ใบคำขอ/ใบแจ้ง</td>
-                    <td>
-                        <asp:FileUpload ID="FileUpload1" runat="server" Height="28px" Width="450px" CssClass="textBox" /></td>
-                </tr>
-                <tr>
-                    <td>หน้าสมุด/Statement</td>
-                    <td>
-                        <asp:FileUpload ID="FileUpload2" runat="server" Height="28px" Width="450px" CssClass="textBox" /></td>
-                </tr>
-                <tr>
                     <td>เลขที่บัญชีเงินฝาก</td>
                     <td>
-                        <asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                        <asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                </tr>
+                <tr>
+                    <td>
+                        UploadFile :&nbsp;<asp:DropDownList ID="ddlFileType" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
+                    <td>
+                        <asp:FileUpload ID="File1" runat="server" Height="28px" Width="450px" CssClass="textBox" />&nbsp;<asp:Button ID="btnUpload" runat="server" CssClass="button" Text="Upload" />
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td>&nbsp;</td>
+                    <td>
+                         </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
     <br />
     <div style="text-align: center;">
