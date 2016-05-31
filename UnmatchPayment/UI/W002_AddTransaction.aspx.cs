@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -16,9 +17,25 @@ namespace UnmatchPayment.UI
 {
     public partial class AddTransaction : System.Web.UI.Page
     {
+        #region Property
         dbAccountDataContext dbAcc = new dbAccountDataContext();
         C001_DataMng DataMNG = new C001_DataMng();
         C002_GetDataDDL getDDL = new C002_GetDataDDL();
+        private int TellerID
+        {
+            get
+            {
+                int ID = new int();
+                if (ViewState["TellerID"] != null)
+                    ID = (int)ViewState["TellerID"];
+                return ID;
+            }
+            set
+            {
+                ViewState["TellerID"] = value;
+            }
+        }
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,6 +43,10 @@ namespace UnmatchPayment.UI
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
                 GetFileType();
+                if(Application["TellerID"] != null)
+                {
+                    TellerID = Convert.ToInt32(Application["TellerID"]);
+                }
             }
         }
 
@@ -98,6 +119,71 @@ namespace UnmatchPayment.UI
         protected void bntSave_Click(object sender, EventArgs e)
         {
             string _causeID = hdCauseID.Value;
+        }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string FileName = string.Empty;
+                string FileSize = string.Empty;
+                string FileType = string.Empty;
+                FileUpload Upload = BrowsFile;
+                lblFileUpload.ForeColor = Color.Red;
+                if (Upload.HasFile)
+                {
+                    string[] setFileName = Upload.FileName.Split('.');
+                    if (Upload.FileBytes.Length > 600000)
+                        lblFileUpload.Text = "ขนาดไฟล์เกิน 600 KB";
+                    else if (setFileName[setFileName.Length - 1].ToLower() != "jpg" && setFileName[setFileName.Length - 1].ToLower() != "pdf")
+                        lblFileUpload.Text = "ต้องเป็น PDF หรือ JPG เท่านั้น";
+                    else
+                    {
+                        lblFileUpload.Text = string.Empty;
+                        C006_UploadFile UploadFile = new C006_UploadFile();
+                        string strAccNo = lblAccNo.Text;
+                        string strProjectNo = lblPJcode.Text;
+                        string strFileOriginName = Upload.FileName;
+                        string strFileType = System.IO.Path.GetExtension(Upload.FileName);
+                        string strFileName = ddlDocFileName.SelectedItem.Text;
+                        string strFileTypeID = ddlDocFileName.SelectedValue;
+                        string strFileSize = Upload.FileBytes.Length.ToString();
+                        string strFilePath = ConfigurationSettings.AppSettings["Filepath"].ToString();
+                        string strUserID = Emp.USER_ID;
+                        string strComment = txtComment.Text;
+
+
+                        int FileID = UploadFile.InsertUploadDetail(strFileOriginName, strFileTypeID, strFileSize, strProjectNo, strAccNo, strUserID, strComment, TVSID);
+                        if (FileID > 0)
+                        {
+                            string strFullPath = strFilePath + FileID + "_" + strFileOriginName;
+                            Upload.SaveAs(strFullPath);
+                            string strEncrypt = UploadFile.GetSha1Hash(strFullPath);
+                            UploadFile.UpdateEncrypt(FileID, strEncrypt);
+                            lblFileUpload.Text = "อัพโหลดเสร็จสิ้น";
+                            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('อัพโหลดเสร็จสิ้น');", true);
+                            lblFileUpload.ForeColor = Color.Green;
+                            //Upload.Enabled = false;
+                        }
+                        else if (FileID == -1)
+                        {
+                            lblFileUpload.Text = "ไฟล์ซ้ำ";
+                            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('ไฟล์ซ้ำ');", true);
+                        }
+                        else
+                            lblFileUpload.Text = "อัพโหลดไม่สำเร็จ";
+                    }
+                }
+                else
+                {
+                    //if (Upload.Enabled == false)
+                    //    lblFileUpload1.ForeColor = Color.Green;
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('UploadFile ไม่สำเร็จ');", true);
+            }
         }
     }
 }

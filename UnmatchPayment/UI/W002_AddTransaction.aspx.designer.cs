@@ -157,13 +157,13 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.DropDownList ddlFileType;
         
         /// <summary>
-        /// File1 control.
+        /// BrowsFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload File1;
+        protected global::System.Web.UI.WebControls.FileUpload BrowsFile;
         
         /// <summary>
         /// btnUpload control.
@@ -173,6 +173,24 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnUpload;
+        
+        /// <summary>
+        /// lblFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFileUpload;
+        
+        /// <summary>
+        /// gvUploadFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvUploadFile;
         
         /// <summary>
         /// bntSave control.
