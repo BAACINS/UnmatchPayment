@@ -10,9 +10,9 @@ using System.Web.UI.WebControls;
 using UnmatchPayment.Class;
 using UnmatchPayment.Database;
 
-namespace UnmatchPayment.UI
+namespace UnmatchPayment.UI.Reports
 {
-    public partial class WR001_AddEditPayment : System.Web.UI.Page
+    public partial class WR002_ApprovePayment : System.Web.UI.Page
     {
         CultureInfo us = System.Globalization.CultureInfo.GetCultureInfo("en-US");
         CultureInfo th = System.Globalization.CultureInfo.GetCultureInfo("th-TH");
@@ -182,7 +182,5 @@ namespace UnmatchPayment.UI
         }
 
         #endregion
-
-
     }
 }

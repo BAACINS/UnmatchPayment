@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace UnmatchPayment.UI {
+namespace UnmatchPayment.UI.Reports {
     
     
-    public partial class WR001_AddEditPayment {
+    public partial class WR002_ApprovePayment {
         
         /// <summary>
         /// ddlRegion control.
