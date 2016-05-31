@@ -125,6 +125,12 @@
       <Column Name="isUploadFile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="UP.StatusDetail" Member="StatusDetails">
+    <Type Name="StatusDetail">
+      <Column Name="StatusCode" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StatusName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="UP.EMPLOYEE_SELECT" Method="EMPLOYEE_SELECT">
     <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.String" DbType="NVarChar(7)" />
     <Parameter Name="USER_PASSWORD" Parameter="uSER_PASSWORD" Type="System.String" DbType="NVarChar(50)" />

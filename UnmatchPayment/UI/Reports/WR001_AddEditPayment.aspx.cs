@@ -52,12 +52,14 @@ namespace UnmatchPayment.UI
                 //    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
                 //    ddlBranch.Enabled = false;
                 //    GetUserDDL();
+                //GetStatus();
                 //}
                 //else
                 //{
                 //    GetProvince();
                 //    GetBranch();
                 //    GetUserDDL();
+                //GetStatus();
                 //}
             }
         }
@@ -104,9 +106,17 @@ namespace UnmatchPayment.UI
             ddlCause.DataBind();
         }
 
+        private void GetStatus()
+        {
+            ddlStatus.DataSource = GetData.GetStatus();
+            ddlStatus.DataTextField = "STATUSNAME";
+            ddlStatus.DataValueField = "STATUSCODE";
+            ddlStatus.DataBind();
+        }
+
         protected void LoadReport()
         {
-            string _pathReport = Server.MapPath("~/Reports/R001_AddEditClaim.rpt");
+            string _pathReport = Server.MapPath("~/Reports/R001_AddEditPayment.rpt");
             ReportDocument rpt = new ReportDocument();
             rpt.Load(_pathReport);
             C003_ReportLogin _login = new C003_ReportLogin(rpt, C004_DatabaseInfo.Instance);
@@ -122,8 +132,9 @@ namespace UnmatchPayment.UI
             rpt.SetParameterValue("@BRANCH_NO", ddlBranch.SelectedValue);
             rpt.SetParameterValue("@INPUT_DATE_FROM", DateFrom);
             rpt.SetParameterValue("@INPUT_DATE_TO", DateTo);
-            //rpt.SetParameterValue("@INPUT_PROJECT", ddlProject.SelectedValue);
+            rpt.SetParameterValue("@INPUT_PROJECT", ddlCause.SelectedValue);
             rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
+            rpt.SetParameterValue("@STATUS_NO", ddlStatus.SelectedValue);
 
             rpt.Load(_pathReport);
             if (rpt.Rows.Count == 0)
@@ -181,8 +192,13 @@ namespace UnmatchPayment.UI
             GetBranch();
         }
 
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStatus();
+        }
+                 
         #endregion
 
-
+        
     }
 }

@@ -104,6 +104,14 @@ namespace UnmatchPayment.UI.Reports
             ddlCause.DataBind();
         }
 
+        private void GetStatus()
+        {
+            ddlStatus.DataSource = GetData.GetStatus();
+            ddlStatus.DataTextField = "STATUSNAME";
+            ddlStatus.DataValueField = "STATUSCODE";
+            ddlStatus.DataBind();
+        }
+
         protected void LoadReport()
         {
             string _pathReport = Server.MapPath("~/Reports/R001_AddEditClaim.rpt");
@@ -169,7 +177,6 @@ namespace UnmatchPayment.UI.Reports
 
         }
 
-
         protected void ddlProvince_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetBranch();
@@ -181,6 +188,12 @@ namespace UnmatchPayment.UI.Reports
             GetBranch();
         }
 
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GetStatus();
+        }
         #endregion
+
+
     }
 }

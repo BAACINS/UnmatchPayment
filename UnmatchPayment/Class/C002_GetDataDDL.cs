@@ -288,5 +288,33 @@ namespace UnmatchPayment.Class
             }
             return dtFileType;
         }
+
+        public DataTable GetStatus()
+        {
+            try
+            {
+                var dtAcc = from tb in dbAcc.StatusDetails
+                            orderby tb.StatusCode
+                            select tb;
+
+                DataTable _dt = LINQToDataTable(dtAcc);
+                if (_dt.Columns.Count == 0)
+                {
+                    _dt.Columns.Add("STATUSNAME", typeof(string));
+                    _dt.Columns.Add("STATUSCODE", typeof(string));
+                }
+                DataRow row;
+                row = _dt.NewRow();
+                row["STATUSNAME"] = "รวมทั้งหมด";
+                row["STATUSCODE"] = "00";
+                _dt.Rows.InsertAt(row, 0);
+                return _dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

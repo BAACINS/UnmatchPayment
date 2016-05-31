@@ -42,6 +42,9 @@ namespace UnmatchPayment.Database
     partial void InsertUnmatchCause(UnmatchCause instance);
     partial void UpdateUnmatchCause(UnmatchCause instance);
     partial void DeleteUnmatchCause(UnmatchCause instance);
+    partial void InsertStatusDetail(StatusDetail instance);
+    partial void UpdateStatusDetail(StatusDetail instance);
+    partial void DeleteStatusDetail(StatusDetail instance);
     #endregion
 		
 		public dbAccountDataContext() : 
@@ -167,6 +170,14 @@ namespace UnmatchPayment.Database
 			get
 			{
 				return this.GetTable<UnmatchCause>();
+			}
+		}
+		
+		public System.Data.Linq.Table<StatusDetail> StatusDetails
+		{
+			get
+			{
+				return this.GetTable<StatusDetail>();
 			}
 		}
 		
@@ -1920,6 +1931,92 @@ namespace UnmatchPayment.Database
 					this._isUploadFile = value;
 					this.SendPropertyChanged("isUploadFile");
 					this.OnisUploadFileChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.StatusDetail")]
+	public partial class StatusDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _StatusCode;
+		
+		private string _StatusName;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStatusCodeChanging(string value);
+    partial void OnStatusCodeChanged();
+    partial void OnStatusNameChanging(string value);
+    partial void OnStatusNameChanged();
+    #endregion
+		
+		public StatusDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusCode", DbType="NVarChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string StatusCode
+		{
+			get
+			{
+				return this._StatusCode;
+			}
+			set
+			{
+				if ((this._StatusCode != value))
+				{
+					this.OnStatusCodeChanging(value);
+					this.SendPropertyChanging();
+					this._StatusCode = value;
+					this.SendPropertyChanged("StatusCode");
+					this.OnStatusCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusName", DbType="NVarChar(150)")]
+		public string StatusName
+		{
+			get
+			{
+				return this._StatusName;
+			}
+			set
+			{
+				if ((this._StatusName != value))
+				{
+					this.OnStatusNameChanging(value);
+					this.SendPropertyChanging();
+					this._StatusName = value;
+					this.SendPropertyChanged("StatusName");
+					this.OnStatusNameChanged();
 				}
 			}
 		}
