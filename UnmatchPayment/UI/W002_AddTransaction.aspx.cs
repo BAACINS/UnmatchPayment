@@ -38,6 +38,20 @@ namespace UnmatchPayment.UI
                 Session["Emp"] = value;
             }
         }
+        private int UPID
+        {
+            get
+            {
+                int ID = new int();
+                if (ViewState["UPID"] != null)
+                    ID = (int)ViewState["UPID"];
+                return ID;
+            }
+            set
+            {
+                ViewState["UPID"] = value;
+            }
+        }
         private int TellerID
         {
             get
@@ -91,6 +105,11 @@ namespace UnmatchPayment.UI
                 {
                     TellerID = Convert.ToInt32(Application["TellerID"]);
                     GetUploadedFile();
+                }
+                if (Application["UPID"] != null)
+                {
+                    UPID = Convert.ToInt32(Application["UPID"]);
+                    //GetUnmatched detail
                 }
             }
         }
@@ -169,8 +188,25 @@ namespace UnmatchPayment.UI
 
         protected void bntSave_Click(object sender, EventArgs e)
         {
-            string _causeID = hdCauseID.Value;
+            int _causeID = int.Parse(hdCauseID.Value);
 
+            //set detail Unmatchpayment
+            tbUnmatchPayment UP = new tbUnmatchPayment();
+            UP.ID = UPID;
+            UP.CauseID = _causeID;
+            UP.TellerPaymentDetailID = TellerID;
+            UP.CompCode = txtCompCode.Text;
+            UP.Amount = Convert.ToDecimal(txtAmount.Text);
+            UP.Ref1 = txtRef1.Text;
+            UP.Ref2 = txtRef2.Text;
+            UP.RefName = txtRefName.Text;
+            UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.Text);
+            UP.DepNo = txtDepNo.Text;
+            UP.StatusCode = StatusCode;
+            UP.CreateDate = DateTime.Now;
+            UP.CreateBy = Emp.USER_ID;
+
+            DataMNG.EditUnmatchpayment(UP);
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
