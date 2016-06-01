@@ -1,4 +1,4 @@
-﻿<%@ Page Title="จัดการเมนู" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MenuMng.aspx.cs" Inherits="UnmatchPayment.UI.MenuMng" %>
+﻿<%@ Page Title="จัดการเมนู" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W004_MenuMng.aspx.cs" Inherits="UnmatchPayment.UI.MenuMng" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -18,6 +18,9 @@
 
             </td>
         </tr>
+            <tr>
+
+            </tr>
         <tr>
             <td>
                 <asp:GridView ID="gvAllAppMenu" runat="server" Width="100%" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" AutoGenerateColumns="False" GridLines="Horizontal" PageSize="2">

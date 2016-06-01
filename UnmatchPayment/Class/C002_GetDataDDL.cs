@@ -316,5 +316,219 @@ namespace UnmatchPayment.Class
                 throw ex;
             }
         }
+
+        public DataTable GetMenuGroup()
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+                var query = from tb in dbAcc.AppMenus
+                            where (tb.MenuUrl == null || tb.MenuUrl.Equals(""))
+                            select new
+                            {
+                                menuDesc = tb.MenuDesc,
+                                menuNo = tb.MenuSeq.ToString()
+                            };
+                _dt = LINQToDataTable(query);
+
+                DataRow _dr = _dt.NewRow();
+                _dr["menuDesc"] = "ไม่ระบุ";
+                _dr["menuNo"] = string.Empty;
+                _dt.Rows.Add(_dr);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dt;
+        }
+
+        public DataTable GetAllAppMenu(string menu_no)
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+
+                if (menu_no == "0")
+                {
+                    var query = (from tb in dbAcc.AppMenus
+
+                                 select tb).ToList();
+
+                    _dt = LINQToDataTable(query);
+                    return _dt;
+                }
+                else
+                {
+                    var query = from tb in dbAcc.AppMenus
+                                where tb.MenuNo == Convert.ToInt16(menu_no)
+                                select tb;
+                    _dt = LINQToDataTable(query);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dt;
+        }
+
+        public DataTable CheckDuplicate(string menu_no)
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+
+
+                var query = from tb in dbAcc.AppMenus
+                            where tb.MenuNo == Convert.ToInt16(menu_no)
+                            select tb;
+                _dt = LINQToDataTable(query);
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return _dt;
+        }
+
+        public int UpdateAppMenu(string menu_no, string menu_no_old, string menu_seq, string menu_desc, string menu_url,
+                                    string create_by, string menu_group, bool menu_show)
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+
+                var query = (from tb in dbAcc.AppMenus
+                             where menu_no_old == tb.MenuNo.ToString()
+                             select tb).SingleOrDefault();
+                if (query != null)
+                {
+                    query.MenuSeq = Convert.ToInt16(menu_seq);
+                    query.MenuDesc = menu_desc;
+                    query.MenuUrl = menu_url;
+                    query.CreateDate = DateTime.Now;
+                    query.CreateBy = create_by;
+                    if (!string.IsNullOrEmpty(menu_group))
+                    {
+                        query.MenuGroup = Convert.ToInt16(menu_group);
+                    }
+                    else
+                    {
+                        query.MenuGroup = null;
+                    }
+
+                    query.MenuShow = menu_show;
+
+                    dbAcc.SubmitChanges();
+                }
+                //
+
+                //foreach (var q in query) 
+                //{
+                //    q.MenuSeq =Convert.ToInt16(menu_seq) ;
+                //    q.MenuDesc = menu_desc;
+                //    q.MenuUrl = menu_url;
+                //    q.CreateDate = DateTime.Now;
+                //    q.CreateBy = create_by;
+                //    if()
+                //    {}
+                //    q.MenuGroup = null;
+                //    q.MenuShow= menu_show;
+
+                //    dbAcc.SubmitChanges();
+                //}
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Convert.ToInt16(menu_no);
+        }
+
+        public int InsertAppMenu(string menu_no, string menu_seq, string menu_desc, string menu_url,
+                                    string create_by, string menu_group, bool menu_show)
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+                if (menu_group == "")
+                {
+
+                    AppMenu appmenobj = new AppMenu
+                    {
+                        MenuNo = Convert.ToInt16(menu_no),
+                        MenuSeq = Convert.ToInt16(menu_seq),
+                        MenuDesc = menu_desc,
+                        MenuUrl = menu_url,
+                        CreateDate = DateTime.Now,
+                        CreateBy = create_by,
+                        MenuGroup = null,
+                        MenuShow = menu_show
+
+                    };
+                    dbAcc.AppMenus.InsertOnSubmit(appmenobj);
+                    dbAcc.SubmitChanges();
+                }
+                else
+                {
+                    AppMenu appmenobj = new AppMenu
+                    {
+                        MenuNo = Convert.ToInt16(menu_no),
+                        MenuSeq = Convert.ToInt16(menu_seq),
+                        MenuDesc = menu_desc,
+                        MenuUrl = menu_url,
+                        CreateDate = DateTime.Now,
+                        CreateBy = create_by,
+                        MenuGroup = Convert.ToInt16(menu_group),
+                        MenuShow = menu_show
+                    };
+                    dbAcc.AppMenus.InsertOnSubmit(appmenobj);
+                    dbAcc.SubmitChanges();
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Convert.ToInt16(menu_no);
+        }
+
+
+
+        public void DeleteAppMenu(string menu_no)
+        {
+            DataTable _dt = new DataTable();
+            try
+            {
+
+                var query = (from tb in dbAcc.AppMenus
+                             where tb.MenuNo == Convert.ToInt16(menu_no)
+                             select tb).DefaultIfEmpty().ToList();
+                foreach (var q in query)
+                {
+                    dbAcc.AppMenus.DeleteOnSubmit(q);
+                    dbAcc.SubmitChanges();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            //return _dt;
+        }
+
     }
 }
