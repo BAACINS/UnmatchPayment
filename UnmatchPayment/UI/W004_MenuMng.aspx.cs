@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using UnmatchPayment.Class;
+using UnmatchPayment.Database;
 
 namespace UnmatchPayment.UI
 {
@@ -43,11 +45,11 @@ namespace UnmatchPayment.UI
         {
             try
             {
-                //C001_GetDataDDL dtGetAppMenu = new C001_GetDataDDL();
+                C002_GetDataDDL dtGetAppMenu = new C002_GetDataDDL();
 
                 DataTable _dt = new DataTable();
-                //_dt = dtGetAppMenu.GetAllAppMenu("0");
-
+                _dt = dtGetAppMenu.GetAllAppMenu("0");
+                
                 this.gvAllAppMenu.DataSource = _dt;
                 this.gvAllAppMenu.DataBind();
 
@@ -68,19 +70,19 @@ namespace UnmatchPayment.UI
         protected void btnEdit_Click(object sender, EventArgs e)
         {
             this.ModalPopupForm.Show();
-            //C001_GetDataDDL MenuMng = new C001_GetDataDDL();
+            C002_GetDataDDL MenuMng = new C002_GetDataDDL();
             DataTable _dt = new DataTable();
             try
             {
                 string _strMenuNo = ((Button)sender).CommandArgument;
-                //_dt = MenuMng.GetAllAppMenu(_strMenuNo);
-                //this.txtMenuCode.Text = _dt.Rows[0]["MenuNo"].ToString();
-                //this.hdMenuCode.Value = _dt.Rows[0]["MenuNo"].ToString();
-                //this.txtMenuName.Text = _dt.Rows[0]["MenuDesc"].ToString();
-                //this.txtMenuSeq.Text = _dt.Rows[0]["MenuSeq"].ToString();
-                //this.txtMenuUrl.Text = _dt.Rows[0]["MenuUrl"].ToString();
-                //this.ddlMenuGroup.SelectedValue = _dt.Rows[0]["MenuGroup"].ToString();
-                //this.chbMenuShow.Checked = (bool)_dt.Rows[0]["MenuShow"];
+                _dt = MenuMng.GetAllAppMenu(_strMenuNo);
+                this.txtMenuCode.Text = _dt.Rows[0]["MenuNo"].ToString();
+                this.hdMenuCode.Value = _dt.Rows[0]["MenuNo"].ToString();
+                this.txtMenuName.Text = _dt.Rows[0]["MenuDesc"].ToString();
+                this.txtMenuSeq.Text = _dt.Rows[0]["MenuSeq"].ToString();
+                this.txtMenuUrl.Text = _dt.Rows[0]["MenuUrl"].ToString();
+                this.ddlMenuGroup.SelectedValue = _dt.Rows[0]["MenuGroup"].ToString();
+                this.chbMenuShow.Checked = (bool)_dt.Rows[0]["MenuShow"];
 
             }
             catch (Exception ex)
@@ -92,22 +94,22 @@ namespace UnmatchPayment.UI
 
         protected void btnDel_Click(object sender, EventArgs e)
         {
-            //C001_GetDataDDL MenuMng = new C001_GetDataDDL();
-            //dbAccountDataContext dbAcc = new dbAccountDataContext();
+            C002_GetDataDDL MenuMng = new C002_GetDataDDL();
+            dbAccountDataContext dbAcc = new dbAccountDataContext();
             DataTable _dt = new DataTable();
             try
             {
                 string _strMenuNo = ((Button)sender).CommandArgument;
-                //MenuMng.DeleteAppMenu(_strMenuNo);
+                MenuMng.DeleteAppMenu(_strMenuNo);
 
-                //var query = (from tb in dbAcc.AppMenus
-                //             where tb.MenuNo == Convert.ToInt16(_strMenuNo)
-                //             select tb).DefaultIfEmpty().ToList();
-                //if (query[0] == null)
-                //{
-                //    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('ลบข้อมูลเรียบร้อย');", true);
-                //    this.GetAllAppMenu();
-                //}
+                var query = (from tb in dbAcc.AppMenus
+                             where tb.MenuNo == Convert.ToInt16(_strMenuNo)
+                             select tb).DefaultIfEmpty().ToList();
+                if (query[0] == null)
+                {
+                    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('ลบข้อมูลเรียบร้อย');", true);
+                    this.GetAllAppMenu();
+                }
 
             }
             catch (Exception ex)
@@ -118,8 +120,8 @@ namespace UnmatchPayment.UI
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //C001_GetDataDDL MenuMng = new C001_GetDataDDL();
-            //dbAccountDataContext dbAcc = new dbAccountDataContext();
+            C002_GetDataDDL MenuMng = new C002_GetDataDDL();
+            dbAccountDataContext dbAcc = new dbAccountDataContext();
             try
             {
 
@@ -127,11 +129,14 @@ namespace UnmatchPayment.UI
                 string menuName = txtMenuName.Text;
                 string menuSeq = txtMenuSeq.Text;
                 string menuUrl = txtMenuUrl.Text;
+
                 //string createBy = UserLogin.USER_ID;
+                string createBy = "5601155";
+
                 string menuGroup = ddlMenuGroup.SelectedValue;
                 bool menuShow = chbMenuShow.Checked;
                 DataTable _dtCheckDuplicate = new DataTable();
-                //_dtCheckDuplicate = MenuMng.CheckDuplicate(menuNo);
+                _dtCheckDuplicate = MenuMng.CheckDuplicate(menuNo);
 
                 if (_dtCheckDuplicate.Rows.Count > 0)
                 {
@@ -143,12 +148,12 @@ namespace UnmatchPayment.UI
                     {
 
 
-                        //if (Convert.ToInt32(menuNo) == MenuMng.UpdateAppMenu(menuNo, hdMenuCode.Value, menuSeq, menuName, menuUrl, createBy, menuGroup, menuShow)) ;
-                        //{
-                        //    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('บันทึกข้อมูลเรียบร้อย');", true);
-                        //    ClearForm();
-                        //    this.GetAllAppMenu();
-                        //}
+                        if (Convert.ToInt32(menuNo) == MenuMng.UpdateAppMenu(menuNo, hdMenuCode.Value, menuSeq, menuName, menuUrl, createBy, menuGroup, menuShow)) ;
+                        {
+                            ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('บันทึกข้อมูลเรียบร้อย');", true);
+                            ClearForm();
+                            this.GetAllAppMenu();
+                        }
                     }
 
 
@@ -157,12 +162,12 @@ namespace UnmatchPayment.UI
                 {
 
 
-                    //if (Convert.ToInt32(menuNo) == MenuMng.InsertAppMenu(menuNo, menuSeq, menuName, menuUrl, createBy, menuGroup, menuShow)) ;
-                    //{
-                    //    ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('บันทึกข้อมูลเรียบร้อย');", true);
-                    //    ClearForm();
-                    //    this.GetAllAppMenu();
-                    //}
+                    if (Convert.ToInt32(menuNo) == MenuMng.InsertAppMenu(menuNo, menuSeq, menuName, menuUrl, createBy, menuGroup, menuShow)) ;
+                    {
+                        ScriptManager.RegisterClientScriptBlock(this.Page, this.Page.GetType(), "alert", "alert('บันทึกข้อมูลเรียบร้อย');", true);
+                        ClearForm();
+                        this.GetAllAppMenu();
+                    }
                 }
 
             }
@@ -174,9 +179,9 @@ namespace UnmatchPayment.UI
         }
         private void GetMenuGroup()
         {
-            //C001_GetDataDDL Getddl = new C001_GetDataDDL();
+            C002_GetDataDDL Getddl = new C002_GetDataDDL();
             //C001_GetdataDDL Getddl = new C001_GetDataDDL();
-            //ddlMenuGroup.DataSource = Getddl.GetMenuGroup();
+            ddlMenuGroup.DataSource = Getddl.GetMenuGroup();
             ddlMenuGroup.DataTextField = "MenuDesc";
             ddlMenuGroup.DataValueField = "MenuNo";
 
