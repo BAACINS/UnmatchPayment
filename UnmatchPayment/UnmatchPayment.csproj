@@ -152,6 +152,7 @@
     <Content Include="UI\RoleMenu.aspx" />
     <Content Include="UI\W001_UnmatchListBranch.aspx" />
     <Content Include="UI\Reports\WR001_AddEditPayment.aspx" />
+    <Content Include="UI\W003_UnmatchListHQ.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -258,6 +259,13 @@
     </Compile>
     <Compile Include="UI\Reports\WR001_AddEditPayment.aspx.designer.cs">
       <DependentUpon>WR001_AddEditPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\W003_UnmatchListHQ.aspx.cs">
+      <DependentUpon>W003_UnmatchListHQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\W003_UnmatchListHQ.aspx.designer.cs">
+      <DependentUpon>W003_UnmatchListHQ.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
