@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
@@ -21,6 +22,22 @@ namespace UnmatchPayment.UI
         dbAccountDataContext dbAcc = new dbAccountDataContext();
         C001_DataMng DataMNG = new C001_DataMng();
         C002_GetDataDDL getDDL = new C002_GetDataDDL();
+        C006_UploadFile UploadFile = new C006_UploadFile();
+        private EMPLOYEE_SELECTResult Emp
+        {
+            get
+            {
+                if (Session["Emp"] == null)
+                {
+                    Session["Emp"] = null;
+                }
+                return (EMPLOYEE_SELECTResult)Session["Emp"];
+            }
+            set
+            {
+                Session["Emp"] = value;
+            }
+        }
         private int TellerID
         {
             get
@@ -35,6 +52,33 @@ namespace UnmatchPayment.UI
                 ViewState["TellerID"] = value;
             }
         }
+        private DataTable dtUploadedFile
+        {
+            get
+            {
+                DataTable dt = new DataTable();
+                if ((DataTable)ViewState["dtUploadFile"] != null)
+                    dt = (DataTable)ViewState["dtUploadFile"];
+                return dt;
+            }
+            set
+            {
+                ViewState["dtUploadFile"] = value;
+            }
+        }
+        private string StatusCode
+        {
+            get
+            {
+                if (ViewState["StatusCode"] != null)
+                    return ViewState["StatusCode"].ToString();
+                return string.Empty;
+            }
+            set
+            {
+                ViewState["StatusCode"] = value;
+            }
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -46,6 +90,7 @@ namespace UnmatchPayment.UI
                 if(Application["TellerID"] != null)
                 {
                     TellerID = Convert.ToInt32(Application["TellerID"]);
+                    GetUploadedFile();
                 }
             }
         }
@@ -115,19 +160,23 @@ namespace UnmatchPayment.UI
             ddlFileType.DataValueField = "FileTypeID";
             ddlFileType.DataBind();
         }
+        private void GetUploadedFile()
+        {
+            dtUploadedFile = UploadFile.SearchFileUploadDetail(TellerID);
+            gvUploadFile.DataSource = dtUploadedFile;
+            gvUploadFile.DataBind();
+        }
 
         protected void bntSave_Click(object sender, EventArgs e)
         {
             string _causeID = hdCauseID.Value;
+
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             try
             {
-                string FileName = string.Empty;
-                string FileSize = string.Empty;
-                string FileType = string.Empty;
                 FileUpload Upload = BrowsFile;
                 lblFileUpload.ForeColor = Color.Red;
                 if (Upload.HasFile)
@@ -140,20 +189,14 @@ namespace UnmatchPayment.UI
                     else
                     {
                         lblFileUpload.Text = string.Empty;
-                        C006_UploadFile UploadFile = new C006_UploadFile();
-                        string strAccNo = lblAccNo.Text;
-                        string strProjectNo = lblPJcode.Text;
+                        string strFileTypeID = ddlFileType.SelectedValue;
                         string strFileOriginName = Upload.FileName;
-                        string strFileType = System.IO.Path.GetExtension(Upload.FileName);
-                        string strFileName = ddlDocFileName.SelectedItem.Text;
-                        string strFileTypeID = ddlDocFileName.SelectedValue;
                         string strFileSize = Upload.FileBytes.Length.ToString();
-                        string strFilePath = ConfigurationSettings.AppSettings["Filepath"].ToString();
                         string strUserID = Emp.USER_ID;
-                        string strComment = txtComment.Text;
 
+                        string strFilePath = ConfigurationSettings.AppSettings["Filepath"].ToString();
 
-                        int FileID = UploadFile.InsertUploadDetail(strFileOriginName, strFileTypeID, strFileSize, strProjectNo, strAccNo, strUserID, strComment, TVSID);
+                        int FileID = UploadFile.InsertUploadDetail(strFileTypeID, TellerID, strFileOriginName, strFileSize, strUserID);
                         if (FileID > 0)
                         {
                             string strFullPath = strFilePath + FileID + "_" + strFileOriginName;
@@ -161,9 +204,8 @@ namespace UnmatchPayment.UI
                             string strEncrypt = UploadFile.GetSha1Hash(strFullPath);
                             UploadFile.UpdateEncrypt(FileID, strEncrypt);
                             lblFileUpload.Text = "อัพโหลดเสร็จสิ้น";
-                            //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('อัพโหลดเสร็จสิ้น');", true);
                             lblFileUpload.ForeColor = Color.Green;
-                            //Upload.Enabled = false;
+                            GetUploadedFile();
                         }
                         else if (FileID == -1)
                         {
@@ -183,6 +225,88 @@ namespace UnmatchPayment.UI
             catch (Exception ex)
             {
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('UploadFile ไม่สำเร็จ');", true);
+            }
+        }
+
+        protected void DownloadFile(object sender, EventArgs e)
+        {
+            string strFilePath = ConfigurationSettings.AppSettings["Filepath"].ToString();
+            string _strFileID = ((LinkButton)sender).CommandArgument;
+            string _strFileName = ((LinkButton)sender).Text.Replace("/", "_").Replace(" ", "");
+            string _strFullPath = strFilePath + _strFileID;
+            string[] _strFileType = _strFileID.Split('.');
+            _strFileName = _strFileName + "." + _strFileType[_strFileType.Length - 1];
+
+            Response.ContentType = "application/pdf";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=" + HttpUtility.UrlEncode(_strFileName, System.Text.Encoding.UTF8) + "");
+
+            // Write the file to the Response
+            const int bufferLength = 10000;
+            byte[] buffer = new Byte[bufferLength];
+            int length = 0;
+            Stream download = null;
+            try
+            {
+                download = new FileStream(_strFullPath, FileMode.Open, FileAccess.Read);
+                do
+                {
+                    if (Response.IsClientConnected)
+                    {
+                        length = download.Read(buffer, 0, bufferLength);
+                        Response.OutputStream.Write(buffer, 0, length);
+                        buffer = new Byte[bufferLength];
+                    }
+                    else
+                    {
+                        length = -1;
+                    }
+                }
+                while (length > 0);
+                Response.Flush();
+                Response.End();
+            }
+            finally
+            {
+                if (download != null)
+                    download.Close();
+            }
+        }
+
+        protected void btnDelFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (new[] { "93", "94", "95" }.Contains(StatusCode))
+                    return;
+                C006_UploadFile Upload = new C006_UploadFile();
+                string strFilePath = ConfigurationSettings.AppSettings["Filepath"].ToString();
+                string _strFileID = ((Button)sender).CommandArgument;
+                string _strUserID = Emp.USER_ID;
+
+                var FileResults = from Row in dtUploadedFile.AsEnumerable()
+                                  where Row.Field<long>("FIleID") == Convert.ToInt32(_strFileID)
+                                  select Row;
+                DataTable dtDelFile = FileResults.CopyToDataTable();
+
+                string _strFullPath = strFilePath + _strFileID + "_" + dtDelFile.Rows[0]["FileOriginName"];
+                string _strFileEncrypt = Upload.GetSha1Hash(_strFullPath);
+                string _strdbEncrypt = dtDelFile.Rows[0]["EncryptCode"].ToString();
+                if (_strdbEncrypt == _strFileEncrypt)
+                {
+                    Upload.DeleteFile(int.Parse(_strFileID), _strUserID);
+                    System.IO.File.Delete(_strFullPath);
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('ลบไฟล์เสร็จสิ้น!!!');", true);
+                }
+                else
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('ลบไฟล์ไม่สำเร็จ!!!');", true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('ลบไฟล์ไม่สำเร็จ!!!');", true);
+            }
+            finally
+            {
+                GetUploadedFile();
             }
         }
     }

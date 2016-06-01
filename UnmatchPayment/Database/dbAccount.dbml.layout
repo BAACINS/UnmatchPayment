@@ -80,10 +80,10 @@
         <elementListCompartment Id="b1fd31dd-f6a7-466f-8955-1832fcee20a6" absoluteBounds="0.51499999999999968, 2.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="50da3a99-f2db-4a8f-82ad-1cc6594e547c" isExpanded="false" absoluteBounds="0.5, 3, 2, 0.45">
+    <classShape Id="bdf44e35-c365-43e3-9f7c-ff2392bc36d9" isExpanded="false" absoluteBounds="0.5, 3, 2, 0.45">
       <DataClassMoniker Name="/dbAccountDataContext/UploadFileDetail" />
       <nestedChildShapes>
-        <elementListCompartment Id="08ba26fe-3b50-4419-af8d-96d960f0dd63" absoluteBounds="0.51500000000000012, 3.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="d7a259ee-d4cb-449a-b9c0-380cf9080c39" absoluteBounds="0.51499999999999968, 3.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

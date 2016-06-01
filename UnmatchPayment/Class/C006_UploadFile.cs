@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using UnmatchPayment.Database;
 
@@ -10,34 +12,24 @@ namespace UnmatchPayment.Class
     public class C006_UploadFile
     {
         dbAccountDataContext dbAcc = new dbAccountDataContext();
-
-        public int InsertUploadDetail(string FileOriginName, string FileTypeID, string FileSize, string ProjectCode, string AccNo, string UploadBy, string strComment, int TVSID)
+        C001_DataMng DataMng = new C001_DataMng();
+        public int InsertUploadDetail(string FileTypeID,Int32 TellerID,string FileOriginName, string FileSize, string UploadBy)
         {
             try
             {
                 var GetFileDup = (from c in dbAcc.UploadFileDetails
-                                  where c.ACCNO == AccNo && c.FileOriginName == FileOriginName && c.TVSID == TVSID && c.IsDelete == false
+                                  where c.TellerPaymentDetailID == TellerID && c.FileOriginName == FileOriginName && c.IsDelete == false
                                   select c).Count();
                 if (GetFileDup > 0)
                     return -1;
 
-                var GetFileSeq = (from c in dbAcc.UploadFileDetails
-                                  where c.ACCNO == AccNo
-                                  select new { c.FileSeq }).Count();
-                int FileSeq = GetFileSeq + 1;
-
                 UploadFileDetail record = new UploadFileDetail();
-                record.FileSeq = FileSeq;
                 record.FileTypeID = int.Parse(FileTypeID);
+                record.TellerPaymentDetailID = TellerID;
                 record.FileOriginName = FileOriginName;
                 record.FileSize = Convert.ToDecimal(FileSize);
-                record.ProjectCode = ProjectCode;
-                record.ACCNO = AccNo;
-                record.TVSID = TVSID;
                 record.UploadDate = DateTime.Now;
                 record.UploadBy = UploadBy;
-                record.Comment = strComment;
-                //record.EncryptCode
                 record.IsDelete = false;
                 dbAcc.UploadFileDetails.InsertOnSubmit(record);
                 dbAcc.SubmitChanges();
@@ -50,48 +42,38 @@ namespace UnmatchPayment.Class
             }
         }
 
-        public void UpdateUploadFile(string AccNo, string ProjectCode, int TVSID)
+        public void UpdateUploadFile(Int32 TellerID, string ProjectCode, int UPID)
         {
             dbAcc.UploadFileDetails
-                .Where(x => x.ACCNO == AccNo && x.ProjectCode == ProjectCode && x.TVSID == 0)
+                .Where(x => x.TellerPaymentDetailID == TellerID && x.UPID == 0)
                 .ToList()
                 .ForEach(a =>
                 {
-                    a.TVSID = TVSID;
+                    a.UPID = UPID;
                 }
                 );
             dbAcc.SubmitChanges();
-            //UploadFileDetail upload = (from tb in dbAcc.UploadFileDetails
-            //                           where tb.ACCNO == AccNo && tb.ProjectCode == ProjectCode && tb.TVSID == 0
-            //                           select tb).FirstOrDefault();
-            //if (upload != null)
-            //{
-            //    upload.TVSID = TVSID;
-            //    dbAcc.UploadFileDetails.InsertOnSubmit(upload);
-            //    dbAcc.SubmitChanges();
-            //}
         }
 
-        public DataTable SearchFileUploadDetail(string strAccNo, int TVSID)
+        public DataTable SearchFileUploadDetail(Int32 TellerID)
         {
-            //strAccNo = "010012038799";
             DataTable _dt = new DataTable();
             try
             {
                 var upload = (from query in dbAcc.UploadFileDetails.AsEnumerable()
                               join fileType in dbAcc.FileTypes on query.FileTypeID equals fileType.FileTypeID
-                              where query.ACCNO == strAccNo && query.TVSID == TVSID && query.IsDelete == false
+                              where query.TellerPaymentDetailID == TellerID && query.IsDelete == false
                               select new
                               {
                                   FileID = query.FileID,
-                                  FileName = fileType.FileName,
+                                  FileName = fileType.FileTypeName,
                                   FileOriginName = query.FileOriginName,
                                   FileSize = query.FileSize / 1000,
                                   UploadDate = query.UploadDate,
                                   UploadBy = query.UploadBy,
                                   EncryptCode = query.EncryptCode
                               });
-                _dt = getData.LINQToDataTable(upload);
+                _dt = DataMng.LINQToDataTable(upload);
             }
             catch (Exception ex)
             {
@@ -105,9 +87,9 @@ namespace UnmatchPayment.Class
             using (FileStream fs = File.OpenRead(filePath))
             {
                 SHA1 sha = new SHA1Managed();
-                string a = BitConverter.ToString(sha.ComputeHash(fs));
+                string strHash = BitConverter.ToString(sha.ComputeHash(fs));
 
-                return a;
+                return strHash;
             }
         }
 

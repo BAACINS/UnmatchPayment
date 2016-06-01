@@ -45,6 +45,9 @@ namespace UnmatchPayment.Database
     partial void InsertStatusDetail(StatusDetail instance);
     partial void UpdateStatusDetail(StatusDetail instance);
     partial void DeleteStatusDetail(StatusDetail instance);
+    partial void InsertUploadFileDetail(UploadFileDetail instance);
+    partial void UpdateUploadFileDetail(UploadFileDetail instance);
+    partial void DeleteUploadFileDetail(UploadFileDetail instance);
     #endregion
 		
 		public dbAccountDataContext() : 
@@ -178,6 +181,14 @@ namespace UnmatchPayment.Database
 			get
 			{
 				return this.GetTable<StatusDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UploadFileDetail> UploadFileDetails
+		{
+			get
+			{
+				return this.GetTable<UploadFileDetail>();
 			}
 		}
 		
@@ -2017,6 +2028,332 @@ namespace UnmatchPayment.Database
 					this._StatusName = value;
 					this.SendPropertyChanged("StatusName");
 					this.OnStatusNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.UploadFileDetail")]
+	public partial class UploadFileDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _FileID;
+		
+		private System.Nullable<int> _FileTypeID;
+		
+		private System.Nullable<long> _TellerPaymentDetailID;
+		
+		private System.Nullable<int> _UPID;
+		
+		private string _FileOriginName;
+		
+		private System.Nullable<decimal> _FileSize;
+		
+		private System.Nullable<System.DateTime> _UploadDate;
+		
+		private string _UploadBy;
+		
+		private string _EncryptCode;
+		
+		private System.Nullable<bool> _IsDelete;
+		
+		private System.Nullable<System.DateTime> _DeleteDate;
+		
+		private string _DeleteBy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFileIDChanging(long value);
+    partial void OnFileIDChanged();
+    partial void OnFileTypeIDChanging(System.Nullable<int> value);
+    partial void OnFileTypeIDChanged();
+    partial void OnTellerPaymentDetailIDChanging(System.Nullable<long> value);
+    partial void OnTellerPaymentDetailIDChanged();
+    partial void OnUPIDChanging(System.Nullable<int> value);
+    partial void OnUPIDChanged();
+    partial void OnFileOriginNameChanging(string value);
+    partial void OnFileOriginNameChanged();
+    partial void OnFileSizeChanging(System.Nullable<decimal> value);
+    partial void OnFileSizeChanged();
+    partial void OnUploadDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUploadDateChanged();
+    partial void OnUploadByChanging(string value);
+    partial void OnUploadByChanged();
+    partial void OnEncryptCodeChanging(string value);
+    partial void OnEncryptCodeChanged();
+    partial void OnIsDeleteChanging(System.Nullable<bool> value);
+    partial void OnIsDeleteChanged();
+    partial void OnDeleteDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDeleteDateChanged();
+    partial void OnDeleteByChanging(string value);
+    partial void OnDeleteByChanged();
+    #endregion
+		
+		public UploadFileDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long FileID
+		{
+			get
+			{
+				return this._FileID;
+			}
+			set
+			{
+				if ((this._FileID != value))
+				{
+					this.OnFileIDChanging(value);
+					this.SendPropertyChanging();
+					this._FileID = value;
+					this.SendPropertyChanged("FileID");
+					this.OnFileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileTypeID", DbType="Int")]
+		public System.Nullable<int> FileTypeID
+		{
+			get
+			{
+				return this._FileTypeID;
+			}
+			set
+			{
+				if ((this._FileTypeID != value))
+				{
+					this.OnFileTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._FileTypeID = value;
+					this.SendPropertyChanged("FileTypeID");
+					this.OnFileTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerPaymentDetailID", DbType="BigInt")]
+		public System.Nullable<long> TellerPaymentDetailID
+		{
+			get
+			{
+				return this._TellerPaymentDetailID;
+			}
+			set
+			{
+				if ((this._TellerPaymentDetailID != value))
+				{
+					this.OnTellerPaymentDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._TellerPaymentDetailID = value;
+					this.SendPropertyChanged("TellerPaymentDetailID");
+					this.OnTellerPaymentDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPID", DbType="Int")]
+		public System.Nullable<int> UPID
+		{
+			get
+			{
+				return this._UPID;
+			}
+			set
+			{
+				if ((this._UPID != value))
+				{
+					this.OnUPIDChanging(value);
+					this.SendPropertyChanging();
+					this._UPID = value;
+					this.SendPropertyChanged("UPID");
+					this.OnUPIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileOriginName", DbType="NVarChar(200)")]
+		public string FileOriginName
+		{
+			get
+			{
+				return this._FileOriginName;
+			}
+			set
+			{
+				if ((this._FileOriginName != value))
+				{
+					this.OnFileOriginNameChanging(value);
+					this.SendPropertyChanging();
+					this._FileOriginName = value;
+					this.SendPropertyChanged("FileOriginName");
+					this.OnFileOriginNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileSize", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> FileSize
+		{
+			get
+			{
+				return this._FileSize;
+			}
+			set
+			{
+				if ((this._FileSize != value))
+				{
+					this.OnFileSizeChanging(value);
+					this.SendPropertyChanging();
+					this._FileSize = value;
+					this.SendPropertyChanged("FileSize");
+					this.OnFileSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UploadDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UploadDate
+		{
+			get
+			{
+				return this._UploadDate;
+			}
+			set
+			{
+				if ((this._UploadDate != value))
+				{
+					this.OnUploadDateChanging(value);
+					this.SendPropertyChanging();
+					this._UploadDate = value;
+					this.SendPropertyChanged("UploadDate");
+					this.OnUploadDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UploadBy", DbType="NVarChar(7)")]
+		public string UploadBy
+		{
+			get
+			{
+				return this._UploadBy;
+			}
+			set
+			{
+				if ((this._UploadBy != value))
+				{
+					this.OnUploadByChanging(value);
+					this.SendPropertyChanging();
+					this._UploadBy = value;
+					this.SendPropertyChanged("UploadBy");
+					this.OnUploadByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EncryptCode", DbType="NVarChar(255)")]
+		public string EncryptCode
+		{
+			get
+			{
+				return this._EncryptCode;
+			}
+			set
+			{
+				if ((this._EncryptCode != value))
+				{
+					this.OnEncryptCodeChanging(value);
+					this.SendPropertyChanging();
+					this._EncryptCode = value;
+					this.SendPropertyChanged("EncryptCode");
+					this.OnEncryptCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDelete", DbType="Bit")]
+		public System.Nullable<bool> IsDelete
+		{
+			get
+			{
+				return this._IsDelete;
+			}
+			set
+			{
+				if ((this._IsDelete != value))
+				{
+					this.OnIsDeleteChanging(value);
+					this.SendPropertyChanging();
+					this._IsDelete = value;
+					this.SendPropertyChanged("IsDelete");
+					this.OnIsDeleteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DeleteDate
+		{
+			get
+			{
+				return this._DeleteDate;
+			}
+			set
+			{
+				if ((this._DeleteDate != value))
+				{
+					this.OnDeleteDateChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteDate = value;
+					this.SendPropertyChanged("DeleteDate");
+					this.OnDeleteDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteBy", DbType="NVarChar(7)")]
+		public string DeleteBy
+		{
+			get
+			{
+				return this._DeleteBy;
+			}
+			set
+			{
+				if ((this._DeleteBy != value))
+				{
+					this.OnDeleteByChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteBy = value;
+					this.SendPropertyChanged("DeleteBy");
+					this.OnDeleteByChanged();
 				}
 			}
 		}
