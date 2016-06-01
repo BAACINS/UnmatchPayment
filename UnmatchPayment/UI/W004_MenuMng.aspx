@@ -1,4 +1,4 @@
-﻿<%@ Page Title="จัดการเมนู" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MenuMng.aspx.cs" Inherits="UnmatchPayment.UI.MenuMng" %>
+﻿<%@ Page Title="จัดการเมนู" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W004_MenuMng.aspx.cs" Inherits="UnmatchPayment.UI.MenuMng" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
