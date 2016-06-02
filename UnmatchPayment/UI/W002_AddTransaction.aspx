@@ -8,6 +8,7 @@
         function rdbChecked(id) {
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
         }
+
     </script>
 
     <p>
@@ -84,7 +85,20 @@
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox><asp:Button ID="btnAddDate" runat="server" Text="AddDate" CssClass="button" OnClick="btnAddDate_Click" />
+                        <br />
+                        
+                        <asp:Panel ID="pnlCalendar" runat="server">
+                            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="133px" NextPrevFormat="FullMonth" Width="269px" OnSelectionChanged="Calendar1_SelectionChanged">
+                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                <OtherMonthDayStyle ForeColor="#999999" />
+                                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                                <TodayDayStyle BackColor="#CCCCCC" />
+                            </asp:Calendar>
+                        </asp:Panel>
+                    </td>
                 </tr>
             </tbody>
         </table>
