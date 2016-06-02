@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W002_AddTransaction.aspx.cs" Inherits="UnmatchPayment.UI.AddTransaction" MaintainScrollPositionOnPostback="True" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Src="~/UC/Calendar.ascx" TagPrefix="uc1" TagName="Calendar" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -85,19 +87,9 @@
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox><asp:Button ID="btnAddDate" runat="server" Text="AddDate" CssClass="button" OnClick="btnAddDate_Click" />
+                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox>
                         <br />
-                        
-                        <asp:Panel ID="pnlCalendar" runat="server">
-                            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="133px" NextPrevFormat="FullMonth" Width="269px" OnSelectionChanged="Calendar1_SelectionChanged">
-                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                <OtherMonthDayStyle ForeColor="#999999" />
-                                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                                <TodayDayStyle BackColor="#CCCCCC" />
-                            </asp:Calendar>
-                        </asp:Panel>
+                        <uc1:Calendar runat="server" ID="Calendar" />
                     </td>
                 </tr>
             </tbody>

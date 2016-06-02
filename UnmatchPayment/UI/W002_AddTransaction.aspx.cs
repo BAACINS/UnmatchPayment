@@ -98,7 +98,6 @@ namespace UnmatchPayment.UI
         {
             if (!IsPostBack)
             {
-                this.pnlCalendar.Attributes.Add("style","DISPLAY: none; POSITION: absolute");
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
                 GetFileType();
@@ -345,17 +344,6 @@ namespace UnmatchPayment.UI
             {
                 GetUploadedFile();
             }
-        }
-
-        protected void btnAddDate_Click(object sender, EventArgs e)
-        {
-            this.pnlCalendar.Attributes.Add("style", "POSITION: absolute");
-        }
-
-        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
-        {
-            txtPaymentDate.Text = Calendar1.SelectedDate.ToShortDateString();
-            this.pnlCalendar.Attributes.Add("style", "DISPLAY: none; POSITION: absolute");
         }
     }
 }
