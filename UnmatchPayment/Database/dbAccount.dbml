@@ -149,7 +149,7 @@
   </Table>
   <Table Name="UP.UnmatchPayment" Member="tbUnmatchPayments">
     <Type Name="tbUnmatchPayment">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="CauseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="TellerPaymentDetailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CompCode" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
