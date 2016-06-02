@@ -4,11 +4,13 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using UnmatchPayment.Database;
 
 namespace UnmatchPayment.Class
 {
     public class C001_DataMng
     {
+        dbAccountDataContext dbAcc = new dbAccountDataContext();
         public DataTable LINQToDataTable<T>(IEnumerable<T> varlist)
         {
             DataTable dtReturn = new DataTable();
@@ -54,6 +56,52 @@ namespace UnmatchPayment.Class
 
             return dtReturn;
 
+        }
+
+        public int EditUnmatchpayment(tbUnmatchPayment UP)
+        {
+            tbUnmatchPayment OldUnmatch = (from tb in dbAcc.tbUnmatchPayments
+                                        where tb.ID == UP.ID
+                                        select tb).SingleOrDefault();
+            //check insert or update
+            if(OldUnmatch == null)
+            {
+                OldUnmatch = new tbUnmatchPayment();
+                dbAcc.tbUnmatchPayments.InsertOnSubmit(OldUnmatch);
+            }
+
+            //check null to insert
+            if (OldUnmatch.CauseID != UP.CauseID && UP.CauseID != null)
+                OldUnmatch.CauseID = UP.CauseID;
+            if (OldUnmatch.TellerPaymentDetailID != UP.TellerPaymentDetailID && UP.TellerPaymentDetailID != null)
+                OldUnmatch.TellerPaymentDetailID = UP.TellerPaymentDetailID;
+            if (OldUnmatch.CompCode != UP.CompCode && UP.CompCode != null)
+                OldUnmatch.CompCode = UP.CompCode;
+            if (OldUnmatch.Amount != UP.Amount && UP.Amount != null)
+                OldUnmatch.Amount = UP.Amount;
+            if (OldUnmatch.Ref1 != UP.Ref1 && UP.Ref1 != null)
+                OldUnmatch.Ref1 = UP.Ref1;
+            if (OldUnmatch.Ref2 != UP.Ref2 && UP.Ref2 != null)
+                OldUnmatch.Ref2 = UP.Ref2;
+            if (OldUnmatch.RefName != UP.RefName && UP.RefName != null)
+                OldUnmatch.RefName = UP.RefName;
+            if (OldUnmatch.PaymentDate != UP.PaymentDate && UP.PaymentDate != null)
+                OldUnmatch.PaymentDate = UP.PaymentDate;
+            if (OldUnmatch.DepNo != UP.DepNo && UP.DepNo != null)
+                OldUnmatch.DepNo = UP.DepNo;
+            if (OldUnmatch.StatusCode != UP.StatusCode && UP.StatusCode != null)
+                OldUnmatch.StatusCode = UP.StatusCode;
+            if (OldUnmatch.CreateDate != UP.CreateDate && UP.CreateDate != null)
+                OldUnmatch.CreateDate = UP.CreateDate;
+            if (OldUnmatch.CreateBy != UP.CreateBy && UP.CreateBy != null)
+                OldUnmatch.CreateBy = UP.CreateBy;
+            if (OldUnmatch.ApproveDate != UP.ApproveDate && UP.ApproveDate != null)
+                OldUnmatch.ApproveDate = UP.ApproveDate;
+            if (OldUnmatch.ApproveBy != UP.ApproveBy && UP.ApproveBy != null)
+                OldUnmatch.ApproveBy = UP.ApproveBy;
+
+            dbAcc.SubmitChanges();
+            return OldUnmatch.ID;
         }
     }
 }

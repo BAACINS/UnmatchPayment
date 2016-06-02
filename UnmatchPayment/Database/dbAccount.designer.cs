@@ -45,6 +45,12 @@ namespace UnmatchPayment.Database
     partial void InsertStatusDetail(StatusDetail instance);
     partial void UpdateStatusDetail(StatusDetail instance);
     partial void DeleteStatusDetail(StatusDetail instance);
+    partial void InsertUploadFileDetail(UploadFileDetail instance);
+    partial void UpdateUploadFileDetail(UploadFileDetail instance);
+    partial void DeleteUploadFileDetail(UploadFileDetail instance);
+    partial void InserttbUnmatchPayment(tbUnmatchPayment instance);
+    partial void UpdatetbUnmatchPayment(tbUnmatchPayment instance);
+    partial void DeletetbUnmatchPayment(tbUnmatchPayment instance);
     #endregion
 		
 		public dbAccountDataContext() : 
@@ -178,6 +184,22 @@ namespace UnmatchPayment.Database
 			get
 			{
 				return this.GetTable<StatusDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UploadFileDetail> UploadFileDetails
+		{
+			get
+			{
+				return this.GetTable<UploadFileDetail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<tbUnmatchPayment> tbUnmatchPayments
+		{
+			get
+			{
+				return this.GetTable<tbUnmatchPayment>();
 			}
 		}
 		
@@ -2017,6 +2039,730 @@ namespace UnmatchPayment.Database
 					this._StatusName = value;
 					this.SendPropertyChanged("StatusName");
 					this.OnStatusNameChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.UploadFileDetail")]
+	public partial class UploadFileDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _FileID;
+		
+		private System.Nullable<int> _FileTypeID;
+		
+		private System.Nullable<long> _TellerPaymentDetailID;
+		
+		private System.Nullable<int> _UPID;
+		
+		private string _FileOriginName;
+		
+		private System.Nullable<decimal> _FileSize;
+		
+		private System.Nullable<System.DateTime> _UploadDate;
+		
+		private string _UploadBy;
+		
+		private string _EncryptCode;
+		
+		private System.Nullable<bool> _IsDelete;
+		
+		private System.Nullable<System.DateTime> _DeleteDate;
+		
+		private string _DeleteBy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFileIDChanging(long value);
+    partial void OnFileIDChanged();
+    partial void OnFileTypeIDChanging(System.Nullable<int> value);
+    partial void OnFileTypeIDChanged();
+    partial void OnTellerPaymentDetailIDChanging(System.Nullable<long> value);
+    partial void OnTellerPaymentDetailIDChanged();
+    partial void OnUPIDChanging(System.Nullable<int> value);
+    partial void OnUPIDChanged();
+    partial void OnFileOriginNameChanging(string value);
+    partial void OnFileOriginNameChanged();
+    partial void OnFileSizeChanging(System.Nullable<decimal> value);
+    partial void OnFileSizeChanged();
+    partial void OnUploadDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUploadDateChanged();
+    partial void OnUploadByChanging(string value);
+    partial void OnUploadByChanged();
+    partial void OnEncryptCodeChanging(string value);
+    partial void OnEncryptCodeChanged();
+    partial void OnIsDeleteChanging(System.Nullable<bool> value);
+    partial void OnIsDeleteChanged();
+    partial void OnDeleteDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnDeleteDateChanged();
+    partial void OnDeleteByChanging(string value);
+    partial void OnDeleteByChanged();
+    #endregion
+		
+		public UploadFileDetail()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileID", AutoSync=AutoSync.OnInsert, DbType="BigInt NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public long FileID
+		{
+			get
+			{
+				return this._FileID;
+			}
+			set
+			{
+				if ((this._FileID != value))
+				{
+					this.OnFileIDChanging(value);
+					this.SendPropertyChanging();
+					this._FileID = value;
+					this.SendPropertyChanged("FileID");
+					this.OnFileIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileTypeID", DbType="Int")]
+		public System.Nullable<int> FileTypeID
+		{
+			get
+			{
+				return this._FileTypeID;
+			}
+			set
+			{
+				if ((this._FileTypeID != value))
+				{
+					this.OnFileTypeIDChanging(value);
+					this.SendPropertyChanging();
+					this._FileTypeID = value;
+					this.SendPropertyChanged("FileTypeID");
+					this.OnFileTypeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerPaymentDetailID", DbType="BigInt")]
+		public System.Nullable<long> TellerPaymentDetailID
+		{
+			get
+			{
+				return this._TellerPaymentDetailID;
+			}
+			set
+			{
+				if ((this._TellerPaymentDetailID != value))
+				{
+					this.OnTellerPaymentDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._TellerPaymentDetailID = value;
+					this.SendPropertyChanged("TellerPaymentDetailID");
+					this.OnTellerPaymentDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UPID", DbType="Int")]
+		public System.Nullable<int> UPID
+		{
+			get
+			{
+				return this._UPID;
+			}
+			set
+			{
+				if ((this._UPID != value))
+				{
+					this.OnUPIDChanging(value);
+					this.SendPropertyChanging();
+					this._UPID = value;
+					this.SendPropertyChanged("UPID");
+					this.OnUPIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileOriginName", DbType="NVarChar(200)")]
+		public string FileOriginName
+		{
+			get
+			{
+				return this._FileOriginName;
+			}
+			set
+			{
+				if ((this._FileOriginName != value))
+				{
+					this.OnFileOriginNameChanging(value);
+					this.SendPropertyChanging();
+					this._FileOriginName = value;
+					this.SendPropertyChanged("FileOriginName");
+					this.OnFileOriginNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FileSize", DbType="Decimal(18,2)")]
+		public System.Nullable<decimal> FileSize
+		{
+			get
+			{
+				return this._FileSize;
+			}
+			set
+			{
+				if ((this._FileSize != value))
+				{
+					this.OnFileSizeChanging(value);
+					this.SendPropertyChanging();
+					this._FileSize = value;
+					this.SendPropertyChanged("FileSize");
+					this.OnFileSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UploadDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UploadDate
+		{
+			get
+			{
+				return this._UploadDate;
+			}
+			set
+			{
+				if ((this._UploadDate != value))
+				{
+					this.OnUploadDateChanging(value);
+					this.SendPropertyChanging();
+					this._UploadDate = value;
+					this.SendPropertyChanged("UploadDate");
+					this.OnUploadDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UploadBy", DbType="NVarChar(7)")]
+		public string UploadBy
+		{
+			get
+			{
+				return this._UploadBy;
+			}
+			set
+			{
+				if ((this._UploadBy != value))
+				{
+					this.OnUploadByChanging(value);
+					this.SendPropertyChanging();
+					this._UploadBy = value;
+					this.SendPropertyChanged("UploadBy");
+					this.OnUploadByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EncryptCode", DbType="NVarChar(255)")]
+		public string EncryptCode
+		{
+			get
+			{
+				return this._EncryptCode;
+			}
+			set
+			{
+				if ((this._EncryptCode != value))
+				{
+					this.OnEncryptCodeChanging(value);
+					this.SendPropertyChanging();
+					this._EncryptCode = value;
+					this.SendPropertyChanged("EncryptCode");
+					this.OnEncryptCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDelete", DbType="Bit")]
+		public System.Nullable<bool> IsDelete
+		{
+			get
+			{
+				return this._IsDelete;
+			}
+			set
+			{
+				if ((this._IsDelete != value))
+				{
+					this.OnIsDeleteChanging(value);
+					this.SendPropertyChanging();
+					this._IsDelete = value;
+					this.SendPropertyChanged("IsDelete");
+					this.OnIsDeleteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DeleteDate
+		{
+			get
+			{
+				return this._DeleteDate;
+			}
+			set
+			{
+				if ((this._DeleteDate != value))
+				{
+					this.OnDeleteDateChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteDate = value;
+					this.SendPropertyChanged("DeleteDate");
+					this.OnDeleteDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeleteBy", DbType="NVarChar(7)")]
+		public string DeleteBy
+		{
+			get
+			{
+				return this._DeleteBy;
+			}
+			set
+			{
+				if ((this._DeleteBy != value))
+				{
+					this.OnDeleteByChanging(value);
+					this.SendPropertyChanging();
+					this._DeleteBy = value;
+					this.SendPropertyChanged("DeleteBy");
+					this.OnDeleteByChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.UnmatchPayment")]
+	public partial class tbUnmatchPayment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private System.Nullable<int> _CauseID;
+		
+		private int _TellerPaymentDetailID;
+		
+		private string _CompCode;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _Ref1;
+		
+		private string _Ref2;
+		
+		private string _RefName;
+		
+		private System.Nullable<System.DateTime> _PaymentDate;
+		
+		private string _DepNo;
+		
+		private string _StatusCode;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private string _CreateBy;
+		
+		private System.Nullable<System.DateTime> _ApproveDate;
+		
+		private string _ApproveBy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnCauseIDChanging(System.Nullable<int> value);
+    partial void OnCauseIDChanged();
+    partial void OnTellerPaymentDetailIDChanging(int value);
+    partial void OnTellerPaymentDetailIDChanged();
+    partial void OnCompCodeChanging(string value);
+    partial void OnCompCodeChanged();
+    partial void OnAmountChanging(System.Nullable<decimal> value);
+    partial void OnAmountChanged();
+    partial void OnRef1Changing(string value);
+    partial void OnRef1Changed();
+    partial void OnRef2Changing(string value);
+    partial void OnRef2Changed();
+    partial void OnRefNameChanging(string value);
+    partial void OnRefNameChanged();
+    partial void OnPaymentDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnPaymentDateChanged();
+    partial void OnDepNoChanging(string value);
+    partial void OnDepNoChanged();
+    partial void OnStatusCodeChanging(string value);
+    partial void OnStatusCodeChanged();
+    partial void OnCreateDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreateDateChanged();
+    partial void OnCreateByChanging(string value);
+    partial void OnCreateByChanged();
+    partial void OnApproveDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnApproveDateChanged();
+    partial void OnApproveByChanging(string value);
+    partial void OnApproveByChanged();
+    #endregion
+		
+		public tbUnmatchPayment()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CauseID", DbType="Int")]
+		public System.Nullable<int> CauseID
+		{
+			get
+			{
+				return this._CauseID;
+			}
+			set
+			{
+				if ((this._CauseID != value))
+				{
+					this.OnCauseIDChanging(value);
+					this.SendPropertyChanging();
+					this._CauseID = value;
+					this.SendPropertyChanged("CauseID");
+					this.OnCauseIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerPaymentDetailID", DbType="Int NOT NULL")]
+		public int TellerPaymentDetailID
+		{
+			get
+			{
+				return this._TellerPaymentDetailID;
+			}
+			set
+			{
+				if ((this._TellerPaymentDetailID != value))
+				{
+					this.OnTellerPaymentDetailIDChanging(value);
+					this.SendPropertyChanging();
+					this._TellerPaymentDetailID = value;
+					this.SendPropertyChanged("TellerPaymentDetailID");
+					this.OnTellerPaymentDetailIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompCode", DbType="NVarChar(4)")]
+		public string CompCode
+		{
+			get
+			{
+				return this._CompCode;
+			}
+			set
+			{
+				if ((this._CompCode != value))
+				{
+					this.OnCompCodeChanging(value);
+					this.SendPropertyChanging();
+					this._CompCode = value;
+					this.SendPropertyChanged("CompCode");
+					this.OnCompCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this.OnAmountChanging(value);
+					this.SendPropertyChanging();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref1", DbType="NVarChar(15)")]
+		public string Ref1
+		{
+			get
+			{
+				return this._Ref1;
+			}
+			set
+			{
+				if ((this._Ref1 != value))
+				{
+					this.OnRef1Changing(value);
+					this.SendPropertyChanging();
+					this._Ref1 = value;
+					this.SendPropertyChanged("Ref1");
+					this.OnRef1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref2", DbType="NVarChar(15)")]
+		public string Ref2
+		{
+			get
+			{
+				return this._Ref2;
+			}
+			set
+			{
+				if ((this._Ref2 != value))
+				{
+					this.OnRef2Changing(value);
+					this.SendPropertyChanging();
+					this._Ref2 = value;
+					this.SendPropertyChanged("Ref2");
+					this.OnRef2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RefName", DbType="NVarChar(50)")]
+		public string RefName
+		{
+			get
+			{
+				return this._RefName;
+			}
+			set
+			{
+				if ((this._RefName != value))
+				{
+					this.OnRefNameChanging(value);
+					this.SendPropertyChanging();
+					this._RefName = value;
+					this.SendPropertyChanged("RefName");
+					this.OnRefNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDate", DbType="Date")]
+		public System.Nullable<System.DateTime> PaymentDate
+		{
+			get
+			{
+				return this._PaymentDate;
+			}
+			set
+			{
+				if ((this._PaymentDate != value))
+				{
+					this.OnPaymentDateChanging(value);
+					this.SendPropertyChanging();
+					this._PaymentDate = value;
+					this.SendPropertyChanged("PaymentDate");
+					this.OnPaymentDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DepNo", DbType="NVarChar(15)")]
+		public string DepNo
+		{
+			get
+			{
+				return this._DepNo;
+			}
+			set
+			{
+				if ((this._DepNo != value))
+				{
+					this.OnDepNoChanging(value);
+					this.SendPropertyChanging();
+					this._DepNo = value;
+					this.SendPropertyChanged("DepNo");
+					this.OnDepNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusCode", DbType="NVarChar(2)")]
+		public string StatusCode
+		{
+			get
+			{
+				return this._StatusCode;
+			}
+			set
+			{
+				if ((this._StatusCode != value))
+				{
+					this.OnStatusCodeChanging(value);
+					this.SendPropertyChanging();
+					this._StatusCode = value;
+					this.SendPropertyChanged("StatusCode");
+					this.OnStatusCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this.OnCreateDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreateDate = value;
+					this.SendPropertyChanged("CreateDate");
+					this.OnCreateDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateBy", DbType="NVarChar(7)")]
+		public string CreateBy
+		{
+			get
+			{
+				return this._CreateBy;
+			}
+			set
+			{
+				if ((this._CreateBy != value))
+				{
+					this.OnCreateByChanging(value);
+					this.SendPropertyChanging();
+					this._CreateBy = value;
+					this.SendPropertyChanged("CreateBy");
+					this.OnCreateByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApproveDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ApproveDate
+		{
+			get
+			{
+				return this._ApproveDate;
+			}
+			set
+			{
+				if ((this._ApproveDate != value))
+				{
+					this.OnApproveDateChanging(value);
+					this.SendPropertyChanging();
+					this._ApproveDate = value;
+					this.SendPropertyChanged("ApproveDate");
+					this.OnApproveDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ApproveBy", DbType="NVarChar(70)")]
+		public string ApproveBy
+		{
+			get
+			{
+				return this._ApproveBy;
+			}
+			set
+			{
+				if ((this._ApproveBy != value))
+				{
+					this.OnApproveByChanging(value);
+					this.SendPropertyChanging();
+					this._ApproveBy = value;
+					this.SendPropertyChanged("ApproveBy");
+					this.OnApproveByChanged();
 				}
 			}
 		}

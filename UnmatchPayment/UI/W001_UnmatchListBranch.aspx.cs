@@ -36,11 +36,7 @@ namespace UnmatchPayment.UI
                 string url = string.Empty;
                 string _strTellerID = ((Button)sender).CommandArgument;
                 Application["TellerID"] = _strTellerID;
-                //Application["CID"] = strCID;
-                //Application["StatusCode"] = "02"; //01 insert,02 Update
-                //Application["Type"] = "02"; //01 CanEdit,02 ReadOnly
-                //if (_strCanEdit == "Edit")
-                //    Application["type"] = "01";
+
                 Response.Redirect("W002_AddTransaction.aspx");
             }
             catch (Exception ex)

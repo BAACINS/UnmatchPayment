@@ -131,6 +131,41 @@
       <Column Name="StatusName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="UP.UploadFileDetail" Member="UploadFileDetails">
+    <Type Name="UploadFileDetail">
+      <Column Name="FileID" Type="System.Int64" DbType="BigInt NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FileTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TellerPaymentDetailID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="UPID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FileOriginName" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="FileSize" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="UploadDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UploadBy" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="EncryptCode" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="IsDelete" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DeleteDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DeleteBy" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="UP.UnmatchPayment" Member="tbUnmatchPayments">
+    <Type Name="tbUnmatchPayment">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CauseID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TellerPaymentDetailID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CompCode" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Ref1" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Ref2" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="RefName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PaymentDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DepNo" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="StatusCode" Type="System.String" DbType="NVarChar(2)" CanBeNull="true" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreateBy" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="ApproveDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ApproveBy" Type="System.String" DbType="NVarChar(70)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="UP.EMPLOYEE_SELECT" Method="EMPLOYEE_SELECT">
     <Parameter Name="USER_ID" Parameter="uSER_ID" Type="System.String" DbType="NVarChar(7)" />
     <Parameter Name="USER_PASSWORD" Parameter="uSER_PASSWORD" Type="System.String" DbType="NVarChar(50)" />
