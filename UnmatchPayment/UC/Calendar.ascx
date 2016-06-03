@@ -21,13 +21,12 @@
     }
 
 </script>
-<link href="../CSS/Sitemaster.css" rel="stylesheet" />
 
 <table border="0" cellpadding="0" cellspacing="0" id="UCcalendar">
     <tr >
         <td style="width: 130px;">
             <asp:TextBox ID="txtCalendar" runat="server" AutoPostBack="true" OnTextChanged="txtCalendar_TextChanged"
-                CssClass="textBox"></asp:TextBox>
+                CssClass="textBox" Height="23px" Width="174px"></asp:TextBox>
         </td>
         <td style="cursor: pointer; padding: 3px;">
             <asp:Image ID="imgCalendar" runat="server" ImageUrl="I006_calendar.png"
