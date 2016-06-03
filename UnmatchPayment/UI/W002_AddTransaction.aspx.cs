@@ -109,7 +109,12 @@ namespace UnmatchPayment.UI
                 if (Application["UPID"] != null)
                 {
                     UPID = Convert.ToInt32(Application["UPID"]);
+                    StatusCode = "02";
                     //GetUnmatched detail
+                }
+                else
+                {
+                    StatusCode = "01";
                 }
             }
         }
@@ -184,6 +189,11 @@ namespace UnmatchPayment.UI
             dtUploadedFile = UploadFile.SearchFileUploadDetail(TellerID);
             gvUploadFile.DataSource = dtUploadedFile;
             gvUploadFile.DataBind();
+        }
+
+        private void setCause(string CauseID)
+        {
+
         }
 
         protected void bntSave_Click(object sender, EventArgs e)

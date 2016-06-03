@@ -286,10 +286,6 @@ body {
 .spanright{
     width:auto;
 }
-div {
-	clear: both;
-	margin: 0 10px;
-}
 
 label {
   width: auto;
@@ -351,6 +347,37 @@ input.radio:checked ~ label {
 }
 /*--------------- end rbl --------------------------*/
 /*Features table------------------------------------------------------------*/
+table#UCcalendar tr td {
+    background-color:transparent;
+    margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+table#UCcalendar td {
+    /*height: auto;
+    line-height: normal;
+    padding: 0 20px;
+    border-bottom: 1px solid #cdcdcd;
+    box-shadow: 0 1px 0 white;
+    -moz-box-shadow: 0 1px 0 white;
+    -webkit-box-shadow: 0 1px 0 white;
+    white-space: nowrap;
+    text-align: center;*/
+    
+    height:auto;
+    line-height: 17px;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+
+}
+
 .features-table
 {
   width: 100%;

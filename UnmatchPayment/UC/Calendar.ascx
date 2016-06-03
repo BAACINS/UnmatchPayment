@@ -21,8 +21,10 @@
     }
 
 </script>
-<table border="0" cellpadding="0" cellspacing="0">
-    <tr>
+<link href="../CSS/Sitemaster.css" rel="stylesheet" />
+
+<table border="0" cellpadding="0" cellspacing="0" id="UCcalendar">
+    <tr >
         <td style="width: 130px;">
             <asp:TextBox ID="txtCalendar" runat="server" AutoPostBack="true" OnTextChanged="txtCalendar_TextChanged"
                 CssClass="textBox"></asp:TextBox>

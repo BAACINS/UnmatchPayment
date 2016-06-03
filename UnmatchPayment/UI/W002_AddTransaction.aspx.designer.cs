@@ -139,13 +139,13 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.TextBox txtPaymentDate;
         
         /// <summary>
-        /// Calendar control.
+        /// Calendar1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::UnmatchPayment.UC.WebUserControl1 Calendar;
+        protected global::UnmatchPayment.UC.WebUserControl1 Calendar1;
         
         /// <summary>
         /// txtDepNo control.
