@@ -217,8 +217,8 @@ namespace UnmatchPayment.UI
                 UP.Ref2 = txtRef2.Text;
             if (!string.IsNullOrEmpty(txtRefName.Text))
                 UP.RefName = txtRefName.Text;
-            if (!string.IsNullOrEmpty(txtPaymentDate.Text))
-                UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.Text);
+            if (!string.IsNullOrEmpty(txtPaymentDate.TextDate))
+                UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.TextDate);
             if (!string.IsNullOrEmpty(txtDepNo.Text))
                 UP.DepNo = txtDepNo.Text;
             if (!string.IsNullOrEmpty(StatusCode))

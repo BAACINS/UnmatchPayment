@@ -86,14 +86,10 @@
                     <td>วันที่ชำระ</td>
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
-                    <td class="xxx">
-                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox>
-
-                        <br />
-                        
+                    <td>                        
                         <table id="UCcalendar">
                             <tr>
-                                <td><uc1:Calendar runat="server" ID="Calendar1" /></td>
+                                <td><uc1:Calendar runat="server" ID="txtPaymentDate" /></td>
                             </tr>
                         </table>
                             
