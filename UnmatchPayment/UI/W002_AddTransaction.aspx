@@ -7,9 +7,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
-        function rdbChecked(id) {
+        function rdbChecked(id,listCause) {
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
-            PageMethods.setCause(id);
+            <%--document.getElementById('<%=btnSelectCause.ClientID%>').click();--%>
+            document.getElementById('<%=txtCompCode.ClientID%>').disabled = !Boolean(listCause[1]);
+
+            //if (listCause[1] == 1) {
+            //    document.getElementById('<%=txtCompCode.ClientID%>').value = "";
+            <%--}
+            if (listCause[2] == 1) {
+                document.getElementById('<%=txtCompCode.ClientID%>').disabled = !Boolean(listCause[2]);
+                document.getElementById('<%=txtCompCode.ClientID%>').value = "";
+            }--%>
         }
     </script>
 
@@ -23,6 +32,7 @@
         <table width="100%">
             <tr>
                 <td>
+                    <asp:Button ID="btnSelectCause" runat="server" Text="" OnClick="btnSelectCause_Click" Style="display: none;" />
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hdCauseID" runat="server" />
                 </td>
@@ -165,7 +175,7 @@
     <div style="text-align: center;">
         <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" OnClick="bntSave_Click" />
         &nbsp
-        <asp:Button ID="bntCancle" runat="server" Text="ยกเลิก" CssClass="button" />
+        <asp:Button ID="bntClose" runat="server" Text="ยกเลิก" CssClass="button" OnClick="bntClose_Click" />
     </div>
 
     <%--//----------------------------------------------------%>
