@@ -109,7 +109,12 @@ namespace UnmatchPayment.UI
                 if (Application["UPID"] != null)
                 {
                     UPID = Convert.ToInt32(Application["UPID"]);
+                    StatusCode = "02";
                     //GetUnmatched detail
+                }
+                else
+                {
+                    StatusCode = "01";
                 }
             }
         }
@@ -186,25 +191,42 @@ namespace UnmatchPayment.UI
             gvUploadFile.DataBind();
         }
 
+        private void setCause(string CauseID)
+        {
+
+        }
+
         protected void bntSave_Click(object sender, EventArgs e)
         {
-            int _causeID = int.Parse(hdCauseID.Value);
+            //int _causeID = int.Parse(hdCauseID.Value);
 
             //set detail Unmatchpayment
             tbUnmatchPayment UP = new tbUnmatchPayment();
-            UP.ID = UPID;
-            UP.CauseID = _causeID;
-            UP.TellerPaymentDetailID = TellerID;
-            UP.CompCode = txtCompCode.Text;
-            UP.Amount = Convert.ToDecimal(txtAmount.Text);
-            UP.Ref1 = txtRef1.Text;
-            UP.Ref2 = txtRef2.Text;
-            UP.RefName = txtRefName.Text;
-            UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.Text);
-            UP.DepNo = txtDepNo.Text;
-            UP.StatusCode = StatusCode;
+            //UP.ID = UPID;
+            if(!string.IsNullOrEmpty(hdCauseID.Value))
+                UP.CauseID = int.Parse(hdCauseID.Value);
+            if(TellerID != null || TellerID != 0)
+                UP.TellerPaymentDetailID = TellerID;
+            if(!string.IsNullOrEmpty(txtCompCode.Text))
+                UP.CompCode = txtCompCode.Text;
+            if(!string.IsNullOrEmpty(txtAmount.Text))
+                UP.Amount = Convert.ToDecimal(txtAmount.Text);
+            if (!string.IsNullOrEmpty(txtRef1.Text))
+                UP.Ref1 = txtRef1.Text;
+            if (!string.IsNullOrEmpty(txtRef2.Text))
+                UP.Ref2 = txtRef2.Text;
+            if (!string.IsNullOrEmpty(txtRefName.Text))
+                UP.RefName = txtRefName.Text;
+            if (!string.IsNullOrEmpty(txtPaymentDate.TextDate))
+                UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.TextDate);
+            if (!string.IsNullOrEmpty(txtDepNo.Text))
+                UP.DepNo = txtDepNo.Text;
+            if (!string.IsNullOrEmpty(StatusCode))
+                UP.StatusCode = StatusCode;
+            if (!string.IsNullOrEmpty(Emp.USER_ID))
+                UP.CreateBy = Emp.USER_ID;
             UP.CreateDate = DateTime.Now;
-            UP.CreateBy = Emp.USER_ID;
+            
 
             DataMNG.EditUnmatchpayment(UP);
         }

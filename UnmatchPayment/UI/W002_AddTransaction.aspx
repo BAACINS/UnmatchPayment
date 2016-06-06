@@ -9,8 +9,8 @@
     <script type="text/javascript">
         function rdbChecked(id) {
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
+            PageMethods.setCause(id);
         }
-
     </script>
 
     <p>
@@ -86,10 +86,13 @@
                     <td>วันที่ชำระ</td>
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
-                    <td>
-                        <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="button"></asp:TextBox>
-                        <br />
-                        <uc1:Calendar runat="server" ID="Calendar" />
+                    <td>                        
+                        <table id="UCcalendar">
+                            <tr>
+                                <td><uc1:Calendar runat="server" ID="txtPaymentDate" /></td>
+                            </tr>
+                        </table>
+                            
                     </td>
                 </tr>
             </tbody>
@@ -121,42 +124,42 @@
                     <td colspan="3">
                         <asp:Label ID="lblFileUpload" runat="server" Text=""></asp:Label>
                         <br />
-                        
+
                     </td>
                 </tr>
             </tbody>
         </table>
         <asp:GridView ID="gvUploadFile" runat="server" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
-                            <AlternatingRowStyle BackColor="White" />
-                            <Columns>
-                                <asp:TemplateField HeaderText="ชื่อไฟล์">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="lnkPartial" runat="server" Text='<%# Eval("FileName") %>' CommandArgument='<%# String.Format("{0}_{1}", Eval("FileID"), Eval("FileOriginName")) %>' OnClick="DownloadFile" />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="FileSize" HeaderText="ขนาดไฟล์ (KB)" />
-                                <asp:BoundField DataField="UploadDate" HeaderText="วันที่อัพโหลด" />
-                                <asp:BoundField DataField="UploadBy" HeaderText="อัพโหลดโดย" />
-                                <asp:BoundField HeaderText="" />
-                                <asp:TemplateField>
-                                    <ItemTemplate>
-                                        <asp:Button ID="btnDelFile" runat="server" Text="ลบ"
-                                            OnClick="btnDelFile_Click" CommandArgument='<%# Eval("FileID") %>' CssClass="button" />
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                                </asp:TemplateField>
-                            </Columns>
-                            <EditRowStyle BackColor="#2461BF" />
-                            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#EFF3FB" />
-                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                            <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                            <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                            <SortedDescendingHeaderStyle BackColor="#4870BE" />
-                        </asp:GridView>
+            <AlternatingRowStyle BackColor="White" />
+            <Columns>
+                <asp:TemplateField HeaderText="ชื่อไฟล์">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkPartial" runat="server" Text='<%# Eval("FileName") %>' CommandArgument='<%# String.Format("{0}_{1}", Eval("FileID"), Eval("FileOriginName")) %>' OnClick="DownloadFile" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:BoundField DataField="FileSize" HeaderText="ขนาดไฟล์ (KB)" />
+                <asp:BoundField DataField="UploadDate" HeaderText="วันที่อัพโหลด" />
+                <asp:BoundField DataField="UploadBy" HeaderText="อัพโหลดโดย" />
+                <asp:BoundField HeaderText="" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnDelFile" runat="server" Text="ลบ"
+                            OnClick="btnDelFile_Click" CommandArgument='<%# Eval("FileID") %>' CssClass="button" />
+                    </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                </asp:TemplateField>
+            </Columns>
+            <EditRowStyle BackColor="#2461BF" />
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
+            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#F5F7FB" />
+            <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+            <SortedDescendingCellStyle BackColor="#E9EBEF" />
+            <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        </asp:GridView>
     </div>
     <br />
     <div style="text-align: center;">
