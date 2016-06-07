@@ -110,8 +110,6 @@ namespace UnmatchPayment.UI
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(hdCauseID.Value))
-                SetrblCause();
             if (!IsPostBack)
             {
                 urlPrev = Request.ServerVariables["HTTP_REFERER"];
@@ -431,7 +429,6 @@ namespace UnmatchPayment.UI
                 var UC = (from tb in dbAcc.UnmatchCauses
                           where tb.CauseID == CauseID
                           select tb).FirstOrDefault();
-                SetrblCause();
                 txtCompCode.Enabled = false;
             }
             catch
