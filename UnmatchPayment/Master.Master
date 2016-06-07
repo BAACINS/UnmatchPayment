@@ -12,7 +12,9 @@
     <link href="CSS/Sitemaster.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
+  
+    <form id="form1" runat="server">  
+        <header>
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True" EnablePageMethods="true"></asp:ToolkitScriptManager>
             &nbsp;         
             <div style="z-index: 1; position: absolute; left: 80%; top: 1%;">
@@ -26,7 +28,8 @@
             </div>
 
             <div class="content-wrapper">
-                <div class="main-content"></div>
+                <div class="main-content">
+                </div>
                 <div style="background-color: green">
                     <div id='cssmenu'>
                         <ul style="width: 100%">
