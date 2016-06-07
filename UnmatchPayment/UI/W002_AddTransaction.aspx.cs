@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -93,11 +94,26 @@ namespace UnmatchPayment.UI
                 ViewState["StatusCode"] = value;
             }
         }
+        private string urlPrev
+        {
+            get
+            {
+                if (ViewState["urlPrev"] != null)
+                    return ViewState["urlPrev"].ToString();
+                return string.Empty;
+            }
+            set
+            {
+                ViewState["urlPrev"] = value;
+            }
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                urlPrev = Request.ServerVariables["HTTP_REFERER"];
+                StatusCode = "01";
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
                 GetFileType();
@@ -106,15 +122,14 @@ namespace UnmatchPayment.UI
                     TellerID = Convert.ToInt32(Application["TellerID"]);
                     GetUploadedFile();
                 }
+                else
+                {
+                    Response.Redirect("~/UI/Default.aspx");
+                }
                 if (Application["UPID"] != null)
                 {
                     UPID = Convert.ToInt32(Application["UPID"]);
-                    StatusCode = "02";
                     //GetUnmatched detail
-                }
-                else
-                {
-                    StatusCode = "01";
                 }
             }
         }
@@ -123,7 +138,18 @@ namespace UnmatchPayment.UI
         {
             DataTable dtUnmatch = new DataTable();
             var dtAcc = from Cause in dbAcc.UnmatchCauses
-                        select new { Cause.CauseID,Cause.CauseDescription };
+                        select new { Cause.CauseID,
+                            Cause.CauseDescription,
+                            isSpinCreate = Convert.ToInt16(Cause.isSpinCreate),
+                            isCompCode = Convert.ToInt16(Cause.isCompCode),
+                            isAmount = Convert.ToInt16(Cause.isAmount),
+                            isRef1 = Convert.ToInt16(Cause.isRef1),
+                            isRef2 = Convert.ToInt16(Cause.isRef2),
+                            isRefName = Convert.ToInt16(Cause.isRefName),
+                            isPaymentdate = Convert.ToInt16(Cause.isPaymentdate),
+                            isRefund = Convert.ToInt16(Cause.isRefund),
+                            isUplaodFile = Convert.ToInt16(Cause.isUploadFile)
+                        };
 
             dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
 
@@ -131,23 +157,37 @@ namespace UnmatchPayment.UI
 
             for(int i = 0; i < dtUnmatch.Rows.Count; i++)
             {
+                string listcause = "["
+                        + dtUnmatch.Rows[i]["isSpinCreate"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isCompCode"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isAmount"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isRef1"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isRef2"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isRefName"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isPaymentdate"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isRefund"].ToString() + ","
+                        + dtUnmatch.Rows[i]["isUplaodFile"].ToString()
+                        + "]";
+                string strCauseID = dtUnmatch.Rows[i]["CauseID"].ToString();
+                string strCauseDes = dtUnmatch.Rows[i]["CauseDescription"].ToString();
                 if (i % 2 == 0)
                 {
+                    //add radio in literal
                     strCause.Append(string.Format(@"
                     <div>
                     <span class='spanleft'>
-                    <input type = 'radio' name='radio' id='radio{0}' class='radio' onclick='rdbChecked({0})'/>
-                    <label for= 'radio{0}' > {1} </label>
-                    </span>", dtUnmatch.Rows[i]["CauseID"].ToString(), dtUnmatch.Rows[i]["CauseDescription"].ToString()));
+                    <input type = 'radio' name='radio' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0},{1})'/>
+                    <label for= 'radio{0}' > {2} </label>
+                    </span>", strCauseID, listcause, strCauseDes));
                 }
                 else
                 {
                     strCause.Append(string.Format(@"
                     <span class='spanright'>
-                    <input type = 'radio' name='radio' id='radio{0}' class='radio' onclick='rdbChecked({0})'/>
-                    <label for= 'radio{0}' > {1} </label>
+                    <input type = 'radio' name='radio' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0},{1})'/>
+                    <label for= 'radio{0}' > {2} </label>
                     </span>
-                    </div>", dtUnmatch.Rows[i]["CauseID"].ToString(), dtUnmatch.Rows[i]["CauseDescription"].ToString()));
+                    </div>", strCauseID, listcause, strCauseDes));
                 }
             }
 
@@ -191,9 +231,16 @@ namespace UnmatchPayment.UI
             gvUploadFile.DataBind();
         }
 
-        private void setCause(string CauseID)
+        private Control FindControlRecursive(Control rootControl, string controlID)
         {
+            if (rootControl.ID == controlID) return rootControl;
 
+            foreach (Control controlToSearch in rootControl.Controls)
+            {
+                Control controlToReturn = FindControlRecursive(controlToSearch, controlID);
+                if (controlToReturn != null) return controlToReturn;
+            }
+            return null;
         }
 
         protected void bntSave_Click(object sender, EventArgs e)
@@ -227,8 +274,9 @@ namespace UnmatchPayment.UI
                 UP.CreateBy = Emp.USER_ID;
             UP.CreateDate = DateTime.Now;
             
-
             DataMNG.EditUnmatchpayment(UP);
+
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('บันทึกเสร็จสิ้น');window.location.replace('" + urlPrev + "');", true);
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
@@ -365,6 +413,27 @@ namespace UnmatchPayment.UI
             finally
             {
                 GetUploadedFile();
+            }
+        }
+
+        protected void bntClose_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(urlPrev);
+        }
+
+        protected void btnSelectCause_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int CauseID = int.Parse(hdCauseID.Value);
+                var UC = (from tb in dbAcc.UnmatchCauses
+                          where tb.CauseID == CauseID
+                          select tb).FirstOrDefault();
+                txtCompCode.Enabled = false;
+            }
+            catch
+            {
+
             }
         }
     }

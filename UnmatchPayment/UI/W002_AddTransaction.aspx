@@ -7,9 +7,65 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
-        function rdbChecked(id) {
+        function rdbChecked(id,listCause) {
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
-            PageMethods.setCause(id);
+            
+            document.getElementById('<%=txtCompCode.ClientID%>').disabled = !Boolean(listCause[1]);
+            document.getElementById('<%=txtAmount.ClientID%>').disabled = !Boolean(listCause[2]);
+            document.getElementById('<%=txtRef1.ClientID%>').disabled = !Boolean(listCause[3]);
+            document.getElementById('<%=txtRef2.ClientID%>').disabled = !Boolean(listCause[4]);
+            document.getElementById('<%=txtRefName.ClientID%>').disabled = !Boolean(listCause[5]);
+            document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled = !Boolean(listCause[6]);
+            document.getElementById('<%=txtDepNo.ClientID%>').disabled = !Boolean(listCause[7]);
+            document.getElementById('<%=BrowsFile.ClientID%>').disabled = !Boolean(listCause[8]);
+            document.getElementById('<%=btnUpload.ClientID%>').disabled = !Boolean(listCause[8]);
+        }
+
+        function onSave() {
+            if(document.getElementById('<%=hdCauseID.ClientID%>').value == ''){
+                alert('กรุณาระบุ รสาเหตุรายการ Unmatched');
+                return false;
+            }
+            else if (document.getElementById('<%=txtCompCode.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtCompCode.ClientID%>').value == '') {
+                alert('กรุณาระบุ รหัสบริการ');
+                return false;
+            }
+            else if (document.getElementById('<%=txtAmount.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtAmount.ClientID%>').value == '') {
+                alert('กรุณาระบุ จำนวนเงิน');
+                return false;
+            }
+            else if (document.getElementById('<%=txtRef1.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtRef1.ClientID%>').value == '') {
+                alert('กรุณาระบุ Ref 1');
+                return false;
+            }
+            else if (document.getElementById('<%=txtRef2.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtRef2.ClientID%>').value == '') {
+                alert('กรุณาระบุ Ref 2');
+                return false;
+            }
+            else if (document.getElementById('<%=txtRefName.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtRefName.ClientID%>').value == '') {
+                alert('กรุณาระบุ Ref อ้างอิงชื่อ');
+                return false;
+            }
+            else if (document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled == false &&
+                document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').value == '') {
+                alert('กรุณาระบุ วันที่ชำระ');
+                return false;
+            }
+            else if (document.getElementById('<%=txtDepNo.ClientID%>').disabled == false &&
+                document.getElementById('<%=txtDepNo.ClientID%>').value == '') {
+                alert('กรุณาระบุ เลขที่บัญชีเงินฝาก');
+                return false;
+            }
+            else if (document.getElementById('<%=BrowsFile.ClientID%>').disabled == false &&
+                <%=gvUploadFile.Rows.Count%> == 0) {
+                alert('กรุณาระบุ รหัสบริการ');
+                return false;
+            }
         }
     </script>
 
@@ -23,6 +79,7 @@
         <table width="100%">
             <tr>
                 <td>
+                    <asp:Button ID="btnSelectCause" runat="server" Text="" OnClick="btnSelectCause_Click" Style="display: none;" />
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hdCauseID" runat="server" />
                 </td>
@@ -163,9 +220,9 @@
     </div>
     <br />
     <div style="text-align: center;">
-        <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" OnClick="bntSave_Click" />
+        <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" OnClick="bntSave_Click" OnClientClick="return onSave()" />
         &nbsp
-        <asp:Button ID="bntCancle" runat="server" Text="ยกเลิก" CssClass="button" />
+        <asp:Button ID="bntClose" runat="server" Text="ยกเลิก" CssClass="button" OnClick="bntClose_Click" />
     </div>
 
     <%--//----------------------------------------------------%>
