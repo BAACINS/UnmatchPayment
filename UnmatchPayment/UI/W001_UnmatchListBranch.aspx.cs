@@ -19,9 +19,9 @@ namespace UnmatchPayment.UI
             if (!IsPostBack)
             {
                 DataTable dtUnmatch = new DataTable();
-                var dtAcc = from claim in dbAcc.VW_TellerPaymentDetails
+                var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetails
                             where claim.BranchCode == "0413" && claim.MatchingID == null
-                            select claim;
+                            select claim).OrderBy(x => x.TellerPaymentDetailID);
 
                 dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
 

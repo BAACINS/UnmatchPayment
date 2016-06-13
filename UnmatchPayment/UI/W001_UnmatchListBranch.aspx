@@ -7,6 +7,7 @@
     <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AutoGenerateColumns="False">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
+            <asp:BoundField DataField="TellerPaymentDetailID" HeaderText="รหัสอ้างอิง" />
             <asp:BoundField DataField="CompCode" HeaderText="รหัสรายการ" />
             <asp:BoundField DataField="Amount" HeaderText="จำนวนเงิน" />
             <asp:BoundField DataField="Ref1" HeaderText="Ref1" />
