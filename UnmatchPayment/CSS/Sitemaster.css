@@ -269,6 +269,10 @@ table {
 	top:1px;
 }
 
+.button:disabled {
+    background: #dddddd;
+}
+
 body {
     line-height: 1;
     font-size:20px;
