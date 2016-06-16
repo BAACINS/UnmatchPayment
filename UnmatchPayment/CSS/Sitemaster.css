@@ -388,7 +388,9 @@ table#UCcalendar td {
 	font: inherit;*/
 
 }
-
+.hideCalendar{
+    display: none;
+}
 .features-table
 {
   width: 100%;

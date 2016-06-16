@@ -449,5 +449,21 @@ namespace UnmatchPayment.UI
         {
             Response.Redirect(urlPrev);
         }
+
+        protected void btnSelectCause_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int CauseID = int.Parse(hdCauseID.Value);
+                var UC = (from tb in dbAcc.UnmatchCauses
+                          where tb.CauseID == CauseID
+                          select tb).FirstOrDefault();
+                txtCompCode.Enabled = false;
+            }
+            catch
+            {
+
+            }
+        }
     }
 }
