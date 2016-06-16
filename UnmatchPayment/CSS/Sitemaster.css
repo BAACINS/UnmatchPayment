@@ -236,6 +236,10 @@ table {
     font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
 }
 
+    .textBox:disabled {
+        background: #dddddd;
+    }
+
 .button {
   background: #3498db;
   background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
@@ -504,5 +508,18 @@ footer {
     background-color: #e2e2e2;
     font-size: .8em;
     height: 100px;
+}
+
+/*-----Calendar----------*/
+
+.ajax__calendar_days ,.ajax__calendar_day,.ajax__calendar_dayname,.ajax__calendar_year,.ajax__calendar_month {
+    font-size: 18px;
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
+}
+
+.ajax__calendar_today,.ajax__calendar_header {
+    font-size: 18px;
+    font: bold;
+    font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';
 }
 
