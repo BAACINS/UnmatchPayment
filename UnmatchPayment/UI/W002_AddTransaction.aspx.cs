@@ -161,15 +161,15 @@ namespace UnmatchPayment.UI
             }
             if(string.IsNullOrEmpty(hdCauseID.Value) != true)
             {
-                int CauseID = int.Parse(hdCauseID.Value)-1;
-                txtCompCode.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isCompCode"]);
-                txtAmount.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isAmount"]);
-                txtRef1.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef1"]);
-                txtRef2.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef2"]);
-                txtRefName.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefName"]);
-                txtPaymentDate.Enable = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isPaymentdate"]);
-                txtDepNo.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefund"]);
-                btnUpload.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isUplaodFile"]);
+                //int CauseID = int.Parse(hdCauseID.Value)-1;
+                //txtCompCode.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isCompCode"]);
+                //txtAmount.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isAmount"]);
+                //txtRef1.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef1"]);
+                //txtRef2.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef2"]);
+                //txtRefName.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefName"]);
+                //txtPaymentDate.Enable = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isPaymentdate"]);
+                //txtDepNo.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefund"]);
+                //btnUpload.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isUplaodFile"]);
             }
         }
 

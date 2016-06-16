@@ -15,15 +15,19 @@
             document.getElementById('<%=txtRef1.ClientID%>').disabled = !Boolean(listCause[3]);
             document.getElementById('<%=txtRef2.ClientID%>').disabled = !Boolean(listCause[4]);
             document.getElementById('<%=txtRefName.ClientID%>').disabled = !Boolean(listCause[5]);
-            document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled = !Boolean(listCause[6]);
-            if(document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled == true){
-                document.getElementById('<%=UCcalendar.ClientID%>').className = "hideCalendar";
-            }
-            else{
-                document.getElementById('<%=UCcalendar.ClientID%>').className = 
-                    document.getElementById('<%=UCcalendar.ClientID%>').className.replace 
-                    ( /(?:^|\s)hideCalendar(?!\S)/g , '' );
-            }
+            if(Boolean(listCause[6]))
+                document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "visible";
+            else
+                document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "hidden";
+
+            ////if(document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled == true){
+            ////    document.getElementById('<%=UCcalendar.ClientID%>').className = "hideCalendar";
+            //}
+            //else{
+            ////    document.getElementById('<%=UCcalendar.ClientID%>').className = 
+            ////        document.getElementById('<%=UCcalendar.ClientID%>').className.replace 
+            //        ( /(?:^|\s)hideCalendar(?!\S)/g , '' );
+            //}
             document.getElementById('<%=txtDepNo.ClientID%>').disabled = !Boolean(listCause[7]);
             document.getElementById('<%=BrowsFile.ClientID%>').disabled = !Boolean(listCause[8]);
             document.getElementById('<%=btnUpload.ClientID%>').disabled = !Boolean(listCause[8]);
@@ -151,9 +155,10 @@
                     <td>วันที่ชำระ</td>
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
-                    <td>                        
+                    <td>                  
                         <table id="UCcalendar" runat="server">
                             <tr>
+                                <td style="width:45px"></td>
                                 <td><uc1:Calendar runat="server" ID="txtPaymentDate" /></td>
                             </tr>
                         </table>
@@ -189,7 +194,6 @@
                     <td colspan="3">
                         <asp:Label ID="lblFileUpload" runat="server" Text=""></asp:Label>
                         <br />
-
                     </td>
                 </tr>
             </tbody>
