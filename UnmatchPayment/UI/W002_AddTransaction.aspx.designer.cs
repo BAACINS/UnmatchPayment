@@ -31,6 +31,15 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.HiddenField hdCauseID;
         
         /// <summary>
+        /// hdlistCause control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdlistCause;
+        
+        /// <summary>
         /// lblCompCode control.
         /// </summary>
         /// <remarks>

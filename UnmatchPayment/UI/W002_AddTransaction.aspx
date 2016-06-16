@@ -7,8 +7,41 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <script type="text/javascript">
+        function stringToBoolean(string){
+            switch(string.toLowerCase().trim()){
+                case "true": case "yes": case "1": return true;
+                case "false": case "no": case "0": case null: return false;
+                default: return Boolean(string);
+            }
+        }
+        window.onload = function(){
+            var CauseID = document.getElementById('<%=hdCauseID.ClientID%>').value;
+            if(CauseID != '')
+                document.getElementById("radio"+CauseID).checked = true;
+
+            var hdlistCause = document.getElementById('<%=hdlistCause.ClientID%>').value;
+            if(hdlistCause != ''){
+                var listCause = new Array();
+                listCause = hdlistCause.split(',');
+                //alert(listCause + '-' + stringToBoolean(listCause[1])+ '-' + stringToBoolean(listCause[2])+ '-' + stringToBoolean(listCause[3])+ '-' + stringToBoolean(listCause[4])+ '-' + stringToBoolean(listCause[5]) );
+                document.getElementById('<%=txtCompCode.ClientID%>').disabled = !stringToBoolean(listCause[1]);
+                document.getElementById('<%=txtAmount.ClientID%>').disabled = !stringToBoolean(listCause[2]);
+                document.getElementById('<%=txtRef1.ClientID%>').disabled = !stringToBoolean(listCause[3]);
+                document.getElementById('<%=txtRef2.ClientID%>').disabled = !stringToBoolean(listCause[4]);
+                document.getElementById('<%=txtRefName.ClientID%>').disabled = !stringToBoolean(listCause[5]);
+                if(stringToBoolean(listCause[6]))
+                    document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "visible";
+                else
+                    document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "hidden";
+                document.getElementById('<%=txtDepNo.ClientID%>').disabled = !stringToBoolean(listCause[7]);
+                document.getElementById('<%=BrowsFile.ClientID%>').disabled = !stringToBoolean(listCause[8]);
+                document.getElementById('<%=btnUpload.ClientID%>').disabled = !stringToBoolean(listCause[8]);
+            }
+        };
         function rdbChecked(id,listCause) {
+            //alert('Checked');
             document.getElementById('<%=hdCauseID.ClientID%>').value = id;
+            document.getElementById('<%=hdlistCause.ClientID%>').value = listCause;
             
             document.getElementById('<%=txtCompCode.ClientID%>').disabled = !Boolean(listCause[1]);
             document.getElementById('<%=txtAmount.ClientID%>').disabled = !Boolean(listCause[2]);
@@ -79,7 +112,7 @@
                 alert('กรุณาระบุ รหัสบริการ');
                 return false;
             }
-        }
+}
     </script>
 
     <p>
@@ -94,6 +127,7 @@
                 <td>
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hdCauseID" runat="server" />
+                    <asp:HiddenField ID="hdlistCause" runat="server" />
                 </td>
             </tr>
         </table>
@@ -155,14 +189,16 @@
                     <td>วันที่ชำระ</td>
                     <td>
                         <asp:Label ID="lblPaymentDate" runat="server" Text=""></asp:Label></td>
-                    <td>                  
+                    <td>
                         <table id="UCcalendar" runat="server">
                             <tr>
-                                <td style="width:45px"></td>
-                                <td><uc1:Calendar runat="server" ID="txtPaymentDate" /></td>
+                                <td style="width: 45px"></td>
+                                <td>
+                                    <uc1:Calendar runat="server" ID="txtPaymentDate" />
+                                </td>
                             </tr>
                         </table>
-                            
+
                     </td>
                 </tr>
             </tbody>
