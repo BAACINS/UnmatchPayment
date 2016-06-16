@@ -81,6 +81,20 @@ namespace UnmatchPayment.UI
                 ViewState["dtUploadFile"] = value;
             }
         }
+        private DataTable dtUnmatchedCause
+        {
+            get
+            {
+                DataTable dt = new DataTable();
+                if ((DataTable)ViewState["dtUnmatchedCause"] != null)
+                    dt = (DataTable)ViewState["dtUnmatchedCause"];
+                return dt;
+            }
+            set
+            {
+                ViewState["dtUnmatchedCause"] = value;
+            }
+        }
         private string StatusCode
         {
             get
@@ -105,6 +119,19 @@ namespace UnmatchPayment.UI
             set
             {
                 ViewState["urlPrev"] = value;
+            }
+        }
+        private string strListCause
+        {
+            get
+            {
+                if (ViewState["strListCause"] != null)
+                    return ViewState["strListCause"].ToString();
+                return string.Empty;
+            }
+            set
+            {
+                ViewState["strListCause"] = value;
             }
         }
         #endregion
@@ -132,13 +159,27 @@ namespace UnmatchPayment.UI
                     //GetUnmatched detail
                 }
             }
+            if(string.IsNullOrEmpty(hdCauseID.Value) != true)
+            {
+                int CauseID = int.Parse(hdCauseID.Value)-1;
+                txtCompCode.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isCompCode"]);
+                txtAmount.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isAmount"]);
+                txtRef1.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef1"]);
+                txtRef2.Enabled = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRef2"]);
+                txtRefName.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefName"]);
+                txtPaymentDate.Enable = !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isPaymentdate"]);
+                txtDepNo.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isRefund"]);
+                btnUpload.Enabled= !Convert.ToBoolean(dtUnmatchedCause.Rows[CauseID]["isUplaodFile"]);
+            }
         }
 
         private void GetUnmatchCause()
         {
-            DataTable dtUnmatch = new DataTable();
+            //DataTable dtUnmatch = new DataTable();
             var dtAcc = from Cause in dbAcc.UnmatchCauses
-                        select new { Cause.CauseID,
+                        select new
+                        {
+                            Cause.CauseID,
                             Cause.CauseDescription,
                             isSpinCreate = Convert.ToInt16(Cause.isSpinCreate),
                             isCompCode = Convert.ToInt16(Cause.isCompCode),
@@ -151,25 +192,25 @@ namespace UnmatchPayment.UI
                             isUplaodFile = Convert.ToInt16(Cause.isUploadFile)
                         };
 
-            dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
+            dtUnmatchedCause = DataMNG.LINQToDataTable(dtAcc);
 
             StringBuilder strCause = new StringBuilder();
 
-            for(int i = 0; i < dtUnmatch.Rows.Count; i++)
+            for (int i = 0; i < dtUnmatchedCause.Rows.Count; i++)
             {
-                string listcause = "["
-                        + dtUnmatch.Rows[i]["isSpinCreate"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isCompCode"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isAmount"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isRef1"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isRef2"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isRefName"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isPaymentdate"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isRefund"].ToString() + ","
-                        + dtUnmatch.Rows[i]["isUplaodFile"].ToString()
+                strListCause = "["
+                        + dtUnmatchedCause.Rows[i]["isSpinCreate"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isCompCode"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isAmount"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isRef1"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isRef2"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isRefName"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isPaymentdate"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isRefund"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isUplaodFile"].ToString()
                         + "]";
-                string strCauseID = dtUnmatch.Rows[i]["CauseID"].ToString();
-                string strCauseDes = dtUnmatch.Rows[i]["CauseDescription"].ToString();
+                string strCauseID = dtUnmatchedCause.Rows[i]["CauseID"].ToString();
+                string strCauseDes = dtUnmatchedCause.Rows[i]["CauseDescription"].ToString();
                 if (i % 2 == 0)
                 {
                     //add radio in literal
@@ -178,7 +219,7 @@ namespace UnmatchPayment.UI
                     <span class='spanleft'>
                     <input type = 'radio' name='radio' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0},{1})'/>
                     <label for= 'radio{0}' > {2} </label>
-                    </span>", strCauseID, listcause, strCauseDes));
+                    </span>", strCauseID, strListCause, strCauseDes));
                 }
                 else
                 {
@@ -187,7 +228,7 @@ namespace UnmatchPayment.UI
                     <input type = 'radio' name='radio' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0},{1})'/>
                     <label for= 'radio{0}' > {2} </label>
                     </span>
-                    </div>", strCauseID, listcause, strCauseDes));
+                    </div>", strCauseID, strListCause, strCauseDes));
                 }
             }
 
@@ -229,18 +270,6 @@ namespace UnmatchPayment.UI
             dtUploadedFile = UploadFile.SearchFileUploadDetail(TellerID);
             gvUploadFile.DataSource = dtUploadedFile;
             gvUploadFile.DataBind();
-        }
-
-        private Control FindControlRecursive(Control rootControl, string controlID)
-        {
-            if (rootControl.ID == controlID) return rootControl;
-
-            foreach (Control controlToSearch in rootControl.Controls)
-            {
-                Control controlToReturn = FindControlRecursive(controlToSearch, controlID);
-                if (controlToReturn != null) return controlToReturn;
-            }
-            return null;
         }
 
         protected void bntSave_Click(object sender, EventArgs e)
@@ -419,22 +448,6 @@ namespace UnmatchPayment.UI
         protected void bntClose_Click(object sender, EventArgs e)
         {
             Response.Redirect(urlPrev);
-        }
-
-        protected void btnSelectCause_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int CauseID = int.Parse(hdCauseID.Value);
-                var UC = (from tb in dbAcc.UnmatchCauses
-                          where tb.CauseID == CauseID
-                          select tb).FirstOrDefault();
-                txtCompCode.Enabled = false;
-            }
-            catch
-            {
-
-            }
         }
     }
 }

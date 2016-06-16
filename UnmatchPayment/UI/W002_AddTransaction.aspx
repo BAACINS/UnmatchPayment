@@ -79,7 +79,6 @@
         <table width="100%">
             <tr>
                 <td>
-                    <asp:Button ID="btnSelectCause" runat="server" Text="" OnClick="btnSelectCause_Click" Style="display: none;" />
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hdCauseID" runat="server" />
                 </td>
