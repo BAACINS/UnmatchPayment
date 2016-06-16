@@ -430,6 +430,8 @@ namespace UnmatchPayment.UI
                           where tb.CauseID == CauseID
                           select tb).FirstOrDefault();
                 txtCompCode.Enabled = false;
+
+ 
             }
             catch
             {
