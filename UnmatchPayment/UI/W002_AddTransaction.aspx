@@ -74,6 +74,7 @@
             }
             else if (document.getElementById('<%=txtCompCode.ClientID%>').disabled == false &&
                 document.getElementById('<%=txtCompCode.ClientID%>').value == '') {
+                alert(document.getElementById('<%=txtCompCode.ClientID%>').value);
                 alert('กรุณาระบุ รหัสบริการ');
                 return false;
             }
@@ -97,7 +98,7 @@
                 alert('กรุณาระบุ Ref อ้างอิงชื่อ');
                 return false;
             }
-            else if (document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled == false &&
+            else if (document.getElementById('<%=UCcalendar.ClientID%>').style.visibility == "visible" &&
                 document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').value == '') {
                 alert('กรุณาระบุ วันที่ชำระ');
                 return false;
@@ -155,35 +156,35 @@
                     <td>
                         <asp:Label ID="lblCompCode" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtCompCode" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtCompCode" runat="server" CssClass="button" MaxLength="4"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>จำนวนเงิน</td>
                     <td>
                         <asp:Label ID="lblAmount" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtAmount" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtAmount" runat="server" CssClass="button" MaxLength="13"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Ref1</td>
                     <td>
                         <asp:Label ID="lblRef1" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtRef1" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtRef1" runat="server" CssClass="button" MaxLength="15"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Ref2</td>
                     <td>
                         <asp:Label ID="lblRef2" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtRef2" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtRef2" runat="server" CssClass="button" MaxLength="15"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Ref อ้างอิง</td>
                     <td>
                         <asp:Label ID="lblRefName" runat="server" Text=""></asp:Label></td>
                     <td>
-                        <asp:TextBox ID="txtRefName" runat="server" CssClass="button"></asp:TextBox></td>
+                        <asp:TextBox ID="txtRefName" runat="server" CssClass="button" MaxLength="50"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>วันที่ชำระ</td>
@@ -218,7 +219,7 @@
                 <tr>
                     <td>เลขที่บัญชีเงินฝาก</td>
                     <td>
-                        <asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                        <asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button" MaxLength="15"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                 </tr>
                 <tr>
                     <td>UploadFile :&nbsp;<asp:DropDownList ID="ddlFileType" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
