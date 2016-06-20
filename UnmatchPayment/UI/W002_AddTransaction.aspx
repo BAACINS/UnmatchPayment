@@ -52,15 +52,6 @@
                 document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "visible";
             else
                 document.getElementById('<%=UCcalendar.ClientID%>').style.visibility = "hidden";
-
-            ////if(document.getElementById('<%=txtPaymentDate.TextBoxClientID%>').disabled == true){
-            ////    document.getElementById('<%=UCcalendar.ClientID%>').className = "hideCalendar";
-            //}
-            //else{
-            ////    document.getElementById('<%=UCcalendar.ClientID%>').className = 
-            ////        document.getElementById('<%=UCcalendar.ClientID%>').className.replace 
-            //        ( /(?:^|\s)hideCalendar(?!\S)/g , '' );
-            //}
             document.getElementById('<%=txtDepNo.ClientID%>').disabled = !Boolean(listCause[7]);
             document.getElementById('<%=BrowsFile.ClientID%>').disabled = !Boolean(listCause[8]);
             document.getElementById('<%=btnUpload.ClientID%>').disabled = !Boolean(listCause[8]);
