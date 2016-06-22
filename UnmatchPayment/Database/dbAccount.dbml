@@ -196,4 +196,14 @@
       <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.SPUP_APPMENU_SELECTFORMASTERPAGE" Method="SPUP_APPMENU_SELECTFORMASTERPAGE">
+    <Parameter Name="ROLE_CODE" Parameter="rOLE_CODE" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="SPUP_APPMENU_SELECTFORMASTERPAGEResult">
+      <Column Name="MENUNO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MENUSEQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MENUDESC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MENUURL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="MENUGROUP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

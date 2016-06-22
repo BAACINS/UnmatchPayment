@@ -18,7 +18,7 @@
         <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" EnableScriptGlobalization="True" EnablePageMethods="true"></asp:ToolkitScriptManager>
             &nbsp;         
             <div style="z-index: 1; position: absolute; left: 80%; top: 1%;">
-                <p style="color: white; font-size: 17px; font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';">
+                <p style="color: white; font-size: 20px; font-family: 'TH Sarabun New','TH SarabunPSK','angsana new','Cordia New';">
                     &nbsp;<asp:Label ID="lblUserID" runat="server"></asp:Label>
                     <br />
                     &nbsp;<asp:Label ID="lblUserName" runat="server"></asp:Label>
