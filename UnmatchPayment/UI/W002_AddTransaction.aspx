@@ -101,7 +101,7 @@
             }
             else if (document.getElementById('<%=BrowsFile.ClientID%>').disabled == false &&
                 <%=gvUploadFile.Rows.Count%> == 0) {
-                alert('กรุณาระบุ รหัสบริการ');
+                alert('กรุณาแนบไฟล์');
                 return false;
             }
 }

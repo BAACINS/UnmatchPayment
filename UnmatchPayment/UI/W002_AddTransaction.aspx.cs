@@ -181,7 +181,7 @@ namespace UnmatchPayment.UI
                         {
                             Cause.CauseID,
                             Cause.CauseDescription,
-                            isSpinCreate = Convert.ToInt16(Cause.isSpinCreate),
+                            isUpdateUnmatched = Convert.ToInt16(Cause.isUpdateUnmatched),
                             isCompCode = Convert.ToInt16(Cause.isCompCode),
                             isAmount = Convert.ToInt16(Cause.isAmount),
                             isRef1 = Convert.ToInt16(Cause.isRef1),
@@ -199,7 +199,7 @@ namespace UnmatchPayment.UI
             for (int i = 0; i < dtUnmatchedCause.Rows.Count; i++)
             {
                 strListCause = "["
-                        + dtUnmatchedCause.Rows[i]["isSpinCreate"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isUpdateUnmatched"].ToString() + ","
                         + dtUnmatchedCause.Rows[i]["isCompCode"].ToString() + ","
                         + dtUnmatchedCause.Rows[i]["isAmount"].ToString() + ","
                         + dtUnmatchedCause.Rows[i]["isRef1"].ToString() + ","
@@ -450,20 +450,5 @@ namespace UnmatchPayment.UI
             Response.Redirect(urlPrev);
         }
 
-        protected void btnSelectCause_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                int CauseID = int.Parse(hdCauseID.Value);
-                var UC = (from tb in dbAcc.UnmatchCauses
-                          where tb.CauseID == CauseID
-                          select tb).FirstOrDefault();
-                txtCompCode.Enabled = false;
-            }
-            catch
-            {
-
-            }
-        }
     }
 }

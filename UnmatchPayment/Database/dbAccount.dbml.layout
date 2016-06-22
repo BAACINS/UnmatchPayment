@@ -68,12 +68,6 @@
         <elementListCompartment Id="f858b0d3-9684-4da3-ba03-e9504cae3161" absoluteBounds="2.64, 3.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="563d953d-f46c-450b-91f2-a143cd0f4533" isExpanded="false" absoluteBounds="0.5, 2, 2, 0.45">
-      <DataClassMoniker Name="/dbAccountDataContext/UnmatchCause" />
-      <nestedChildShapes>
-        <elementListCompartment Id="04ed606a-49d4-4e6a-8551-02fb65791add" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="2a9f3aa4-2184-46d5-bc92-956f9e5d8b6c" isExpanded="false" absoluteBounds="0.5, 2.5, 2, 0.45">
       <DataClassMoniker Name="/dbAccountDataContext/StatusDetail" />
       <nestedChildShapes>
@@ -86,10 +80,16 @@
         <elementListCompartment Id="d7a259ee-d4cb-449a-b9c0-380cf9080c39" absoluteBounds="0.51499999999999968, 3.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="c895769c-030a-4970-82e6-a3ffc01e9e58" isExpanded="false" absoluteBounds="0.5, 3.5, 2, 0.45">
+    <classShape Id="91a45fc0-c85a-4aaf-8f98-7600fe200bb2" isExpanded="false" absoluteBounds="0.5, 2, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/UnmatchCause" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6c94176b-2fd6-481a-9fc3-3f03620abe29" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2cb58026-0944-4dbe-8fbc-3fff2d27d5de" isExpanded="false" absoluteBounds="0.5, 3.5, 2, 0.45">
       <DataClassMoniker Name="/dbAccountDataContext/tbUnmatchPayment" />
       <nestedChildShapes>
-        <elementListCompartment Id="3fb85229-ff2a-46a8-af71-b7d8fd6aea71" absoluteBounds="0.51500000000000012, 3.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7ed389c2-1766-4754-b6ed-ad16b538e6ff" absoluteBounds="0.51500000000000012, 3.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -12,15 +12,32 @@ namespace UnmatchPayment.UI
 {
     public partial class UnmatchListBranch : System.Web.UI.Page
     {
+        #region Property
         dbAccountDataContext dbAcc = new dbAccountDataContext();
         C001_DataMng DataMNG = new C001_DataMng();
+        private EMPLOYEE_SELECTResult Emp
+        {
+            get
+            {
+                if (Session["Emp"] == null)
+                {
+                    Session["Emp"] = null;
+                }
+                return (EMPLOYEE_SELECTResult)Session["Emp"];
+            }
+            set
+            {
+                Session["Emp"] = value;
+            }
+        }
+        #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 DataTable dtUnmatch = new DataTable();
                 var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetails
-                            where claim.BranchCode == "0413" && claim.MatchingID == null
+                            where claim.BranchCode == Emp.BRANCH_NO && claim.MatchingID == null
                             && !(from up in dbAcc.tbUnmatchPayments select up.TellerPaymentDetailID).Contains(Convert.ToInt32(claim.TellerPaymentDetailID))
                             select claim).OrderBy(x => x.TellerPaymentDetailID);
 
