@@ -162,6 +162,7 @@
     <Compile Include="Class\C004_DatabaseInfo.cs" />
     <Compile Include="Class\C005_Calculator.cs" />
     <Compile Include="Class\C006_UploadFile.cs" />
+    <Compile Include="Class\C007_MenuMNG.cs" />
     <Compile Include="Database\dbAccount.cs">
       <DependentUpon>dbAccount.dbml</DependentUpon>
     </Compile>
