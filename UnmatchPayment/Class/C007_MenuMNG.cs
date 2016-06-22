@@ -62,20 +62,20 @@ namespace UnmatchPayment.Class
 
         public DataTable GetAllAppMenuForMasterPage(string Role_Code)
         {
-            //try
-            //{
-            //    var dtAcc = from menus in dbAcc.SPUP_APPMENU_SELECTFORMASTERPAGE(Role_Code)
+            try
+            {
+                var dtAcc = from menus in dbAcc.SPUP_APPMENU_SELECTFORMASTERPAGE(Role_Code)
 
-            //                select menus;
+                            select menus;
 
-            //    DataTable _dt = LINQToDataTable(dtAcc);
-            //    return _dt;
-            //}
+                DataTable _dt = LINQToDataTable(dtAcc);
+                return _dt;
+            }
 
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

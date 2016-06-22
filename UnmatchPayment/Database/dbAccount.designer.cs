@@ -216,6 +216,13 @@ namespace UnmatchPayment.Database
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bRANCH_NO);
 			return ((ISingleResult<GETUSERBYHQ_SELECTResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SPUP_APPMENU_SELECTFORMASTERPAGE")]
+		public ISingleResult<SPUP_APPMENU_SELECTFORMASTERPAGEResult> SPUP_APPMENU_SELECTFORMASTERPAGE([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ROLE_CODE", DbType="NVarChar(4)")] string rOLE_CODE)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rOLE_CODE);
+			return ((ISingleResult<SPUP_APPMENU_SELECTFORMASTERPAGEResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.AppMenu")]
@@ -3087,6 +3094,104 @@ namespace UnmatchPayment.Database
 				if ((this._BRANCH_NO != value))
 				{
 					this._BRANCH_NO = value;
+				}
+			}
+		}
+	}
+	
+	public partial class SPUP_APPMENU_SELECTFORMASTERPAGEResult
+	{
+		
+		private int _MENUNO;
+		
+		private System.Nullable<int> _MENUSEQ;
+		
+		private string _MENUDESC;
+		
+		private string _MENUURL;
+		
+		private System.Nullable<int> _MENUGROUP;
+		
+		public SPUP_APPMENU_SELECTFORMASTERPAGEResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MENUNO", DbType="Int NOT NULL")]
+		public int MENUNO
+		{
+			get
+			{
+				return this._MENUNO;
+			}
+			set
+			{
+				if ((this._MENUNO != value))
+				{
+					this._MENUNO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MENUSEQ", DbType="Int")]
+		public System.Nullable<int> MENUSEQ
+		{
+			get
+			{
+				return this._MENUSEQ;
+			}
+			set
+			{
+				if ((this._MENUSEQ != value))
+				{
+					this._MENUSEQ = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MENUDESC", DbType="NVarChar(100)")]
+		public string MENUDESC
+		{
+			get
+			{
+				return this._MENUDESC;
+			}
+			set
+			{
+				if ((this._MENUDESC != value))
+				{
+					this._MENUDESC = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MENUURL", DbType="NVarChar(100)")]
+		public string MENUURL
+		{
+			get
+			{
+				return this._MENUURL;
+			}
+			set
+			{
+				if ((this._MENUURL != value))
+				{
+					this._MENUURL = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MENUGROUP", DbType="Int")]
+		public System.Nullable<int> MENUGROUP
+		{
+			get
+			{
+				return this._MENUGROUP;
+			}
+			set
+			{
+				if ((this._MENUGROUP != value))
+				{
+					this._MENUGROUP = value;
 				}
 			}
 		}
