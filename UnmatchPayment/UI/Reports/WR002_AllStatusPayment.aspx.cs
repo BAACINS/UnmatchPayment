@@ -52,12 +52,14 @@ namespace UnmatchPayment.UI.Reports
                     ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
                     ddlBranch.Enabled = false;
                     GetUserDDL();
+                    GetCause();
                 }
                 else
                 {
                     GetProvince();
                     GetBranch();
                     GetUserDDL();
+                    GetCause();
                 }
             }
         }
