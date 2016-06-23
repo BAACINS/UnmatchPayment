@@ -52,14 +52,16 @@ namespace UnmatchPayment.UI.Reports
                     ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
                     ddlBranch.Enabled = false;
                     GetUserDDL();
+                    GetStatus();
                     GetCause();
                 }
                 else
                 {
                     GetProvince();
+                    GetCause();
+                    GetStatus();
                     GetBranch();
                     GetUserDDL();
-                    GetCause();
                 }
             }
         }
@@ -100,7 +102,7 @@ namespace UnmatchPayment.UI.Reports
 
         private void GetCause()
         {
-            ddlCause.DataSource = GetData.GetCause(ddlCause.SelectedValue.ToString());
+            ddlCause.DataSource = GetData.GetCause();
             ddlCause.DataTextField = "CAUSEDESCRIPTION";
             ddlCause.DataValueField = "CAUSEID";
             ddlCause.DataBind();
@@ -188,9 +190,27 @@ namespace UnmatchPayment.UI.Reports
         {
             GetProvince();
             GetBranch();
+            GetUserDDL();
         }
+        
+        protected void ddlBranch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Load userlist for HQ 
+            if (UserLogin.isBranch != 1 && ddlBranch.SelectedValue != "00")
+            {
+                ddlUserID.DataSource = GetData.GetDDLByRoleCode(UserLogin.ROLECODE.ToString(), ddlBranch.SelectedValue);
+                ddlUserID.DataTextField = "USERFULLNAME";
+                ddlUserID.DataValueField = "USERID";
+                ddlUserID.DataBind();
+            }
+            else
+            {
+                GetUserDDL();
+            }
 
-        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        }
+                 
+protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             GetStatus();
         }

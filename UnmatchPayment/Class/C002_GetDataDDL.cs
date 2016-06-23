@@ -167,7 +167,7 @@ namespace UnmatchPayment.Class
             }
         }
 
-        public DataTable GetCause(string causeID)
+        public DataTable GetCause()
         {
 
             try
@@ -252,7 +252,7 @@ namespace UnmatchPayment.Class
         {
             try
             {
-                var dtAcc = from tb in dbAcc.GETUSERBYHQ_SELECT(branchNo)
+                var dtAcc = from tb in dbAcc.GETUSERBYBRANCH_SELECT(branchNo)
                             orderby tb.USERID
                             select tb;
 

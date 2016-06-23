@@ -221,18 +221,18 @@ namespace UnmatchPayment.Database
 			return ((ISingleResult<EMPLOYEE_SELECTResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GETUSERBYHQ_SELECT")]
-		public ISingleResult<GETUSERBYHQ_SELECTResult> GETUSERBYHQ_SELECT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BRANCH_NO", DbType="NVarChar(4)")] string bRANCH_NO)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bRANCH_NO);
-			return ((ISingleResult<GETUSERBYHQ_SELECTResult>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SPUP_APPMENU_SELECTFORMASTERPAGE")]
 		public ISingleResult<SPUP_APPMENU_SELECTFORMASTERPAGEResult> SPUP_APPMENU_SELECTFORMASTERPAGE([global::System.Data.Linq.Mapping.ParameterAttribute(Name="ROLE_CODE", DbType="NVarChar(4)")] string rOLE_CODE)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rOLE_CODE);
 			return ((ISingleResult<SPUP_APPMENU_SELECTFORMASTERPAGEResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.GETUSERBYBRANCH_SELECT")]
+		public ISingleResult<GETUSERBYBRANCH_SELECTResult> GETUSERBYBRANCH_SELECT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="BRANCH_NO", DbType="NVarChar(4)")] string bRANCH_NO)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bRANCH_NO);
+			return ((ISingleResult<GETUSERBYBRANCH_SELECTResult>)(result.ReturnValue));
 		}
 	}
 	
@@ -3284,86 +3284,6 @@ namespace UnmatchPayment.Database
 		}
 	}
 	
-	public partial class GETUSERBYHQ_SELECTResult
-	{
-		
-		private string _USERID;
-		
-		private string _USERFULLNAME;
-		
-		private string _HRCODE;
-		
-		private string _BRANCH_NO;
-		
-		public GETUSERBYHQ_SELECTResult()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(10)")]
-		public string USERID
-		{
-			get
-			{
-				return this._USERID;
-			}
-			set
-			{
-				if ((this._USERID != value))
-				{
-					this._USERID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERFULLNAME", DbType="NVarChar(251)")]
-		public string USERFULLNAME
-		{
-			get
-			{
-				return this._USERFULLNAME;
-			}
-			set
-			{
-				if ((this._USERFULLNAME != value))
-				{
-					this._USERFULLNAME = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HRCODE", DbType="NVarChar(100)")]
-		public string HRCODE
-		{
-			get
-			{
-				return this._HRCODE;
-			}
-			set
-			{
-				if ((this._HRCODE != value))
-				{
-					this._HRCODE = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NO", DbType="NVarChar(100)")]
-		public string BRANCH_NO
-		{
-			get
-			{
-				return this._BRANCH_NO;
-			}
-			set
-			{
-				if ((this._BRANCH_NO != value))
-				{
-					this._BRANCH_NO = value;
-				}
-			}
-		}
-	}
-	
 	public partial class SPUP_APPMENU_SELECTFORMASTERPAGEResult
 	{
 		
@@ -3457,6 +3377,86 @@ namespace UnmatchPayment.Database
 				if ((this._MENUGROUP != value))
 				{
 					this._MENUGROUP = value;
+				}
+			}
+		}
+	}
+	
+	public partial class GETUSERBYBRANCH_SELECTResult
+	{
+		
+		private string _USERID;
+		
+		private string _USERFULLNAME;
+		
+		private string _ROLECODE;
+		
+		private string _BRANCH_NO;
+		
+		public GETUSERBYBRANCH_SELECTResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERID", DbType="NVarChar(10)")]
+		public string USERID
+		{
+			get
+			{
+				return this._USERID;
+			}
+			set
+			{
+				if ((this._USERID != value))
+				{
+					this._USERID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USERFULLNAME", DbType="NVarChar(251)")]
+		public string USERFULLNAME
+		{
+			get
+			{
+				return this._USERFULLNAME;
+			}
+			set
+			{
+				if ((this._USERFULLNAME != value))
+				{
+					this._USERFULLNAME = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLECODE", DbType="NVarChar(10)")]
+		public string ROLECODE
+		{
+			get
+			{
+				return this._ROLECODE;
+			}
+			set
+			{
+				if ((this._ROLECODE != value))
+				{
+					this._ROLECODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BRANCH_NO", DbType="NVarChar(100)")]
+		public string BRANCH_NO
+		{
+			get
+			{
+				return this._BRANCH_NO;
+			}
+			set
+			{
+				if ((this._BRANCH_NO != value))
+				{
+					this._BRANCH_NO = value;
 				}
 			}
 		}
