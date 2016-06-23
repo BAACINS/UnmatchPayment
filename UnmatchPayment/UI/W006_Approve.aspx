@@ -47,6 +47,7 @@
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
+                <asp:BoundField HeaderText="อนุมัติ" />
                 <asp:TemplateField>
                     <HeaderTemplate>
                         <asp:CheckBox ID="chkboxSelectAll" AutoPostBack="true" runat="server" OnCheckedChanged="chkboxSelectAll_CheckedChanged" />
