@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="WR002_ApprovePayment.aspx.cs" Inherits="UnmatchPayment.UI.Reports.WR002_ApprovePayment" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="WR002_AllStatusPayment.aspx.cs" Inherits="UnmatchPayment.UI.Reports.WR002_ApprovePayment" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="~/UC/Calendar.ascx" TagPrefix="uc1" TagName="Calendar" %>
 
@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <p>
-        <h1>รายงานอนุมัติรายการ Unmatch</h1>
+        <h1>รายงานผลการอนุมัติรายการ Unmatch</h1>
     </p>
     <table style="width: 850px">
         <tr>
@@ -36,12 +36,12 @@
                 <asp:DropDownList ID="ddlStatus" runat="server" CssClass="dropDownList" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"></asp:DropDownList></td>
         </tr>
         <tr>
-            <td class="auto-style5">ผู้อนุมัติ :</td>
+            <td class="auto-style5">ผู้ทำรายการ :</td>
             <td colspan="3">
                 <asp:DropDownList ID="ddlUserID" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
         </tr>
         <tr>
-            <td class="auto-style5">วันที่อนุมัติ ตั้งแต่ : 
+            <td class="auto-style5">วันที่สถานะ ตั้งแต่ : 
             </td>
             <td>
                 <uc1:calendar runat="server" id="txtDateFrom" />

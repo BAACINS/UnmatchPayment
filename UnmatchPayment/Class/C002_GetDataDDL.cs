@@ -173,6 +173,7 @@ namespace UnmatchPayment.Class
             try
             {
                 var dtAcc = from cause in dbAcc.UnmatchCauses
+                            where isActive == "true"
                             orderby cause.CauseID ascending
                             select cause;
 
