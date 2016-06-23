@@ -24,7 +24,7 @@
         <tr>
             <td class="auto-style5">สาขา :</td>
             <td colspan="3">
-                <asp:DropDownList ID="ddlBranch" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
+                <asp:DropDownList ID="ddlBranch" runat="server" CssClass="dropDownList" AutoPostBack="True" OnSelectedIndexChanged="ddlBranch_SelectedIndexChanged"></asp:DropDownList></td>
 
         </tr>
         <tr>
@@ -37,8 +37,11 @@
         </tr>
         <tr>
             <td class="auto-style5">ผู้ทำรายการ :</td>
-            <td colspan="3">
+            <td>
                 <asp:DropDownList ID="ddlUserID" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
+            <td class="auto-style5">ประเภทการจ่ายคืน :</td>
+            <td>
+                <asp:DropDownList ID="ddlReturnType" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
         </tr>
         <tr>
             <td class="auto-style5">วันที่สถานะ ตั้งแต่ : 

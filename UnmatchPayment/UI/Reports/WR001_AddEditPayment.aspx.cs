@@ -102,7 +102,7 @@ namespace UnmatchPayment.UI
 
         private void GetCause()
         {
-            ddlCause.DataSource = GetData.GetCause(ddlCause.SelectedValue.ToString());
+            ddlCause.DataSource = GetData.GetCause();
             ddlCause.DataTextField = "CAUSEDESCRIPTION";
             ddlCause.DataValueField = "CAUSEID";
             ddlCause.DataBind();

@@ -191,15 +191,6 @@
       <Column Name="isBranch" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.GETUSERBYHQ_SELECT" Method="GETUSERBYHQ_SELECT">
-    <Parameter Name="BRANCH_NO" Parameter="bRANCH_NO" Type="System.String" DbType="NVarChar(4)" />
-    <ElementType Name="GETUSERBYHQ_SELECTResult">
-      <Column Name="USERID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="USERFULLNAME" Type="System.String" DbType="NVarChar(251)" CanBeNull="true" />
-      <Column Name="HRCODE" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.SPUP_APPMENU_SELECTFORMASTERPAGE" Method="SPUP_APPMENU_SELECTFORMASTERPAGE">
     <Parameter Name="ROLE_CODE" Parameter="rOLE_CODE" Type="System.String" DbType="NVarChar(4)" />
     <ElementType Name="SPUP_APPMENU_SELECTFORMASTERPAGEResult">
@@ -208,6 +199,15 @@
       <Column Name="MENUDESC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MENUURL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="MENUGROUP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GETUSERBYBRANCH_SELECT" Method="GETUSERBYBRANCH_SELECT">
+    <Parameter Name="BRANCH_NO" Parameter="bRANCH_NO" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="GETUSERBYBRANCH_SELECTResult">
+      <Column Name="USERID" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="USERFULLNAME" Type="System.String" DbType="NVarChar(251)" CanBeNull="true" />
+      <Column Name="ROLECODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

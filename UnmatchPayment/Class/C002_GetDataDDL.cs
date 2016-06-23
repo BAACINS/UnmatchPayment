@@ -167,13 +167,13 @@ namespace UnmatchPayment.Class
             }
         }
 
-        public DataTable GetCause(string causeID)
+        public DataTable GetCause()
         {
 
             try
             {
                 var dtAcc = from cause in dbAcc.UnmatchCauses
-                            where isActive == "true"
+                            where cause.isActive == true
                             orderby cause.CauseID ascending
                             select cause;
 
@@ -252,7 +252,7 @@ namespace UnmatchPayment.Class
         {
             try
             {
-                var dtAcc = from tb in dbAcc.GETUSERBYHQ_SELECT(branchNo)
+                var dtAcc = from tb in dbAcc.GETUSERBYBRANCH_SELECT(branchNo)
                             orderby tb.USERID
                             select tb;
 
