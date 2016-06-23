@@ -144,7 +144,7 @@
     <Content Include="UC\Calendar.ascx" />
     <Content Include="UC\I006_calendar.png" />
     <Content Include="UC\I007_eraser.png" />
-    <Content Include="UI\Reports\WR002_ApprovePayment.aspx" />
+    <Content Include="UI\Reports\WR002_AllStatusPayment.aspx" />
     <Content Include="UI\W002_AddTransaction.aspx" />
     <Content Include="UI\Default.aspx" />
     <Content Include="UI\W004_MenuMng.aspx" />
@@ -193,8 +193,8 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\R002_ApprovePayment.cs">
-      <DependentUpon>R002_ApprovePayment.rpt</DependentUpon>
+    <Compile Include="Reports\R002_AllStatusPayment.cs">
+      <DependentUpon>R002_AllStatusPayment.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -212,12 +212,12 @@
     <Compile Include="UC\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
     </Compile>
-    <Compile Include="UI\Reports\WR002_ApprovePayment.aspx.cs">
-      <DependentUpon>WR002_ApprovePayment.aspx</DependentUpon>
+    <Compile Include="UI\Reports\WR002_AllStatusPayment.aspx.cs">
+      <DependentUpon>WR002_AllStatusPayment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\Reports\WR002_ApprovePayment.aspx.designer.cs">
-      <DependentUpon>WR002_ApprovePayment.aspx</DependentUpon>
+    <Compile Include="UI\Reports\WR002_AllStatusPayment.aspx.designer.cs">
+      <DependentUpon>WR002_AllStatusPayment.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\W002_AddTransaction.aspx.cs">
       <DependentUpon>W002_AddTransaction.aspx</DependentUpon>
@@ -289,9 +289,9 @@
     <Folder Include="Upload\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Reports\R002_ApprovePayment.rpt">
+    <EmbeddedResource Include="Reports\R002_AllStatusPayment.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>R002_ApprovePayment.cs</LastGenOutput>
+      <LastGenOutput>R002_AllStatusPayment.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\R001_AddEditPayment.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

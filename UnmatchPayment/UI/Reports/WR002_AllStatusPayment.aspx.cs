@@ -41,24 +41,24 @@ namespace UnmatchPayment.UI.Reports
             {
                 GetRegion();
 
-                //if (UserLogin.isBranch == 1)
-                //{
-                //    ddlRegion.SelectedValue = UserLogin.REGION_NO;
-                //    ddlRegion.Enabled = false;
-                //    this.GetProvince();
-                //    ddlProvince.SelectedValue = UserLogin.PROVINCE_NO;
-                //    ddlProvince.Enabled = false;
-                //    this.GetBranch();
-                //    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
-                //    ddlBranch.Enabled = false;
-                //    GetUserDDL();
-                //}
-                //else
-                //{
-                //    GetProvince();
-                //    GetBranch();
-                //    GetUserDDL();
-                //}
+                if (UserLogin.isBranch == 1)
+                {
+                    ddlRegion.SelectedValue = UserLogin.REGION_NO;
+                    ddlRegion.Enabled = false;
+                    this.GetProvince();
+                    ddlProvince.SelectedValue = UserLogin.PROVINCE_NO;
+                    ddlProvince.Enabled = false;
+                    this.GetBranch();
+                    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
+                    ddlBranch.Enabled = false;
+                    GetUserDDL();
+                }
+                else
+                {
+                    GetProvince();
+                    GetBranch();
+                    GetUserDDL();
+                }
             }
         }
 

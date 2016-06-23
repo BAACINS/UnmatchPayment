@@ -16,14 +16,14 @@ namespace UnmatchPayment.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class R002_ApprovePayment : ReportClass {
+    public class R002_AllStatusPayment : ReportClass {
         
-        public R002_ApprovePayment() {
+        public R002_AllStatusPayment() {
         }
         
         public override string ResourceName {
             get {
-                return "R002_ApprovePayment.rpt";
+                return "R002_AllStatusPayment.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace UnmatchPayment.Reports {
         
         public override string FullResourceName {
             get {
-                return "UnmatchPayment.Reports.R002_ApprovePayment.rpt";
+                return "UnmatchPayment.Reports.R002_AllStatusPayment.rpt";
             }
             set {
                 // Do nothing
@@ -162,9 +162,9 @@ namespace UnmatchPayment.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedR002_ApprovePayment : Component, ICachedReport {
+    public class CachedR002_AllStatusPayment : Component, ICachedReport {
         
-        public CachedR002_ApprovePayment() {
+        public CachedR002_AllStatusPayment() {
         }
         
         [Browsable(false)]
@@ -201,7 +201,7 @@ namespace UnmatchPayment.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            R002_ApprovePayment rpt = new R002_ApprovePayment();
+            R002_AllStatusPayment rpt = new R002_AllStatusPayment();
             rpt.Site = this.Site;
             return rpt;
         }
