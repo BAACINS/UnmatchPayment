@@ -76,5 +76,38 @@ namespace UnmatchPayment.UI
                 throw ex;
             }
         }
+
+        protected void btnApprove_Click(object sender, EventArgs e)
+        {
+            foreach(GridViewRow row in gvUnmatchList.Rows)
+            {
+                RadioButton rdb = (RadioButton)row.FindControl("rdbSPIN");
+                if(rdb != null)
+                {
+                    string a = rdb.Checked.ToString();
+                    tbUnmatchPayment UP = new tbUnmatchPayment();
+
+                    //if (!string.IsNullOrEmpty(hdCauseID.Value))
+                    //    UP.CauseID = int.Parse(hdCauseID.Value);
+                }
+            }
+        }
+
+        protected void chkboxSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox ChkBoxHeader = (CheckBox)gvUnmatchList.HeaderRow.FindControl("chkboxSelectAll");
+            foreach (GridViewRow row in gvUnmatchList.Rows)
+            {
+                CheckBox ChkBoxRows = (CheckBox)row.FindControl("chkApp");
+                if (ChkBoxHeader.Checked == true)
+                {
+                    ChkBoxRows.Checked = true;
+                }
+                else
+                {
+                    ChkBoxRows.Checked = false;
+                }
+            }
+        }
     }
 }
