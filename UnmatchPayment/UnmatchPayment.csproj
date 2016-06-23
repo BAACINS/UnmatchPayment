@@ -153,6 +153,7 @@
     <Content Include="UI\Reports\WR001_AddEditPayment.aspx" />
     <Content Include="UI\W003_UnmatchListHQ.aspx" />
     <Content Include="UI\W005_UnmatchListBranchEdit.aspx" />
+    <Content Include="UI\W006_Approve.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +275,13 @@
     </Compile>
     <Compile Include="UI\W005_UnmatchListBranchEdit.aspx.designer.cs">
       <DependentUpon>W005_UnmatchListBranchEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\W006_Approve.aspx.cs">
+      <DependentUpon>W006_Approve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\W006_Approve.aspx.designer.cs">
+      <DependentUpon>W006_Approve.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

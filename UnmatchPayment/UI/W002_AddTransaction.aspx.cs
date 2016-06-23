@@ -239,6 +239,7 @@ namespace UnmatchPayment.UI
             try
             {
                 DateTimeFormatInfo fmt = (new CultureInfo("th-TH")).DateTimeFormat;
+                //select data from tellerpayment
                 if (Application["TellerID"] != null)
                 {
                     int TellerID = int.Parse(Application["TellerID"].ToString());
@@ -251,7 +252,27 @@ namespace UnmatchPayment.UI
                     lblRef2.Text = teller.Ref2;
                     lblRefName.Text = teller.CustomerName;
                     lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
+
+                    //select data from UnmatchedPayment [1=Edit,else = insert]
+                    if (Application["isEdit"].ToString() == "1")
+                    {
+                        var UP = (from Unmatch in dbAcc.tbUnmatchPayments
+                                  where Unmatch.TellerPaymentDetailID == TellerID
+                                  select Unmatch).FirstOrDefault();
+                        if(UP != null)
+                        {
+                            txtCompCode.Text = UP.CompCode;
+                            txtAmount.Text = UP.Amount.ToString();
+                            txtRef1.Text = UP.Ref1;
+                            txtRef2.Text = UP.Ref2;
+                            txtRefName.Text = UP.RefName;
+                            txtPaymentDate.TextDate = DateTime.Parse(UP.PaymentDate.ToString()).ToString("dd-MM-yyyy", fmt);
+                            txtDepNo.Text = UP.DepNo;
+                            hdCauseID.Value = UP.CauseID.ToString();
+                        }
+                    }
                 }
+
             }
             catch
             {

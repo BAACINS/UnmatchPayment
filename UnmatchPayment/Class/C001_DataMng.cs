@@ -61,7 +61,7 @@ namespace UnmatchPayment.Class
         public int EditUnmatchpayment(tbUnmatchPayment UP)
         {
             tbUnmatchPayment OldUnmatch = (from tb in dbAcc.tbUnmatchPayments
-                                        where tb.ID == UP.ID
+                                        where tb.TellerPaymentDetailID == UP.TellerPaymentDetailID
                                         select tb).SingleOrDefault();
             //check insert or update
             if(OldUnmatch == null)

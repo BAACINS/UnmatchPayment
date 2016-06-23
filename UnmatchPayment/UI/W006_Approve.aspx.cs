@@ -10,7 +10,7 @@ using UnmatchPayment.Database;
 
 namespace UnmatchPayment.UI
 {
-    public partial class W005_UnmatchListBranchEdit : System.Web.UI.Page
+    public partial class W006_Approve : System.Web.UI.Page
     {
         #region Property
         dbAccountDataContext dbAcc = new dbAccountDataContext();
@@ -40,7 +40,8 @@ namespace UnmatchPayment.UI
                 var dtAcc = (from claim in dbAcc.tbUnmatchPayments
                              join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
                              where claim.BranchCode == Emp.BRANCH_NO && statusList.Contains(claim.StatusCode)
-                             select new {
+                             select new
+                             {
                                  claim.TellerPaymentDetailID,
                                  claim.CompCode,
                                  claim.Amount,
@@ -58,6 +59,7 @@ namespace UnmatchPayment.UI
                 gvUnmatchList.DataBind();
             }
         }
+
         protected void btnView_Click(object sender, EventArgs e)
         {
             try
