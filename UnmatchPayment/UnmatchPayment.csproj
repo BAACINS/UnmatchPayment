@@ -144,6 +144,7 @@
     <Content Include="UC\Calendar.ascx" />
     <Content Include="UC\I006_calendar.png" />
     <Content Include="UC\I007_eraser.png" />
+    <Content Include="UI\Config.aspx" />
     <Content Include="UI\Reports\WR002_AllStatusPayment.aspx" />
     <Content Include="UI\W002_AddTransaction.aspx" />
     <Content Include="UI\Default.aspx" />
@@ -212,6 +213,13 @@
     </Compile>
     <Compile Include="UC\Calendar.ascx.designer.cs">
       <DependentUpon>Calendar.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Config.aspx.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\Config.aspx.designer.cs">
+      <DependentUpon>Config.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\Reports\WR002_AllStatusPayment.aspx.cs">
       <DependentUpon>WR002_AllStatusPayment.aspx</DependentUpon>

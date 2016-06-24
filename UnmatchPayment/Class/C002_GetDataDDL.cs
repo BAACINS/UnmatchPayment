@@ -176,7 +176,7 @@ namespace UnmatchPayment.Class
                             where cause.isActive == true
                             orderby cause.CauseID ascending
                             select cause;
-
+               
                 DataTable _dt = LINQToDataTable(dtAcc);
                 DataRow row;
                 row = _dt.NewRow();
@@ -318,6 +318,34 @@ namespace UnmatchPayment.Class
             }
         }
 
+        public DataTable GetReturnType()
+        {
+            try
+            {
+                var dtAcc = from tb in dbAcc.ReturnTypes
+                            orderby tb.ReturnTypeID
+                            select tb;
+
+                DataTable _dt = LINQToDataTable(dtAcc);
+                if (_dt.Columns.Count == 0)
+                {
+                    _dt.Columns.Add("RETURNTYPENAME", typeof(string));
+                    _dt.Columns.Add("RETURNTYPEID", typeof(string));
+                }
+                DataRow row;
+                row = _dt.NewRow();
+                row["RETURNTYPENAME"] = "รวมทั้งหมด";
+                row["RETURNTYPEID"] = "00";
+                _dt.Rows.InsertAt(row, 0);
+                return _dt;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public DataTable GetMenuGroup()
         {
             DataTable _dt = new DataTable();
@@ -386,8 +414,6 @@ namespace UnmatchPayment.Class
                             where tb.MenuNo == Convert.ToInt16(menu_no)
                             select tb;
                 _dt = LINQToDataTable(query);
-
-
 
             }
             catch (Exception ex)
@@ -505,7 +531,6 @@ namespace UnmatchPayment.Class
             }
             return Convert.ToInt16(menu_no);
         }
-
 
 
         public void DeleteAppMenu(string menu_no)

@@ -54,6 +54,7 @@ namespace UnmatchPayment.UI.Reports
                     GetUserDDL();
                     GetStatus();
                     GetCause();
+                    GetReturnType();
                 }
                 else
                 {
@@ -62,6 +63,7 @@ namespace UnmatchPayment.UI.Reports
                     GetStatus();
                     GetBranch();
                     GetUserDDL();
+                    GetReturnType();
                 }
             }
         }
@@ -116,9 +118,17 @@ namespace UnmatchPayment.UI.Reports
             ddlStatus.DataBind();
         }
 
+        private void GetReturnType()
+        {
+            ddlReturnType.DataSource = GetData.GetReturnType();
+            ddlReturnType.DataTextField = "RETURNTYPENAME";
+            ddlReturnType.DataValueField = "RETURNTYPEID";
+            ddlReturnType.DataBind();
+        }
+
         protected void LoadReport()
         {
-            string _pathReport = Server.MapPath("~/Reports/R001_AddEditClaim.rpt");
+            string _pathReport = Server.MapPath("~/Reports/R002_AllStatusPayment.rpt");
             ReportDocument rpt = new ReportDocument();
             rpt.Load(_pathReport);
             C003_ReportLogin _login = new C003_ReportLogin(rpt, C004_DatabaseInfo.Instance);
@@ -134,7 +144,9 @@ namespace UnmatchPayment.UI.Reports
             rpt.SetParameterValue("@BRANCH_NO", ddlBranch.SelectedValue);
             rpt.SetParameterValue("@INPUT_DATE_FROM", DateFrom);
             rpt.SetParameterValue("@INPUT_DATE_TO", DateTo);
-            //rpt.SetParameterValue("@INPUT_PROJECT", ddlProject.SelectedValue);
+            rpt.SetParameterValue("@INPUT_CAUSE", ddlCause.SelectedValue);
+            rpt.SetParameterValue("@STATUS_NO", ddlStatus.SelectedValue);
+            rpt.SetParameterValue("@INPUT_RETURNTYPE", ddlReturnType.SelectedValue);
             rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
 
             rpt.Load(_pathReport);

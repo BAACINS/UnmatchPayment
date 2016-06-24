@@ -103,5 +103,24 @@ namespace UnmatchPayment.Class
             dbAcc.SubmitChanges();
             return OldUnmatch.ID;
         }
+
+        public DataTable GetCauseConfig()
+        {
+
+            try
+            {
+                var dtAcc = from cause in dbAcc.UnmatchCauses
+                            orderby cause.CauseID ascending
+                            select cause;
+
+                DataTable _dt = LINQToDataTable(dtAcc);
+
+                return _dt;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
