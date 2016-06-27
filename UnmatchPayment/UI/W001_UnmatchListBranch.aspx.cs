@@ -37,7 +37,8 @@ namespace UnmatchPayment.UI
             {
                 DataTable dtUnmatch = new DataTable();
                 var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetails
-                            where claim.BranchCode == Emp.BRANCH_NO && claim.MatchingID == null
+                            where claim.BranchCode == Emp.BRANCH_NO 
+                            && claim.MatchingID == null
                             && !(from up in dbAcc.tbUnmatchPayments select up.TellerPaymentDetailID).Contains(Convert.ToInt32(claim.TellerPaymentDetailID))
                             select claim).OrderBy(x => x.TellerPaymentDetailID);
 

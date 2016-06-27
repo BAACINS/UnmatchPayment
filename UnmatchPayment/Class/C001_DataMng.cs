@@ -99,6 +99,12 @@ namespace UnmatchPayment.Class
                 OldUnmatch.ApproveDate = UP.ApproveDate;
             if (OldUnmatch.ApproveBy != UP.ApproveBy && UP.ApproveBy != null)
                 OldUnmatch.ApproveBy = UP.ApproveBy;
+            if (OldUnmatch.ModifiedBy != UP.ModifiedBy && UP.ModifiedBy != null)
+                OldUnmatch.ModifiedBy = UP.ModifiedBy;
+            if (OldUnmatch.ModifiedDate != UP.ModifiedDate && UP.ModifiedDate != null)
+                OldUnmatch.ModifiedDate = UP.ModifiedDate;
+            if (OldUnmatch.ReturnTypeID != UP.ReturnTypeID && UP.ReturnTypeID != null)
+                OldUnmatch.ReturnTypeID = UP.ReturnTypeID;
 
             dbAcc.SubmitChanges();
             return OldUnmatch.ID;

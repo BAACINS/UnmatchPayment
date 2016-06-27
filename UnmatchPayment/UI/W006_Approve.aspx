@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W006_Approve.aspx.cs" Inherits="UnmatchPayment.UI.W006_Approve" MaintainScrollPositionOnPostback="True" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="icheck.min.js"></script>
+    <link href="../skins/polaris/polaris.css" rel="stylesheet"> 
     <script type="text/javascript" language="javascript">
         function CheckAllEmp(Checkbox) {
             var GridVwHeaderChckbox = document.getElementById("<%=gvUnmatchList.ClientID %>");
@@ -10,10 +11,43 @@
                 GridVwHeaderChckbox.rows[i].cells[8].getElementsByTagName("INPUT")[0].checked = Checkbox.checked;
             }
         }
+
+        $(document).ready(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_polaris',
+                radioClass: 'iradio_polaris',
+                increaseArea: '-10%' // optional
+            });
+        });
+        //$(document).ready(function () {
+        //    $('input').each(function () {
+        //        var self = $(this),
+        //          label = self.next(),
+        //          label_text = label.text();
+
+        //        label.remove();
+        //        self.iCheck({
+        //            checkboxClass: 'icheckbox_line-blue',
+        //            radioClass: 'iradio_line-blue',
+        //            insert: '<div class="icheck_line-icon"></div>' + label_text
+        //        });
+        //    });
+        //});
     </script>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
     <h1>อนุมัติรายการ Unmatched</h1>
     <br />
-    <p style="margin-left: -50px; padding-left: -10px;">
+
+    <asp:CheckBoxList ID="chkLstFavColor" runat="server" CssClass="icheckbox_line-blue">
+    </asp:CheckBoxList>
+    <br />
+    <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="button" OnClick="btnSearch_Click" />
+
+    <p>
+        <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล" ForeColor="Red"></asp:Label>
         <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -28,21 +62,21 @@
                 <asp:BoundField HeaderText="คืนเงินด้วย SPIN" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:RadioButton ID="rdbSPIN" Value="SPIN" runat="server" GroupName="rdbReturnType" />
+                        <asp:RadioButton ID="rdbSPIN" Value="SPIN" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsSpin") %>' Checked ='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsSpin"),DataBinder.Eval(Container.DataItem,"IsGL")) %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="คืนเงินด้วย GL" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:RadioButton ID="rdbGL" Value="GL" runat="server" GroupName="rdbReturnType" />
+                        <asp:RadioButton ID="rdbGL" Value="GL" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsGL") %>' Checked ='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsGL"),DataBinder.Eval(Container.DataItem,"IsSpin")) %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnView" runat="server" Text=' View '
+                        <asp:Button ID="btnView" runat="server" Text=' แก้ไข '
                             CssClass="button" OnClick="btnView_Click" CommandArgument='<%# Eval("TellerPaymentDetailID") %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -53,9 +87,9 @@
                         <asp:CheckBox ID="chkboxSelectAll" AutoPostBack="true" runat="server" OnCheckedChanged="chkboxSelectAll_CheckedChanged" />
                     </HeaderTemplate>
                     <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                        <ItemTemplate>
-                            <asp:CheckBox ID="chkApp" runat="server"></asp:CheckBox>
-                        </ItemTemplate>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="chkApp" runat="server" CommandArgument='<%#Eval("TellerPaymentDetailID")%>'></asp:CheckBox>
+                    </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#2461BF" />

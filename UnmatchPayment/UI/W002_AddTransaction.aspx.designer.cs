@@ -211,21 +211,21 @@ namespace UnmatchPayment.UI {
         protected global::System.Web.UI.WebControls.GridView gvUploadFile;
         
         /// <summary>
-        /// bntSave control.
+        /// btnSave control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bntSave;
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
-        /// bntClose control.
+        /// btnClose control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bntClose;
+        protected global::System.Web.UI.WebControls.Button btnClose;
     }
 }

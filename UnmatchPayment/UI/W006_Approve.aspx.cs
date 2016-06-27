@@ -35,28 +35,55 @@ namespace UnmatchPayment.UI
         {
             if (!IsPostBack)
             {
-                var statusList = new string[] { "01", "02" };
-                DataTable dtUnmatch = new DataTable();
-                var dtAcc = (from claim in dbAcc.tbUnmatchPayments
-                             join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
-                             where claim.BranchCode == Emp.BRANCH_NO && statusList.Contains(claim.StatusCode)
-                             select new
-                             {
-                                 claim.TellerPaymentDetailID,
-                                 claim.CompCode,
-                                 claim.Amount,
-                                 claim.Ref1,
-                                 claim.Ref2,
-                                 claim.RefName,
-                                 claim.PaymentDate,
-                                 cause.CauseDescription
-                             }
-                             ).OrderBy(x => x.TellerPaymentDetailID);
+                GetdataClaim();
+            }
+        }
+        public bool CheckReturnDefault(object item1, object item2)
+        {
 
-                dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
+            if (item1.ToString().ToLower() == "true" && item2.ToString().ToLower() == "false")
+                return true;
+            else
+                return false;
+        }
 
-                gvUnmatchList.DataSource = dtUnmatch;
-                gvUnmatchList.DataBind();
+        private void GetdataClaim()
+        {
+            var statusList = new string[] { "01" };
+            DataTable dtUnmatch = new DataTable();
+            var dtAcc = (from claim in dbAcc.tbUnmatchPayments
+                         join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
+                         where statusList.Contains(claim.StatusCode)
+                         //&& claim.ModifiedBy != Emp.USER_ID
+                         select new
+                         {
+                             claim.TellerPaymentDetailID,
+                             claim.CompCode,
+                             claim.Amount,
+                             claim.Ref1,
+                             claim.Ref2,
+                             claim.RefName,
+                             claim.PaymentDate,
+                             cause.CauseID,
+                             cause.CauseDescription,
+                             cause.isSpin,
+                             cause.isGL
+                         }
+                         ).OrderBy(x => x.CauseID);
+
+            dtUnmatch = DataMNG.LINQToDataTable(dtAcc);
+
+            gvUnmatchList.DataSource = dtUnmatch;
+            gvUnmatchList.DataBind();
+            if (dtUnmatch.Rows.Count > 0)
+            {
+                btnApprove.Visible = true;
+                lblDataNotFound.Visible = false;
+            }
+            else
+            {
+                btnApprove.Visible = false;
+                lblDataNotFound.Visible = true;
             }
         }
 
@@ -67,7 +94,7 @@ namespace UnmatchPayment.UI
                 string url = string.Empty;
                 string _strTellerID = ((Button)sender).CommandArgument;
                 Application["TellerID"] = _strTellerID;
-                Application["isEdit"] = "1";
+                Application["isEdit"] = "2";
 
                 Response.Redirect("W002_AddTransaction.aspx");
             }
@@ -81,16 +108,42 @@ namespace UnmatchPayment.UI
         {
             foreach(GridViewRow row in gvUnmatchList.Rows)
             {
-                RadioButton rdb = (RadioButton)row.FindControl("rdbSPIN");
-                if(rdb != null)
+                RadioButton rdbSPIN = (RadioButton)row.FindControl("rdbSPIN");
+                RadioButton rdbGL = (RadioButton)row.FindControl("rdbGL");
+                CheckBox cbApproved = (CheckBox)row.FindControl("chkApp");
+                if (cbApproved != null)
                 {
-                    string a = rdb.Checked.ToString();
-                    tbUnmatchPayment UP = new tbUnmatchPayment();
+                    if (cbApproved.Checked.ToString().ToLower() == "true" && !(rdbGL.Enabled==true && rdbSPIN.Enabled==true && rdbGL.Checked==false && rdbSPIN.Checked==false))
+                    {
+                        string _strTellerID = row.Cells[0].Text;
+                        
+                        if (!string.IsNullOrEmpty(_strTellerID))
+                        {
+                            tbUnmatchPayment UP = new tbUnmatchPayment();
 
-                    //if (!string.IsNullOrEmpty(hdCauseID.Value))
-                    //    UP.CauseID = int.Parse(hdCauseID.Value);
+                            UP.TellerPaymentDetailID = Convert.ToInt32(_strTellerID);
+                            UP.StatusCode = "02";
+                            UP.ApproveBy = Emp.USER_ID;
+                            UP.ApproveDate = DateTime.Now;
+                            UP.ModifiedBy = Emp.USER_ID;
+                            UP.ModifiedDate = DateTime.Now;
+                            //check Return Type
+                            if (rdbSPIN.Checked)
+                                UP.ReturnTypeID = 1;
+                            else if (rdbGL.Checked)
+                                UP.ReturnTypeID = 2;
+                            else
+                                UP.ReturnTypeID = 0;
+
+                            DataMNG.EditUnmatchpayment(UP);
+
+                        }
+
+                    }
                 }
             }
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('อนุมัติเสร็จสิ้น');", true);
+            GetdataClaim();
         }
 
         protected void chkboxSelectAll_CheckedChanged(object sender, EventArgs e)
@@ -109,5 +162,11 @@ namespace UnmatchPayment.UI
                 }
             }
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            GetdataClaim();
+        }
+
     }
 }

@@ -144,6 +144,11 @@ namespace UnmatchPayment.UI
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
                 GetFileType();
+                if(Application["isEdit"].ToString() == "2")
+                {
+                    btnSave.Text = "อนุมัติ";
+                    StatusCode = "02";
+                }
                 if(Application["TellerID"] != null)
                 {
                     TellerID = Convert.ToInt32(Application["TellerID"]);
@@ -177,6 +182,7 @@ namespace UnmatchPayment.UI
         {
             //DataTable dtUnmatch = new DataTable();
             var dtAcc = from Cause in dbAcc.UnmatchCauses
+                        where Cause.isActive == true
                         select new
                         {
                             Cause.CauseID,
@@ -254,7 +260,7 @@ namespace UnmatchPayment.UI
                     lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
 
                     //select data from UnmatchedPayment [1=Edit,else = insert]
-                    if (Application["isEdit"].ToString() == "1")
+                    if (Application["isEdit"].ToString() == "1" || Application["isEdit"].ToString() == "2")
                     {
                         var UP = (from Unmatch in dbAcc.tbUnmatchPayments
                                   where Unmatch.TellerPaymentDetailID == TellerID
@@ -293,7 +299,7 @@ namespace UnmatchPayment.UI
             gvUploadFile.DataBind();
         }
 
-        protected void bntSave_Click(object sender, EventArgs e)
+        protected void btnSave_Click(object sender, EventArgs e)
         {
             //int _causeID = int.Parse(hdCauseID.Value);
 
@@ -466,7 +472,7 @@ namespace UnmatchPayment.UI
             }
         }
 
-        protected void bntClose_Click(object sender, EventArgs e)
+        protected void btnClose_Click(object sender, EventArgs e)
         {
             Response.Redirect(urlPrev);
         }

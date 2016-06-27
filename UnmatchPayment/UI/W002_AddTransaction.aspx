@@ -260,9 +260,9 @@
     </div>
     <br />
     <div style="text-align: center;">
-        <asp:Button ID="bntSave" runat="server" Text="บันทึก" CssClass="button" OnClick="bntSave_Click" OnClientClick="return onSave()" />
+        <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="button" OnClick="btnSave_Click" OnClientClick="return onSave()" />
         &nbsp
-        <asp:Button ID="bntClose" runat="server" Text="ยกเลิก" CssClass="button" OnClick="bntClose_Click" />
+        <asp:Button ID="btnClose" runat="server" Text="ยกเลิก" CssClass="button" OnClick="btnClose_Click" />
     </div>
 
     <%--//----------------------------------------------------%>
