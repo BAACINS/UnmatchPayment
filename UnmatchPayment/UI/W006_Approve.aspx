@@ -3,48 +3,83 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="icheck.min.js"></script>
-    <link href="../skins/polaris/polaris.css" rel="stylesheet"> 
+    <link href="../skins/polaris/polaris.css" rel="stylesheet">
     <script type="text/javascript" language="javascript">
-        function CheckAllEmp(Checkbox) {
-            var GridVwHeaderChckbox = document.getElementById("<%=gvUnmatchList.ClientID %>");
+        function CheckAllEmp() {
+            alert('aa');
+            <%--var GridVwHeaderChckbox = document.getElementById("<%=gvUnmatchList.ClientID %>");
             for (i = 1; i < GridVwHeaderChckbox.rows.length; i++) {
-                GridVwHeaderChckbox.rows[i].cells[8].getElementsByTagName("INPUT")[0].checked = Checkbox.checked;
+                GridVwHeaderChckbox.rows[i].cells[8].getElementsByTagName("INPUT")[0].checked = true;//Checkbox.checked;
+            }--%>
+        }
+        window.onload = function () {
+            var listCause = new Array();
+            var hdlistCause = document.getElementById('<%=hdListCause.ClientID%>').value;
+            var hdMaxCause = document.getElementById('<%=hdMaxCause.ClientID%>').value;
+
+            if (hdlistCause != '') {
+                listCause = hdlistCause.split(',');
+                for (var j = 0; j < listCause.length; j++) {
+                    if (listCause[j] != '') {
+                        document.getElementById("radio" + listCause[j]).checked = true;
+                    }
+                }
             }
+        };
+
+        function rdbChecked(CauseID) {
+            var listCause = new Array();
+            var hdlistCause = document.getElementById('<%=hdListCause.ClientID%>').value;
+            listCause = hdlistCause.split(',');
+            if (document.getElementById("radio" + CauseID).checked) {
+                listCause.push(CauseID);
+            }
+            else {
+                for (var i = listCause.length; i--;) {
+                    if (listCause[i] == CauseID) {
+                        listCause.splice(i, 1);
+                    }
+                }
+            }
+
+            document.getElementById('<%=hdListCause.ClientID%>').value = listCause;
         }
 
-        $(document).ready(function () {
-            $('input').iCheck({
-                checkboxClass: 'icheckbox_polaris',
-                radioClass: 'iradio_polaris',
-                increaseArea: '-10%' // optional
-            });
-        });
         //$(document).ready(function () {
-        //    $('input').each(function () {
-        //        var self = $(this),
-        //          label = self.next(),
-        //          label_text = label.text();
-
-        //        label.remove();
-        //        self.iCheck({
-        //            checkboxClass: 'icheckbox_line-blue',
-        //            radioClass: 'iradio_line-blue',
-        //            insert: '<div class="icheck_line-icon"></div>' + label_text
-        //        });
+        //    $('input').iCheck({
+        //        checkboxClass: 'icheckbox_polaris',
+        //        radioClass: 'iradio_polaris',
+        //        increaseArea: '-10%' // optional
         //    });
         //});
     </script>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
+
     <h1>อนุมัติรายการ Unmatched</h1>
     <br />
 
-    <asp:CheckBoxList ID="chkLstFavColor" runat="server" CssClass="icheckbox_line-blue">
+    <asp:CheckBoxList ID="cbCauseList" runat="server">
     </asp:CheckBoxList>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                    <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="button" OnClick="btnSearch_Click" />
+                </td>
+            </tr>
+        </table>
+        <asp:HiddenField ID="hdListCause" runat="server" />
+        <asp:HiddenField ID="hdMaxCause" runat="server" />
+    </div>
     <br />
-    <asp:Button ID="btnSearch" runat="server" Text="ค้นหา" CssClass="button" OnClick="btnSearch_Click" />
 
     <p>
         <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล" ForeColor="Red"></asp:Label>
@@ -62,14 +97,14 @@
                 <asp:BoundField HeaderText="คืนเงินด้วย SPIN" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:RadioButton ID="rdbSPIN" Value="SPIN" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsSpin") %>' Checked ='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsSpin"),DataBinder.Eval(Container.DataItem,"IsGL")) %>' />
+                        <asp:RadioButton ID="rdbSPIN" Value="SPIN" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsSpin") %>' Checked='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsSpin"),DataBinder.Eval(Container.DataItem,"IsGL")) %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
                 <asp:BoundField HeaderText="คืนเงินด้วย GL" />
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:RadioButton ID="rdbGL" Value="GL" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsGL") %>' Checked ='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsGL"),DataBinder.Eval(Container.DataItem,"IsSpin")) %>' />
+                        <asp:RadioButton ID="rdbGL" Value="GL" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsGL") %>' Checked='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsGL"),DataBinder.Eval(Container.DataItem,"IsSpin")) %>' />
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>

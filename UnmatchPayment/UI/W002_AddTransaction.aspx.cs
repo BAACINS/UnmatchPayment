@@ -144,10 +144,13 @@ namespace UnmatchPayment.UI
                 GetUnmatchCause();
                 GetTellerpaymentDetail();
                 GetFileType();
-                if(Application["isEdit"].ToString() == "2")
+                if(Application["isEdit"] != null)
                 {
-                    btnSave.Text = "อนุมัติ";
-                    StatusCode = "02";
+                    if (Application["isEdit"].ToString() == "2")
+                    {
+                        btnSave.Text = "อนุมัติ";
+                        StatusCode = "02";
+                    }
                 }
                 if(Application["TellerID"] != null)
                 {

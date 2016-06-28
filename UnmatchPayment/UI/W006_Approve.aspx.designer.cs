@@ -13,13 +13,22 @@ namespace UnmatchPayment.UI {
     public partial class W006_Approve {
         
         /// <summary>
-        /// chkLstFavColor control.
+        /// cbCauseList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList chkLstFavColor;
+        protected global::System.Web.UI.WebControls.CheckBoxList cbCauseList;
+        
+        /// <summary>
+        /// ltrbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrbl;
         
         /// <summary>
         /// btnSearch control.
@@ -29,6 +38,24 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearch;
+        
+        /// <summary>
+        /// hdListCause control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdListCause;
+        
+        /// <summary>
+        /// hdMaxCause control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdMaxCause;
         
         /// <summary>
         /// lblDataNotFound control.

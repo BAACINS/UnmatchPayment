@@ -50,7 +50,7 @@
 
 /* HiDPI support */
 @media (-o-min-device-pixel-ratio: 5/4), (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi), (min-resolution: 1.25dppx) {
-    .icheckbox_polaris,
+    .kground-image: url
     .iradio_polaris {
         background-image: url(polaris@2x.png);
         -webkit-background-size: 310px 31px;
