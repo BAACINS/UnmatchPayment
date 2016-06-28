@@ -80,12 +80,6 @@
         <elementListCompartment Id="d7a259ee-d4cb-449a-b9c0-380cf9080c39" absoluteBounds="0.51499999999999968, 3.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="05ef0b35-6aac-4fb8-b6a1-d0f75b24e20c" isExpanded="false" absoluteBounds="0.5, 2, 2, 0.45">
-      <DataClassMoniker Name="/dbAccountDataContext/UnmatchCause" />
-      <nestedChildShapes>
-        <elementListCompartment Id="38c5e4f5-2c5d-4c45-bfb4-c9c6c0ecf83c" absoluteBounds="0.51500000000000012, 2.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="e1789dfd-52f6-4f2d-88b4-fd71de6719b7" isExpanded="false" absoluteBounds="0.5, 3.5, 2, 0.45">
       <DataClassMoniker Name="/dbAccountDataContext/tbUnmatchPayment" />
       <nestedChildShapes>
@@ -96,6 +90,12 @@
       <DataClassMoniker Name="/dbAccountDataContext/ReturnType" />
       <nestedChildShapes>
         <elementListCompartment Id="9fa2e6e4-77e2-4c78-80c1-0337898ef347" absoluteBounds="0.51500000000000012, 4.46, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a77a2920-beb0-484b-bc3e-c0880ba048d9" isExpanded="false" absoluteBounds="0.5, 2, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/UnmatchCause" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cc215b5-7c76-4f57-bdb9-8d8ccb4a3c1e" absoluteBounds="0.51499999999999968, 2.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

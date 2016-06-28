@@ -13,15 +13,6 @@ namespace UnmatchPayment.UI {
     public partial class Config {
         
         /// <summary>
-        /// bntAddCause control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bntAddCause;
-        
-        /// <summary>
         /// gvCause control.
         /// </summary>
         /// <remarks>

@@ -128,5 +128,21 @@ namespace UnmatchPayment.Class
                 throw ex;
             }
         }
+
+        //public void InsertCause(string NewCauseDescription, string NewCompCode, string NewAmount,string NewRef1 ,
+        //                        string NewRef2,string NewRefName,string NewPaymentdate,string NewRefund,string NewUploadFile,
+        //                        string NewSpin,string NewGL,string NewUnmatch,string NewActive)                                        
+        //{
+        //    try
+        //    {
+        //        dbAcc.UnmatchCauses.InsertOnSubmit()
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+
     }
 }
