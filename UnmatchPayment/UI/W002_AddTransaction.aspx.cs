@@ -141,8 +141,8 @@ namespace UnmatchPayment.UI
             {
                 urlPrev = Request.ServerVariables["HTTP_REFERER"];
                 StatusCode = "01";
-                GetUnmatchCause();
                 GetTellerpaymentDetail();
+                GetUnmatchCause();
                 GetFileType();
                 if(Application["isEdit"] != null)
                 {
@@ -220,7 +220,14 @@ namespace UnmatchPayment.UI
                         + "]";
                 string strCauseID = dtUnmatchedCause.Rows[i]["CauseID"].ToString();
                 string strCauseDes = dtUnmatchedCause.Rows[i]["CauseDescription"].ToString();
-                if (i % 2 == 0)
+                if (Application["isEdit"].ToString() == "1" || Application["isEdit"].ToString() == "2")
+                {
+                    if(strCauseID == hdCauseID.Value)
+                    {
+                        hdlistCause.Value = strListCause;
+                    }
+                }
+                    if (i % 2 == 0)
                 {
                     //add radio in literal
                     strCause.Append(string.Format(@"
