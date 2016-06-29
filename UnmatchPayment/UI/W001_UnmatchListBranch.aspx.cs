@@ -36,8 +36,8 @@ namespace UnmatchPayment.UI
             if (!IsPostBack)
             {
                 DataTable dtUnmatch = new DataTable();
-                var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetails
-                            where claim.BranchCode == Emp.BRANCH_NO 
+                var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetailBranches
+                            where claim.BranchCode == Emp.BRANCH_NO
                             && claim.MatchingID == null
                             && !(from up in dbAcc.tbUnmatchPayments select up.TellerPaymentDetailID).Contains(Convert.ToInt32(claim.TellerPaymentDetailID))
                             select claim).OrderBy(x => x.TellerPaymentDetailID);
@@ -46,6 +46,10 @@ namespace UnmatchPayment.UI
 
                 gvUnmatchList.DataSource = dtUnmatch;
                 gvUnmatchList.DataBind();
+                if (dtUnmatch.Rows.Count > 0)
+                    lblDataNotFound.Visible = false;
+                else
+                    lblDataNotFound.Visible = true;
             }
         }
         protected void btnView_Click(object sender, EventArgs e)

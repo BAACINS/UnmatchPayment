@@ -98,5 +98,17 @@
         <elementListCompartment Id="0cc215b5-7c76-4f57-bdb9-8d8ccb4a3c1e" absoluteBounds="0.51499999999999968, 2.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="930ceda3-a25a-4687-b0d3-29628717cd8e" isExpanded="false" absoluteBounds="4.75, 1, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_TellerPaymentDetailBranch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="aa9748d4-26c5-4f86-a78d-31fbb8662fcd" absoluteBounds="4.765, 1.46, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c0a534d-15e1-477c-8f30-bb506871de8b" isExpanded="false" absoluteBounds="4.75, 1.5, 2, 0.45">
+      <DataClassMoniker Name="/dbAccountDataContext/VW_TellerPaymentDetailHQ" />
+      <nestedChildShapes>
+        <elementListCompartment Id="45b3df44-6924-47e4-9320-8a0a10fbd986" absoluteBounds="4.765, 1.96, 1.9700000000000002, 5.6338297526041661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

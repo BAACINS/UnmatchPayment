@@ -208,9 +208,8 @@ namespace UnmatchPayment.UI
                         
                         if (!string.IsNullOrEmpty(_strTellerID))
                         {
-                            tbUnmatchPayment UP = new tbUnmatchPayment();
+                            tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.Single(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(_strTellerID));
 
-                            UP.TellerPaymentDetailID = Convert.ToInt32(_strTellerID);
                             UP.StatusCode = "02";
                             UP.ApproveBy = Emp.USER_ID;
                             UP.ApproveDate = DateTime.Now;
@@ -218,13 +217,13 @@ namespace UnmatchPayment.UI
                             UP.ModifiedDate = DateTime.Now;
                             //check Return Type
                             if (rdbSPIN.Checked)
-                                UP.ReturnTypeID = 1;
-                            else if (rdbGL.Checked)
                                 UP.ReturnTypeID = 2;
+                            else if (rdbGL.Checked)
+                                UP.ReturnTypeID = 3;
                             else
-                                UP.ReturnTypeID = 0;
+                                UP.ReturnTypeID = 1;
 
-                            DataMNG.EditUnmatchpayment(UP);
+                            dbAcc.SubmitChanges();
 
                         }
 
@@ -238,6 +237,7 @@ namespace UnmatchPayment.UI
         protected void chkboxSelectAll_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox ChkBoxHeader = (CheckBox)gvUnmatchList.HeaderRow.FindControl("chkboxSelectAll");
+            bool a = ((CheckBox)sender).Checked;
             foreach (GridViewRow row in gvUnmatchList.Rows)
             {
                 CheckBox ChkBoxRows = (CheckBox)row.FindControl("chkApp");

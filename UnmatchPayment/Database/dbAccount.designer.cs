@@ -214,6 +214,22 @@ namespace UnmatchPayment.Database
 			}
 		}
 		
+		public System.Data.Linq.Table<VW_TellerPaymentDetailBranch> VW_TellerPaymentDetailBranches
+		{
+			get
+			{
+				return this.GetTable<VW_TellerPaymentDetailBranch>();
+			}
+		}
+		
+		public System.Data.Linq.Table<VW_TellerPaymentDetailHQ> VW_TellerPaymentDetailHQs
+		{
+			get
+			{
+				return this.GetTable<VW_TellerPaymentDetailHQ>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="UP.EMPLOYEE_SELECT")]
 		public ISingleResult<EMPLOYEE_SELECTResult> EMPLOYEE_SELECT([global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_ID", DbType="NVarChar(7)")] string uSER_ID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="USER_PASSWORD", DbType="NVarChar(50)")] string uSER_PASSWORD)
 		{
@@ -3056,6 +3072,1032 @@ namespace UnmatchPayment.Database
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.VW_TellerPaymentDetailBranch")]
+	public partial class VW_TellerPaymentDetailBranch
+	{
+		
+		private long _TellerPaymentDetailID;
+		
+		private string _RecordType;
+		
+		private System.Nullable<int> _SequenceNo;
+		
+		private string _BankCode;
+		
+		private string _CompanyAccount;
+		
+		private string _PaymentDate;
+		
+		private string _PaymentTime;
+		
+		private System.Nullable<System.DateTime> _PaymentDateTime;
+		
+		private string _CustomerName;
+		
+		private string _Ref1;
+		
+		private string _Ref2;
+		
+		private string _Ref3;
+		
+		private string _BranchCode;
+		
+		private string _TellerNo;
+		
+		private string _KindOfTransaction;
+		
+		private string _PaymentBy;
+		
+		private string _ChequeNo;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _ChequeBankCode;
+		
+		private string _Filler;
+		
+		private string _CompCode;
+		
+		private System.Data.Linq.Binary _timestamp;
+		
+		private System.Nullable<long> _MatchingID;
+		
+		private string _DivisionAreaCode;
+		
+		private string _UpperDivisionCode;
+		
+		private System.Nullable<System.DateTime> _MatchingDateTime;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		public VW_TellerPaymentDetailBranch()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerPaymentDetailID", AutoSync=AutoSync.Always, DbType="BigInt NOT NULL IDENTITY", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public long TellerPaymentDetailID
+		{
+			get
+			{
+				return this._TellerPaymentDetailID;
+			}
+			set
+			{
+				if ((this._TellerPaymentDetailID != value))
+				{
+					this._TellerPaymentDetailID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordType", DbType="NVarChar(1)", UpdateCheck=UpdateCheck.Never)]
+		public string RecordType
+		{
+			get
+			{
+				return this._RecordType;
+			}
+			set
+			{
+				if ((this._RecordType != value))
+				{
+					this._RecordType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SequenceNo", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<int> SequenceNo
+		{
+			get
+			{
+				return this._SequenceNo;
+			}
+			set
+			{
+				if ((this._SequenceNo != value))
+				{
+					this._SequenceNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankCode", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string BankCode
+		{
+			get
+			{
+				return this._BankCode;
+			}
+			set
+			{
+				if ((this._BankCode != value))
+				{
+					this._BankCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyAccount", DbType="NVarChar(10)", UpdateCheck=UpdateCheck.Never)]
+		public string CompanyAccount
+		{
+			get
+			{
+				return this._CompanyAccount;
+			}
+			set
+			{
+				if ((this._CompanyAccount != value))
+				{
+					this._CompanyAccount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDate", DbType="NVarChar(8)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentDate
+		{
+			get
+			{
+				return this._PaymentDate;
+			}
+			set
+			{
+				if ((this._PaymentDate != value))
+				{
+					this._PaymentDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentTime", DbType="NVarChar(6)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentTime
+		{
+			get
+			{
+				return this._PaymentTime;
+			}
+			set
+			{
+				if ((this._PaymentTime != value))
+				{
+					this._PaymentTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDateTime", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> PaymentDateTime
+		{
+			get
+			{
+				return this._PaymentDateTime;
+			}
+			set
+			{
+				if ((this._PaymentDateTime != value))
+				{
+					this._PaymentDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref1", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref1
+		{
+			get
+			{
+				return this._Ref1;
+			}
+			set
+			{
+				if ((this._Ref1 != value))
+				{
+					this._Ref1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref2", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref2
+		{
+			get
+			{
+				return this._Ref2;
+			}
+			set
+			{
+				if ((this._Ref2 != value))
+				{
+					this._Ref2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref3", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref3
+		{
+			get
+			{
+				return this._Ref3;
+			}
+			set
+			{
+				if ((this._Ref3 != value))
+				{
+					this._Ref3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string BranchCode
+		{
+			get
+			{
+				return this._BranchCode;
+			}
+			set
+			{
+				if ((this._BranchCode != value))
+				{
+					this._BranchCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerNo", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string TellerNo
+		{
+			get
+			{
+				return this._TellerNo;
+			}
+			set
+			{
+				if ((this._TellerNo != value))
+				{
+					this._TellerNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KindOfTransaction", DbType="NVarChar(1)", UpdateCheck=UpdateCheck.Never)]
+		public string KindOfTransaction
+		{
+			get
+			{
+				return this._KindOfTransaction;
+			}
+			set
+			{
+				if ((this._KindOfTransaction != value))
+				{
+					this._KindOfTransaction = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentBy", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentBy
+		{
+			get
+			{
+				return this._PaymentBy;
+			}
+			set
+			{
+				if ((this._PaymentBy != value))
+				{
+					this._PaymentBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChequeNo", DbType="NVarChar(7)", UpdateCheck=UpdateCheck.Never)]
+		public string ChequeNo
+		{
+			get
+			{
+				return this._ChequeNo;
+			}
+			set
+			{
+				if ((this._ChequeNo != value))
+				{
+					this._ChequeNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChequeBankCode", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string ChequeBankCode
+		{
+			get
+			{
+				return this._ChequeBankCode;
+			}
+			set
+			{
+				if ((this._ChequeBankCode != value))
+				{
+					this._ChequeBankCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filler", DbType="NVarChar(77)", UpdateCheck=UpdateCheck.Never)]
+		public string Filler
+		{
+			get
+			{
+				return this._Filler;
+			}
+			set
+			{
+				if ((this._Filler != value))
+				{
+					this._Filler = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompCode", DbType="NVarChar(12)", UpdateCheck=UpdateCheck.Never)]
+		public string CompCode
+		{
+			get
+			{
+				return this._CompCode;
+			}
+			set
+			{
+				if ((this._CompCode != value))
+				{
+					this._CompCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_timestamp", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary timestamp
+		{
+			get
+			{
+				return this._timestamp;
+			}
+			set
+			{
+				if ((this._timestamp != value))
+				{
+					this._timestamp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchingID", DbType="BigInt", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<long> MatchingID
+		{
+			get
+			{
+				return this._MatchingID;
+			}
+			set
+			{
+				if ((this._MatchingID != value))
+				{
+					this._MatchingID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DivisionAreaCode", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string DivisionAreaCode
+		{
+			get
+			{
+				return this._DivisionAreaCode;
+			}
+			set
+			{
+				if ((this._DivisionAreaCode != value))
+				{
+					this._DivisionAreaCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpperDivisionCode", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		public string UpperDivisionCode
+		{
+			get
+			{
+				return this._UpperDivisionCode;
+			}
+			set
+			{
+				if ((this._UpperDivisionCode != value))
+				{
+					this._UpperDivisionCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchingDateTime", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> MatchingDateTime
+		{
+			get
+			{
+				return this._MatchingDateTime;
+			}
+			set
+			{
+				if ((this._MatchingDateTime != value))
+				{
+					this._MatchingDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this._ModifyDate = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.VW_TellerPaymentDetailHQ")]
+	public partial class VW_TellerPaymentDetailHQ
+	{
+		
+		private long _TellerPaymentDetailID;
+		
+		private string _RecordType;
+		
+		private System.Nullable<int> _SequenceNo;
+		
+		private string _BankCode;
+		
+		private string _CompanyAccount;
+		
+		private string _PaymentDate;
+		
+		private string _PaymentTime;
+		
+		private System.Nullable<System.DateTime> _PaymentDateTime;
+		
+		private string _CustomerName;
+		
+		private string _Ref1;
+		
+		private string _Ref2;
+		
+		private string _Ref3;
+		
+		private string _BranchCode;
+		
+		private string _TellerNo;
+		
+		private string _KindOfTransaction;
+		
+		private string _PaymentBy;
+		
+		private string _ChequeNo;
+		
+		private System.Nullable<decimal> _Amount;
+		
+		private string _ChequeBankCode;
+		
+		private string _Filler;
+		
+		private string _CompCode;
+		
+		private System.Data.Linq.Binary _timestamp;
+		
+		private System.Nullable<long> _MatchingID;
+		
+		private string _DivisionAreaCode;
+		
+		private string _UpperDivisionCode;
+		
+		private System.Nullable<System.DateTime> _MatchingDateTime;
+		
+		private System.Nullable<System.DateTime> _CreateDate;
+		
+		private System.Nullable<System.DateTime> _ModifyDate;
+		
+		public VW_TellerPaymentDetailHQ()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerPaymentDetailID", AutoSync=AutoSync.Always, DbType="BigInt NOT NULL IDENTITY", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public long TellerPaymentDetailID
+		{
+			get
+			{
+				return this._TellerPaymentDetailID;
+			}
+			set
+			{
+				if ((this._TellerPaymentDetailID != value))
+				{
+					this._TellerPaymentDetailID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordType", DbType="NVarChar(1)", UpdateCheck=UpdateCheck.Never)]
+		public string RecordType
+		{
+			get
+			{
+				return this._RecordType;
+			}
+			set
+			{
+				if ((this._RecordType != value))
+				{
+					this._RecordType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SequenceNo", DbType="Int", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<int> SequenceNo
+		{
+			get
+			{
+				return this._SequenceNo;
+			}
+			set
+			{
+				if ((this._SequenceNo != value))
+				{
+					this._SequenceNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BankCode", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string BankCode
+		{
+			get
+			{
+				return this._BankCode;
+			}
+			set
+			{
+				if ((this._BankCode != value))
+				{
+					this._BankCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompanyAccount", DbType="NVarChar(10)", UpdateCheck=UpdateCheck.Never)]
+		public string CompanyAccount
+		{
+			get
+			{
+				return this._CompanyAccount;
+			}
+			set
+			{
+				if ((this._CompanyAccount != value))
+				{
+					this._CompanyAccount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDate", DbType="NVarChar(8)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentDate
+		{
+			get
+			{
+				return this._PaymentDate;
+			}
+			set
+			{
+				if ((this._PaymentDate != value))
+				{
+					this._PaymentDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentTime", DbType="NVarChar(6)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentTime
+		{
+			get
+			{
+				return this._PaymentTime;
+			}
+			set
+			{
+				if ((this._PaymentTime != value))
+				{
+					this._PaymentTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentDateTime", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> PaymentDateTime
+		{
+			get
+			{
+				return this._PaymentDateTime;
+			}
+			set
+			{
+				if ((this._PaymentDateTime != value))
+				{
+					this._PaymentDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref1", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref1
+		{
+			get
+			{
+				return this._Ref1;
+			}
+			set
+			{
+				if ((this._Ref1 != value))
+				{
+					this._Ref1 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref2", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref2
+		{
+			get
+			{
+				return this._Ref2;
+			}
+			set
+			{
+				if ((this._Ref2 != value))
+				{
+					this._Ref2 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Ref3", DbType="NVarChar(20)", UpdateCheck=UpdateCheck.Never)]
+		public string Ref3
+		{
+			get
+			{
+				return this._Ref3;
+			}
+			set
+			{
+				if ((this._Ref3 != value))
+				{
+					this._Ref3 = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string BranchCode
+		{
+			get
+			{
+				return this._BranchCode;
+			}
+			set
+			{
+				if ((this._BranchCode != value))
+				{
+					this._BranchCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TellerNo", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string TellerNo
+		{
+			get
+			{
+				return this._TellerNo;
+			}
+			set
+			{
+				if ((this._TellerNo != value))
+				{
+					this._TellerNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_KindOfTransaction", DbType="NVarChar(1)", UpdateCheck=UpdateCheck.Never)]
+		public string KindOfTransaction
+		{
+			get
+			{
+				return this._KindOfTransaction;
+			}
+			set
+			{
+				if ((this._KindOfTransaction != value))
+				{
+					this._KindOfTransaction = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PaymentBy", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string PaymentBy
+		{
+			get
+			{
+				return this._PaymentBy;
+			}
+			set
+			{
+				if ((this._PaymentBy != value))
+				{
+					this._PaymentBy = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChequeNo", DbType="NVarChar(7)", UpdateCheck=UpdateCheck.Never)]
+		public string ChequeNo
+		{
+			get
+			{
+				return this._ChequeNo;
+			}
+			set
+			{
+				if ((this._ChequeNo != value))
+				{
+					this._ChequeNo = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,2)", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<decimal> Amount
+		{
+			get
+			{
+				return this._Amount;
+			}
+			set
+			{
+				if ((this._Amount != value))
+				{
+					this._Amount = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChequeBankCode", DbType="NVarChar(3)", UpdateCheck=UpdateCheck.Never)]
+		public string ChequeBankCode
+		{
+			get
+			{
+				return this._ChequeBankCode;
+			}
+			set
+			{
+				if ((this._ChequeBankCode != value))
+				{
+					this._ChequeBankCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Filler", DbType="NVarChar(77)", UpdateCheck=UpdateCheck.Never)]
+		public string Filler
+		{
+			get
+			{
+				return this._Filler;
+			}
+			set
+			{
+				if ((this._Filler != value))
+				{
+					this._Filler = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CompCode", DbType="NVarChar(12)", UpdateCheck=UpdateCheck.Never)]
+		public string CompCode
+		{
+			get
+			{
+				return this._CompCode;
+			}
+			set
+			{
+				if ((this._CompCode != value))
+				{
+					this._CompCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_timestamp", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary timestamp
+		{
+			get
+			{
+				return this._timestamp;
+			}
+			set
+			{
+				if ((this._timestamp != value))
+				{
+					this._timestamp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchingID", DbType="BigInt", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<long> MatchingID
+		{
+			get
+			{
+				return this._MatchingID;
+			}
+			set
+			{
+				if ((this._MatchingID != value))
+				{
+					this._MatchingID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DivisionAreaCode", DbType="NVarChar(4)", UpdateCheck=UpdateCheck.Never)]
+		public string DivisionAreaCode
+		{
+			get
+			{
+				return this._DivisionAreaCode;
+			}
+			set
+			{
+				if ((this._DivisionAreaCode != value))
+				{
+					this._DivisionAreaCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpperDivisionCode", DbType="NVarChar(50)", UpdateCheck=UpdateCheck.Never)]
+		public string UpperDivisionCode
+		{
+			get
+			{
+				return this._UpperDivisionCode;
+			}
+			set
+			{
+				if ((this._UpperDivisionCode != value))
+				{
+					this._UpperDivisionCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchingDateTime", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> MatchingDateTime
+		{
+			get
+			{
+				return this._MatchingDateTime;
+			}
+			set
+			{
+				if ((this._MatchingDateTime != value))
+				{
+					this._MatchingDateTime = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreateDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> CreateDate
+		{
+			get
+			{
+				return this._CreateDate;
+			}
+			set
+			{
+				if ((this._CreateDate != value))
+				{
+					this._CreateDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifyDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
+		public System.Nullable<System.DateTime> ModifyDate
+		{
+			get
+			{
+				return this._ModifyDate;
+			}
+			set
+			{
+				if ((this._ModifyDate != value))
+				{
+					this._ModifyDate = value;
+				}
 			}
 		}
 	}

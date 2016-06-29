@@ -9,8 +9,8 @@
     <script type="text/javascript">
         function stringToBoolean(string){
             switch(string.toLowerCase().trim()){
-                case "true": case "yes": case "1": return true;
-                case "false": case "no": case "0": case null: return false;
+                case "true": case "yes": case "1": case "1]": return true;
+                case "false": case "no": case "0": case "0]": case null: return false;
                 default: return Boolean(string);
             }
         }
@@ -65,7 +65,6 @@
             }
             else if (document.getElementById('<%=txtCompCode.ClientID%>').disabled == false &&
                 document.getElementById('<%=txtCompCode.ClientID%>').value == '') {
-                alert(document.getElementById('<%=txtCompCode.ClientID%>').value);
                 alert('กรุณาระบุ รหัสบริการ');
                 return false;
             }
@@ -262,7 +261,7 @@
     <div style="text-align: center;">
         <asp:Button ID="btnSave" runat="server" Text="บันทึก" CssClass="button" OnClick="btnSave_Click" OnClientClick="return onSave()" />
         &nbsp
-        <asp:Button ID="btnClose" runat="server" Text="ยกเลิก" CssClass="button" OnClick="btnClose_Click" />
+        <asp:Button ID="btnClose" runat="server" Text="  ปิด  " CssClass="button" OnClick="btnClose_Click" />
     </div>
 
     <%--//----------------------------------------------------%>

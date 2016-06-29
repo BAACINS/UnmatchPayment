@@ -220,14 +220,15 @@ namespace UnmatchPayment.UI
                         + "]";
                 string strCauseID = dtUnmatchedCause.Rows[i]["CauseID"].ToString();
                 string strCauseDes = dtUnmatchedCause.Rows[i]["CauseDescription"].ToString();
-                if (Application["isEdit"].ToString() == "1" || Application["isEdit"].ToString() == "2")
+                string strIsEdit = Convert.ToString(Application["isEdit"]) ?? string.Empty;
+                if (new[] {"1","2"}.Any(strIsEdit.Contains))
                 {
                     if(strCauseID == hdCauseID.Value)
                     {
                         hdlistCause.Value = strListCause;
                     }
                 }
-                    if (i % 2 == 0)
+                if (i % 2 == 0)
                 {
                     //add radio in literal
                     strCause.Append(string.Format(@"
@@ -270,19 +271,21 @@ namespace UnmatchPayment.UI
                     lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
 
                     //select data from UnmatchedPayment [1=Edit,else = insert]
-                    if (Application["isEdit"].ToString() == "1" || Application["isEdit"].ToString() == "2")
+                    string strIsEdit = Convert.ToString(Application["isEdit"]) ?? string.Empty;
+                    if (new[] { "1", "2" }.Any(strIsEdit.Contains))
                     {
                         var UP = (from Unmatch in dbAcc.tbUnmatchPayments
                                   where Unmatch.TellerPaymentDetailID == TellerID
                                   select Unmatch).FirstOrDefault();
-                        if(UP != null)
+                        if (UP != null)
                         {
                             txtCompCode.Text = UP.CompCode;
                             txtAmount.Text = UP.Amount.ToString();
                             txtRef1.Text = UP.Ref1;
                             txtRef2.Text = UP.Ref2;
                             txtRefName.Text = UP.RefName;
-                            txtPaymentDate.TextDate = DateTime.Parse(UP.PaymentDate.ToString()).ToString("dd-MM-yyyy", fmt);
+                            if(UP.PaymentDate != null)
+                                txtPaymentDate.TextDate = DateTime.Parse(UP.PaymentDate.ToString()).ToString("dd-MM-yyyy", fmt);
                             txtDepNo.Text = UP.DepNo;
                             hdCauseID.Value = UP.CauseID.ToString();
                         }
@@ -314,33 +317,84 @@ namespace UnmatchPayment.UI
             //int _causeID = int.Parse(hdCauseID.Value);
 
             //set detail Unmatchpayment
-            tbUnmatchPayment UP = new tbUnmatchPayment();
-            //UP.ID = UPID;
-            if(!string.IsNullOrEmpty(hdCauseID.Value))
+            tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.SingleOrDefault(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(TellerID));
+            if (UP == null)
+            {
+                UP = new tbUnmatchPayment();
+                dbAcc.tbUnmatchPayments.InsertOnSubmit(UP);
+            }
+
+            if (!string.IsNullOrEmpty(hdCauseID.Value))
                 UP.CauseID = int.Parse(hdCauseID.Value);
-            if(TellerID != null || TellerID != 0)
+
+            if (TellerID != 0)
                 UP.TellerPaymentDetailID = TellerID;
-            if(!string.IsNullOrEmpty(txtCompCode.Text))
+
+            //CompCode
+            if (!string.IsNullOrEmpty(txtCompCode.Text) && txtCompCode.Enabled == true)
                 UP.CompCode = txtCompCode.Text;
-            if(!string.IsNullOrEmpty(txtAmount.Text))
+            else
+                UP.CompCode = null;
+
+            //Amount
+            if (!string.IsNullOrEmpty(txtAmount.Text) && txtAmount.Enabled == true)
                 UP.Amount = Convert.ToDecimal(txtAmount.Text);
-            if (!string.IsNullOrEmpty(txtRef1.Text))
+            else
+                UP.Amount = null;
+
+            //Ref 1
+            if (!string.IsNullOrEmpty(txtRef1.Text) && txtRef1.Enabled == true)
                 UP.Ref1 = txtRef1.Text;
-            if (!string.IsNullOrEmpty(txtRef2.Text))
+            else
+                UP.Ref1 = null;
+
+            //ref 2
+            if (!string.IsNullOrEmpty(txtRef2.Text) && txtRef2.Enabled == true)
                 UP.Ref2 = txtRef2.Text;
-            if (!string.IsNullOrEmpty(txtRefName.Text))
+            else
+                UP.Ref2 = null;
+
+            //Ref Name
+            if (!string.IsNullOrEmpty(txtRefName.Text) && txtRefName.Enabled == true)
                 UP.RefName = txtRefName.Text;
-            if (!string.IsNullOrEmpty(txtPaymentDate.TextDate))
+            else
+                UP.RefName = null;
+
+            //PayDate
+            if (!string.IsNullOrEmpty(txtPaymentDate.TextDate) && txtPaymentDate.Visible == true)
                 UP.PaymentDate = Convert.ToDateTime(txtPaymentDate.TextDate);
-            if (!string.IsNullOrEmpty(txtDepNo.Text))
+            else
+                UP.PaymentDate = null;
+
+            //DepNo
+            if (!string.IsNullOrEmpty(txtDepNo.Text) && txtDepNo.Enabled == true)
                 UP.DepNo = txtDepNo.Text;
+            else
+                UP.DepNo = null;
+
+            //statusCode
             if (!string.IsNullOrEmpty(StatusCode))
                 UP.StatusCode = StatusCode;
-            if (!string.IsNullOrEmpty(Emp.USER_ID))
+
+            if (Application["isEdit"] != null)
+            {
+                if (Application["isEdit"].ToString() == "2") //Approve
+                {
+                    UP.ApproveBy = Emp.USER_ID;
+                    UP.ApproveDate = DateTime.Now;
+                }
+            }
+            else //Insert
+            {
+                UP.BranchCode = Emp.BRANCH_NO;
                 UP.CreateBy = Emp.USER_ID;
-            UP.CreateDate = DateTime.Now;
-            
-            DataMNG.EditUnmatchpayment(UP);
+                UP.CreateDate = DateTime.Now;
+            }
+            UP.ModifiedBy = Emp.USER_ID;
+            UP.ModifiedDate = DateTime.Now;
+
+            dbAcc.SubmitChanges();
+            //DataMNG.EditUnmatchpayment(UP);
 
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('บันทึกเสร็จสิ้น');window.location.replace('" + urlPrev + "');", true);
         }
