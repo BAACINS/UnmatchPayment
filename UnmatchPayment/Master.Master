@@ -27,7 +27,7 @@
                     <br />
                     &nbsp;<asp:Label ID="lblNote" runat="server" ForeColor="Red" 
                             Font-Bold="true" Font-Size="Large" BackColor="White">
-                            แจ้งปัญหาการใช้งานระบบ WAN 8032</asp:Label> 
+                            แจ้งปัญหาการใช้งานระบบ WAN 8028</asp:Label> 
                 </p>
             </div>
 

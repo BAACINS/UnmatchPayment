@@ -159,7 +159,7 @@ namespace UnmatchPayment.UI.Reports
             Response.ClearContent();
             Response.ClearHeaders();
             Response.ContentType = "application/pdf";
-            Response.AddHeader("content-disposition", "attachment; filename=" + "R001.pdf");
+            Response.AddHeader("content-disposition", "attachment; filename=" + "R002.pdf");
             Response.AddHeader("content-length", stream.BaseStream.Length.ToString());
             Response.BinaryWrite(stream.ReadBytes(Convert.ToInt32(stream.BaseStream.Length)));
             Response.Flush();
