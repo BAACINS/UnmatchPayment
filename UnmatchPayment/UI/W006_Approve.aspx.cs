@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -30,11 +31,39 @@ namespace UnmatchPayment.UI
                 Session["Emp"] = value;
             }
         }
+        private DataTable dtUnmatchedCause
+        {
+            get
+            {
+                DataTable dt = new DataTable();
+                if ((DataTable)ViewState["dtUnmatchedCause"] != null)
+                    dt = (DataTable)ViewState["dtUnmatchedCause"];
+                return dt;
+            }
+            set
+            {
+                ViewState["dtUnmatchedCause"] = value;
+            }
+        }
+        //private string strListCause
+        //{
+        //    get
+        //    {
+        //        if (ViewState["strListCause"] != null)
+        //            return ViewState["strListCause"].ToString();
+        //        return string.Empty;
+        //    }
+        //    set
+        //    {
+        //        ViewState["strListCause"] = value;
+        //    }
+        //}
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                GetUnmatchCause();
                 GetdataClaim();
             }
         }
@@ -50,11 +79,14 @@ namespace UnmatchPayment.UI
         private void GetdataClaim()
         {
             var statusList = new string[] { "01" };
+            List<string> CauseList = hdListCause.Value.ToString().Split(',').ToList<string>();
+            //var CauseList = new int[] { 1,2 };
             DataTable dtUnmatch = new DataTable();
             var dtAcc = (from claim in dbAcc.tbUnmatchPayments
                          join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
                          where statusList.Contains(claim.StatusCode)
-                         //&& claim.ModifiedBy != Emp.USER_ID
+                         && CauseList.Contains(claim.CauseID.ToString())
+                         && claim.ModifiedBy != Emp.USER_ID
                          select new
                          {
                              claim.TellerPaymentDetailID,
@@ -85,6 +117,63 @@ namespace UnmatchPayment.UI
                 btnApprove.Visible = false;
                 lblDataNotFound.Visible = true;
             }
+        }
+
+        private void GetUnmatchCause()
+        {
+            //DataTable dtUnmatch = new DataTable();
+            var dtAcc = from Cause in dbAcc.UnmatchCauses
+                        where Cause.isActive == true
+                        select new
+                        {
+                            Cause.CauseID,
+                            Cause.CauseDescription,
+                            isUpdateUnmatched = Convert.ToInt16(Cause.isUpdateUnmatched),
+                            isCompCode = Convert.ToInt16(Cause.isCompCode),
+                            isAmount = Convert.ToInt16(Cause.isAmount),
+                            isRef1 = Convert.ToInt16(Cause.isRef1),
+                            isRef2 = Convert.ToInt16(Cause.isRef2),
+                            isRefName = Convert.ToInt16(Cause.isRefName),
+                            isPaymentdate = Convert.ToInt16(Cause.isPaymentdate),
+                            isRefund = Convert.ToInt16(Cause.isRefund),
+                            isUplaodFile = Convert.ToInt16(Cause.isUploadFile)
+                        };
+
+            dtUnmatchedCause = DataMNG.LINQToDataTable(dtAcc);
+
+            StringBuilder strCause = new StringBuilder();
+            List<string> listCause = new List<string>();
+            hdMaxCause.Value = dtUnmatchedCause.Rows.Count.ToString();
+            for (int i = 0; i < dtUnmatchedCause.Rows.Count; i++)
+            {
+                
+
+                string strCauseID = dtUnmatchedCause.Rows[i]["CauseID"].ToString();
+                string strCauseDes = dtUnmatchedCause.Rows[i]["CauseDescription"].ToString();
+
+                listCause.Add(strCauseID);
+                if (i % 2 == 0)
+                {
+                    //add radio in literal
+                    strCause.Append(string.Format(@"
+                    <div>
+                    <span class='spanleft'>
+                    <input type = 'checkbox' name='radio{0}' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0})' />
+                    <label for= 'radio{0}' > {1} </label>
+                    </span>", strCauseID, strCauseDes));
+                }
+                else
+                {
+                    strCause.Append(string.Format(@"
+                    <span class='spanright'>
+                    <input type = 'checkbox' name='radio{0}' id='radio{0}' class='radio' runat='server' onclick='rdbChecked({0})' />
+                    <label for= 'radio{0}' > {1} </label>
+                    </span>
+                    </div>", strCauseID, strCauseDes));
+                }
+            }
+            hdListCause.Value = listCause.Aggregate((x, y) => x + "," + y);
+            ltrbl.Text = strCause.ToString();
         }
 
         protected void btnView_Click(object sender, EventArgs e)
