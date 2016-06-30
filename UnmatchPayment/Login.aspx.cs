@@ -13,7 +13,14 @@ namespace UnmatchPayment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                if ((Request.Browser.Browser.ToLower() == "ie" || Request.Browser.Browser.ToLower() == "internetexplorer") && (Request.Browser.MajorVersion < 10))
+                    Response.Redirect("LoginForIE8.aspx");
+            }
+            catch
+            {
+            }
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
