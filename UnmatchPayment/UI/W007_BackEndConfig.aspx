@@ -184,7 +184,7 @@
                                 </FooterTemplate>
                                 <FooterStyle HorizontalAlign="Center" />
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Edit/Delete">
+                            <asp:TemplateField HeaderText="Edit">
                                 <ItemTemplate>
                                     <asp:Button ID="btnEditCause" runat="server" Text="Edit" CommandName="Edit" />
                                     
