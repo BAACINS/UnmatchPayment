@@ -30,14 +30,28 @@ namespace UnmatchPayment.UI
                 Session["Emp"] = value;
             }
         }
+        private DataTable dtUnmatch
+        {
+            get
+            {
+                DataTable dt = new DataTable();
+                if ((DataTable)Session["dtUnmatchListBranch"] != null)
+                    dt = (DataTable)Session["dtUnmatchListBranch"];
+                return dt;
+            }
+            set
+            {
+                Session["dtUnmatchListBranch"] = value;
+            }
+        }
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                DataTable dtUnmatch = new DataTable();
+                //DataTable dtUnmatch = new DataTable();
                 var dtAcc = (from claim in dbAcc.VW_TellerPaymentDetailBranches
-                            where claim.BranchCode == Emp.BRANCH_NO
+                            where (claim.BranchCode == Emp.BRANCH_NO || Emp.isBranch == 0)
                             && claim.MatchingID == null
                             && !(from up in dbAcc.tbUnmatchPayments select up.TellerPaymentDetailID).Contains(Convert.ToInt32(claim.TellerPaymentDetailID))
                             select claim).OrderBy(x => x.TellerPaymentDetailID);
@@ -67,6 +81,13 @@ namespace UnmatchPayment.UI
             {
                 throw ex;
             }
+        }
+
+        protected void gvUnmatchList_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            gvUnmatchList.DataSource = dtUnmatch;
+            gvUnmatchList.PageIndex = e.NewPageIndex;
+            gvUnmatchList.DataBind();
         }
     }
 }

@@ -35,7 +35,7 @@ namespace UnmatchPayment.UI
         {
             if (!IsPostBack)
             {
-                var statusList = new string[] { "01", "02" };
+                var statusList = new string[] { "01" };
                 DataTable dtUnmatch = new DataTable();
                 var dtAcc = (from claim in dbAcc.tbUnmatchPayments
                              join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
