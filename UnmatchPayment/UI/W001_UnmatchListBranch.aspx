@@ -2,13 +2,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>บันทึกรายการ Unmatched</h1>
+    <h1>บันทึกรายการ Unmatch</h1>
     <br />
     <div style="width:100%;text-align:center;">
         <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล Unmatched" ForeColor="Red" Visible="false" ></asp:Label>
     </div>
     
-    <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AutoGenerateColumns="False">
+    <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="gvUnmatchList_PageIndexChanging" PageSize="100">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="TellerPaymentDetailID" HeaderText="รหัสอ้างอิง" />
@@ -31,6 +31,7 @@
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerSettings LastPageText="หน้าสุดท้าย" Mode="NumericFirstLast" />
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#EFF3FB" />
         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
