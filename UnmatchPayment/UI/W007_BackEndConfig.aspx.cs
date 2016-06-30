@@ -33,7 +33,6 @@ namespace UnmatchPayment.UI
 
                 this.gvCause.DataSource = _dt;
                 this.gvCause.DataBind();
-
             }
             catch (Exception ex)
             {
@@ -227,6 +226,42 @@ namespace UnmatchPayment.UI
             UnmatchCause a = dbAcc.UnmatchCauses.Single(cause => cause.CauseID == Convert.ToInt32(strCauseID));
             a.isActive = cb.Checked;
             dbAcc.SubmitChanges();
+        }
+
+
+
+        protected void gvCause_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            foreach (GridViewRow row in gvCause.Rows)
+            {
+                row.Enabled = true;
+                row.BackColor = System.Drawing.Color.Transparent;
+            }
+
+            gvCause.EditIndex = e.NewEditIndex;
+            gvCause.EditRowStyle.BackColor = System.Drawing.Color.LightSteelBlue;
+
+            gvCause.DataSource = dtGetUnmatchCause.GetCauseConfig();
+            gvCause.DataBind();
+        }
+
+        protected void gvCause_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            TextBox updateCauseDesc = (TextBox)gvCause.Rows[e.RowIndex].FindControl("txtCauseDesc");
+            var strCauseID = updateCauseDesc.Attributes["CommandArgument"];
+
+            UnmatchCause a = dbAcc.UnmatchCauses.Single(cause => cause.CauseID == Convert.ToInt32(strCauseID));
+            a.CauseDescription = updateCauseDesc.Text;
+            dbAcc.SubmitChanges();
+
+            gvCause.EditIndex = -1;
+            gvCause.DataSource = dtGetUnmatchCause.GetCauseConfig();
+            gvCause.DataBind();
+        }
+
+        protected void gvCause_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            e.Row.Cells[14].Enabled = true;
         }
     }
 }
