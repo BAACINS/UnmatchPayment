@@ -6,7 +6,7 @@
     <h1>บันทึกรายการ Unmatch (สำนักงานใหญ่)</h1>
     <br />
     <div style="width:100%;text-align:center;">
-        <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล Unmatched" ForeColor="Red" Visible="false" ></asp:Label>
+        <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล Unmatch" ForeColor="Red" Visible="false" ></asp:Label>
     </div>
     
     <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" Width="100%" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanged="gvUnmatchList_PageIndexChanged" OnPageIndexChanging="gvUnmatchList_PageIndexChanging" PageSize="100">
