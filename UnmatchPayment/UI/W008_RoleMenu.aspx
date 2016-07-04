@@ -1,5 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RoleMenu.aspx.cs" Inherits="UnmatchPayment.UI.RoleMenu" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W008_RoleMenu.aspx.cs" Inherits="UnmatchPayment.UI.RoleMenu" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        .auto-style1 {
+            width: 476px;
+        }
+        .auto-style2 {
+            width: 426px;
+        }
+        .auto-style3 {
+            width: 91px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <p>
@@ -10,14 +21,14 @@
     <div>
     <table width="100%" >  
         <tr>
-            <td>
+            <td class="auto-style1" colspan="3">
                 สิทธิ์การใช้งาน : &nbsp; <asp:DropDownList ID="ddlRole" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlRole_SelectedIndexChanged" CssClass="dropDownList"></asp:DropDownList>
                 
             </td>
         </tr>      
         <tr>
-            <td><asp:ListBox ID="lstLeftRoleMenu" runat="server" Height="310px" Width="384px"></asp:ListBox></td>
-            <td>
+            <td class="auto-style2"><asp:ListBox ID="lstLeftRoleMenu" runat="server" Height="310px" Width="384px"></asp:ListBox></td>
+            <td class="auto-style3">
                 <table>
                     <tr>
                         <td>
@@ -25,20 +36,20 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="bntAllRight" runat="server" Text=">>" CssClass="button" Width="30px" OnClick="bntAllRight_Click"/></td>
+                            <asp:Button ID="bntAllRight" runat="server" Text=">>" CssClass="button" Width="50px" OnClick="bntAllRight_Click"/></td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="bntRight" runat="server" Text=">" OnClick="bntRight_Click" CssClass="button" Width="30px" /></td>
+                            <asp:Button ID="bntRight" runat="server" Text=">" OnClick="bntRight_Click" Width="50px" CssClass="button" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnLeft" runat="server" Text="<" OnClick="btnLeft_Click" CssClass="button" Width="30px"/>
+                            <asp:Button ID="btnLeft" runat="server" Text="<" OnClick="btnLeft_Click" Width="50px" CssClass="button" />
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Button ID="btnAllLeft" runat="server" Text="<<"  CssClass="button" Width="30px" OnClick="btnAllLeft_Click"/>
+                            <asp:Button ID="btnAllLeft" runat="server" Text="<<"  CssClass="button" Width="50px" OnClick="btnAllLeft_Click"/>
                         </td>
                     </tr>
                     <tr>
@@ -46,9 +57,9 @@
                             &nbsp;</td>
                     </tr>
                 </table>
-                
+               
             </td>
-            <td><asp:ListBox ID="lstRightRoleMenu" runat="server" Height="310px" Width="384px"></asp:ListBox></td>
+             <td><asp:ListBox ID="lstRightRoleMenu" runat="server" Height="310px" Width="384px"></asp:ListBox></td>
         </tr>
            
     </table>

@@ -263,7 +263,7 @@
     <Content Include="UI\W002_AddTransaction.aspx" />
     <Content Include="UI\Default.aspx" />
     <Content Include="UI\W004_MenuMng.aspx" />
-    <Content Include="UI\RoleMenu.aspx" />
+    <Content Include="UI\W008_RoleMenu.aspx" />
     <Content Include="UI\W001_UnmatchListBranch.aspx" />
     <Content Include="UI\Reports\WR001_AddEditPayment.aspx" />
     <Content Include="UI\W003_UnmatchListHQ.aspx" />
@@ -363,12 +363,12 @@
     <Compile Include="UI\W004_MenuMng.aspx.designer.cs">
       <DependentUpon>W004_MenuMng.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\RoleMenu.aspx.cs">
-      <DependentUpon>RoleMenu.aspx</DependentUpon>
+    <Compile Include="UI\W008_RoleMenu.aspx.cs">
+      <DependentUpon>W008_RoleMenu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\RoleMenu.aspx.designer.cs">
-      <DependentUpon>RoleMenu.aspx</DependentUpon>
+    <Compile Include="UI\W008_RoleMenu.aspx.designer.cs">
+      <DependentUpon>W008_RoleMenu.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\W001_UnmatchListBranch.aspx.cs">
       <DependentUpon>W001_UnmatchListBranch.aspx</DependentUpon>
