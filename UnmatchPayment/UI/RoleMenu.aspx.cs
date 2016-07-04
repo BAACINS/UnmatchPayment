@@ -11,21 +11,21 @@ namespace UnmatchPayment.UI
 {
     public partial class RoleMenu : System.Web.UI.Page
     {
-        //private EMPLOYEE_SELECTResult UserLogin
-        //{
-        //    get
-        //    {
-        //        if (Session["Emp"] == null)
-        //        {
-        //            Session["Emp"] = null;
-        //        }
-        //        return (EMPLOYEE_SELECTResult)Session["Emp"];
-        //    }
-        //    set
-        //    {
-        //        Session["Emp"] = value;
-        //    }
-        //}
+        private EMPLOYEE_SELECTResult UserLogin
+        {
+            get
+            {
+                if (Session["Emp"] == null)
+                {
+                    Session["Emp"] = null;
+                }
+                return (EMPLOYEE_SELECTResult)Session["Emp"];
+            }
+            set
+            {
+                Session["Emp"] = value;
+            }
+        }
         private DataTable dtLstLeftMenu
         {
             get
@@ -78,71 +78,70 @@ namespace UnmatchPayment.UI
         }
         private void GetUserRole()
         {
-            //dbAccountDataContext dbAcc = new dbAccountDataContext();
-            //var dtAcc = (from a in dbAcc.USERROLE_SELECT()
-            //             select a).DefaultIfEmpty().ToList();
+            dbAccountDataContext dbAcc = new dbAccountDataContext();
+            var dtAcc = (from a in dbAcc.USERROLE_SELECT()
+                         select a).DefaultIfEmpty().ToList();
 
-            //if (dtAcc[0] != null)
-            //{
-            //    //C009_GetdataDDL Getddl = new C009_GetdataDDL();
-            //    ddlRole.DataSource = dtAcc;
-            //    ddlRole.DataTextField = "ROLENAME";
-            //    ddlRole.DataValueField = "ROLECODE";
-            //    ddlRole.DataBind();
-            //}
+            if (dtAcc[0] != null)
+            {
+                ddlRole.DataSource = dtAcc;
+                ddlRole.DataTextField = "ROLENAME";
+                ddlRole.DataValueField = "ROLECODE";
+                ddlRole.DataBind();
+            }
         }
         protected void GetAllAppMenu()
         {
             try
             {
-                //dbAccountDataContext dbAcc = new dbAccountDataContext();
+                dbAccountDataContext dbAcc = new dbAccountDataContext();
 
-                //var dtAcc_left = (from appmenu in dbAcc.AppMenus
-                //                  where !(from appmenuaccess in dbAcc.AppMenuAccesses
-                //                          where appmenuaccess.UserRole == ddlRole.SelectedValue.ToString()
-                //                          select appmenuaccess.MenuNo).Contains(appmenu.MenuNo)
-                //                  select appmenu).DefaultIfEmpty().ToList();
-
-
-                //var dtAcc_Right = (from appmenu in dbAcc.AppMenus
-                //                   join appmenuaccress in dbAcc.AppMenuAccesses on appmenu.MenuNo equals appmenuaccress.MenuNo
-                //                   where appmenuaccress.UserRole == ddlRole.SelectedValue
-                //                   select appmenu).DefaultIfEmpty().ToList();
-
-                //dtLstLeftMenu.Rows.Clear();
-                //if (dtAcc_left[0] != null)
-                //{
-
-                //    foreach (var q in dtAcc_left)
-                //    {
-                //        DataRow drLeftMenu = dtLstLeftMenu.NewRow();
-                //        drLeftMenu["menu_desc"] = q.MenuDesc.ToString();
-                //        drLeftMenu["menu_no"] = q.MenuNo.ToString();
-                //        dtLstLeftMenu.Rows.Add(drLeftMenu);
-                //    }
-                //}
-                //this.lstLeftRoleMenu.DataSource = dtLstLeftMenu;
-                //lstLeftRoleMenu.DataTextField = "menu_desc";
-                //lstLeftRoleMenu.DataValueField = "menu_no";
-                //this.lstLeftRoleMenu.DataBind();
-
-                //dtLstRightMenu.Rows.Clear();
-                //if (dtAcc_Right[0] != null)
-                //{
+                var dtAcc_left = (from appmenu in dbAcc.AppMenus
+                                  where !(from appmenuaccess in dbAcc.AppMenuAccesses
+                                          where appmenuaccess.UserRole == ddlRole.SelectedValue.ToString()
+                                          select appmenuaccess.MenuNo).Contains(appmenu.MenuNo)
+                                  select appmenu).DefaultIfEmpty().ToList();
 
 
-                //    foreach (var q in dtAcc_Right)
-                //    {
-                //        DataRow drRightMenu = dtLstRightMenu.NewRow();
-                //        drRightMenu["menu_desc"] = q.MenuDesc.ToString();
-                //        drRightMenu["menu_no"] = q.MenuNo.ToString();
-                //        dtLstRightMenu.Rows.Add(drRightMenu);
-                //    }
-                //}
-                //this.lstRightRoleMenu.DataSource = dtLstRightMenu;
-                //lstRightRoleMenu.DataTextField = "menu_desc";
-                //lstRightRoleMenu.DataValueField = "menu_no";
-                //this.lstRightRoleMenu.DataBind();
+                var dtAcc_Right = (from appmenu in dbAcc.AppMenus
+                                   join appmenuaccress in dbAcc.AppMenuAccesses on appmenu.MenuNo equals appmenuaccress.MenuNo
+                                   where appmenuaccress.UserRole == ddlRole.SelectedValue
+                                   select appmenu).DefaultIfEmpty().ToList();
+
+                dtLstLeftMenu.Rows.Clear();
+                if (dtAcc_left[0] != null)
+                {
+
+                    foreach (var q in dtAcc_left)
+                    {
+                        DataRow drLeftMenu = dtLstLeftMenu.NewRow();
+                        drLeftMenu["menu_desc"] = q.MenuDesc.ToString();
+                        drLeftMenu["menu_no"] = q.MenuNo.ToString();
+                        dtLstLeftMenu.Rows.Add(drLeftMenu);
+                    }
+                }
+                this.lstLeftRoleMenu.DataSource = dtLstLeftMenu;
+                lstLeftRoleMenu.DataTextField = "menu_desc";
+                lstLeftRoleMenu.DataValueField = "menu_no";
+                this.lstLeftRoleMenu.DataBind();
+
+                dtLstRightMenu.Rows.Clear();
+                if (dtAcc_Right[0] != null)
+                {
+
+
+                    foreach (var q in dtAcc_Right)
+                    {
+                        DataRow drRightMenu = dtLstRightMenu.NewRow();
+                        drRightMenu["menu_desc"] = q.MenuDesc.ToString();
+                        drRightMenu["menu_no"] = q.MenuNo.ToString();
+                        dtLstRightMenu.Rows.Add(drRightMenu);
+                    }
+                }
+                this.lstRightRoleMenu.DataSource = dtLstRightMenu;
+                lstRightRoleMenu.DataTextField = "menu_desc";
+                lstRightRoleMenu.DataValueField = "menu_no";
+                this.lstRightRoleMenu.DataBind();
 
             }
             catch (Exception ex)
@@ -154,43 +153,44 @@ namespace UnmatchPayment.UI
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //dbAccountDataContext dbAcc = new dbAccountDataContext();
-            //string menuNo = string.Empty;
-            //string userRole = string.Empty;
-            //string createBy = string.Empty;
-            //DateTime datenow = DateTime.Now;
-            //var queryrole = (from q in dbAcc.AppMenuAccesses
-            //                 where q.UserRole == ddlRole.SelectedValue
-            //                 select q).DefaultIfEmpty();
+            dbAccountDataContext dbAcc = new dbAccountDataContext();
+            string menuNo = string.Empty;
+            string userRole = string.Empty;
+            string createBy = string.Empty;
+            DateTime datenow = DateTime.Now;
+            var queryrole = (from q in dbAcc.AppMenuAccesses
+                             where q.UserRole == ddlRole.SelectedValue
+                             select q).DefaultIfEmpty();
 
-            //foreach (var q in queryrole)
-            //{
-            //    if (q != null)
-            //    {
-            //        dbAcc.AppMenuAccesses.DeleteOnSubmit(q);
-            //        dbAcc.SubmitChanges();
-            //    }
-            //}
+            foreach (var q in queryrole)
+            {
+                if (q != null)
+                {
+                    dbAcc.AppMenuAccesses.DeleteOnSubmit(q);
+                    dbAcc.SubmitChanges();
+                }
+            }
 
-            //for (int i = 0; i < dtLstRightMenu.Rows.Count; i++)
-            //{
-            //    menuNo = dtLstRightMenu.Rows[i]["menu_no"].ToString();
-            //    userRole = ddlRole.SelectedValue;
-            //    createBy = UserLogin.USER_ID;
-            //    AppMenuAccess obj = new AppMenuAccess
-            //    {
-            //        MenuNo = Convert.ToInt16(menuNo),
-            //        UserRole = userRole,
-            //        CreateDate = datenow,
-            //        CreateBy = createBy
-            //    };
-            //    dbAcc.AppMenuAccesses.InsertOnSubmit(obj);
-            //    dbAcc.SubmitChanges();
+            for (int i = 0; i < dtLstRightMenu.Rows.Count; i++)
+            {
+                menuNo = dtLstRightMenu.Rows[i]["menu_no"].ToString();
+                userRole = ddlRole.SelectedValue;
+                createBy = UserLogin.USER_ID;
+                AppMenuAccess obj = new AppMenuAccess
+                {
+                    MenuNo = Convert.ToInt16(menuNo),
+                    UserRole = userRole,
+                    CreateDate = datenow,
+                    CreateBy = createBy
+                };
+                dbAcc.AppMenuAccesses.InsertOnSubmit(obj);
+                dbAcc.SubmitChanges();
+
+            }
+
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('บันทึกข้อมูลเรียบร้อย');", true);
 
         }
-
-        //ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('บันทึกข้อมูลเรียบร้อย');", true);
-    
 
 
         protected void bntAllRight_Click(object sender, EventArgs e)

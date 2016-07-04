@@ -280,4 +280,10 @@
       <Column Name="BRANCH_NO" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
     </ElementType>
   </Function>
+  <Function Name="dbo.USERROLE_SELECT" Method="USERROLE_SELECT">
+    <ElementType Name="USERROLE_SELECTResult">
+      <Column Name="ROLECODE" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ROLENAME" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
 </Database>

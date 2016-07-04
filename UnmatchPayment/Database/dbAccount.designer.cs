@@ -250,6 +250,13 @@ namespace UnmatchPayment.Database
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), bRANCH_NO);
 			return ((ISingleResult<GETUSERBYBRANCH_SELECTResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.USERROLE_SELECT")]
+		public ISingleResult<USERROLE_SELECTResult> USERROLE_SELECT()
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())));
+			return ((ISingleResult<USERROLE_SELECTResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="UP.AppMenu")]
@@ -4499,6 +4506,50 @@ namespace UnmatchPayment.Database
 				if ((this._BRANCH_NO != value))
 				{
 					this._BRANCH_NO = value;
+				}
+			}
+		}
+	}
+	
+	public partial class USERROLE_SELECTResult
+	{
+		
+		private string _ROLECODE;
+		
+		private string _ROLENAME;
+		
+		public USERROLE_SELECTResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLECODE", DbType="NVarChar(10)")]
+		public string ROLECODE
+		{
+			get
+			{
+				return this._ROLECODE;
+			}
+			set
+			{
+				if ((this._ROLECODE != value))
+				{
+					this._ROLECODE = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ROLENAME", DbType="NVarChar(500)")]
+		public string ROLENAME
+		{
+			get
+			{
+				return this._ROLENAME;
+			}
+			set
+			{
+				if ((this._ROLENAME != value))
+				{
+					this._ROLENAME = value;
 				}
 			}
 		}
