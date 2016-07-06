@@ -33,12 +33,15 @@
                 <asp:DropDownList ID="ddlCause" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
             <td class="auto-style5">สถานะ :</td>
             <td>
-                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="dropDownList" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"></asp:DropDownList></td>
+                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="dropDownList" AutoPostBack="True" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"></asp:DropDownList></td>
         </tr>
         <tr>
             <td class="auto-style5">ผู้บันทึก/แก้ไข :</td>
-            <td colspan="3">
+            <td>
                 <asp:DropDownList ID="ddlUserID" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
+            <td class="auto-style5">ประเภทการจ่ายคืน :</td>
+            <td>
+                <asp:DropDownList ID="ddlReturnType" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
         </tr>
         <tr>
             <td class="auto-style5">วันที่บันทึก ตั้งแต่ : 

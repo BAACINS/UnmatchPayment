@@ -290,7 +290,7 @@ namespace UnmatchPayment.Class
             return dtFileType;
         }
 
-        public DataTable GetStatus()
+        public DataTable GetStatus(string isBranch)
         {
             try
             {
@@ -309,6 +309,15 @@ namespace UnmatchPayment.Class
                 row["STATUSNAME"] = "รวมทั้งหมด";
                 row["STATUSCODE"] = "00";
                 _dt.Rows.InsertAt(row, 0);
+
+                if (isBranch == "1")
+                {
+                    row = _dt.NewRow();
+                    row["STATUSNAME"] = "อนุมัติ + ปรับปรุงรายการสำเร็จ";
+                    row["STATUSCODE"] = "10";
+                    _dt.Rows.InsertAt(row,_dt.Rows.Count+1);
+                }
+
                 return _dt;
 
             }

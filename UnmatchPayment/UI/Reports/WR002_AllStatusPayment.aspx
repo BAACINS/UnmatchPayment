@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
         <p>
-        <h1>รายงานติดตามผลการทำรายการ Unmatch payment</h1>
+        <h1>รายงานติดตามผลการทำรายการ Unmatch payment - สำนักงานใหญ่</h1>
     </p>
     <table style="width: 850px">
         <tr>
@@ -33,7 +33,7 @@
                 <asp:DropDownList ID="ddlCause" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
             <td class="auto-style5">สถานะ :</td>
             <td>
-                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="dropDownList" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged"></asp:DropDownList></td>
+                <asp:DropDownList ID="ddlStatus" runat="server" CssClass="dropDownList" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList></td>
         </tr>
         <tr>
             <td class="auto-style5">ผู้ทำรายการ :</td>

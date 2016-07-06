@@ -54,14 +54,16 @@ namespace UnmatchPayment.UI
                     GetUserDDL();
                     GetStatus();
                     GetCause();
+                    GetReturnType();
                 }
                 else
                 {
                     GetProvince();
+                    GetCause();
+                    GetStatus();
                     GetBranch();
                     GetUserDDL();
-                    GetStatus();
-                    GetCause();
+                    GetReturnType();
                 }
             }
         }
@@ -110,10 +112,18 @@ namespace UnmatchPayment.UI
 
         private void GetStatus()
         {
-            ddlStatus.DataSource = GetData.GetStatus();
+            ddlStatus.DataSource = GetData.GetStatus(UserLogin.isBranch.ToString());
             ddlStatus.DataTextField = "STATUSNAME";
             ddlStatus.DataValueField = "STATUSCODE";
             ddlStatus.DataBind();
+        }
+
+        private void GetReturnType()
+        {
+            ddlReturnType.DataSource = GetData.GetReturnType();
+            ddlReturnType.DataTextField = "RETURNTYPENAME";
+            ddlReturnType.DataValueField = "RETURNTYPEID";
+            ddlReturnType.DataBind();
         }
 
         protected void LoadReport()
@@ -128,15 +138,15 @@ namespace UnmatchPayment.UI
             DateFrom = calculator.SetFormatdate(txtDateFrom.TextDate.ToString(), 0).ToString("yyyy-MM-dd");
             DateTo = calculator.SetFormatdate(txtDateTo.TextDate.ToString(), 0).ToString("yyyy-MM-dd");
 
-
             rpt.SetParameterValue("@REGION_NO", ddlRegion.SelectedValue);
             rpt.SetParameterValue("@PROVINCE_NO", ddlProvince.SelectedValue);
             rpt.SetParameterValue("@BRANCH_NO", ddlBranch.SelectedValue);
             rpt.SetParameterValue("@INPUT_DATE_FROM", DateFrom);
             rpt.SetParameterValue("@INPUT_DATE_TO", DateTo);
-            rpt.SetParameterValue("@INPUT_PROJECT", ddlCause.SelectedValue);
-            rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
+            rpt.SetParameterValue("@INPUT_CAUSE", ddlCause.SelectedValue);
             rpt.SetParameterValue("@STATUS_NO", ddlStatus.SelectedValue);
+            rpt.SetParameterValue("@INPUT_RETURNTYPE", ddlReturnType.SelectedValue);
+            rpt.SetParameterValue("@USERID", ddlUserID.SelectedValue);
 
             rpt.Load(_pathReport);
             if (rpt.Rows.Count == 0)
@@ -193,13 +203,17 @@ namespace UnmatchPayment.UI
             GetBranch();
         }
 
-        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GetStatus();
-        }
-                 
+
+
         #endregion
 
-        
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlStatus.SelectedValue == "02") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
+            {
+                ddlReturnType.Enabled = false;
+            }
+            else ddlReturnType.Enabled = true;
+        }
     }
 }

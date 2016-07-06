@@ -66,6 +66,9 @@ namespace UnmatchPayment.UI.Reports
                     GetReturnType();
                 }
             }
+            else {
+
+            }
         }
 
         #region METHOD
@@ -221,13 +224,22 @@ namespace UnmatchPayment.UI.Reports
             }
 
         }
-                 
-protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            GetStatus();
-        }
-        #endregion
 
+        protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //GetStatus();
+            if (UserLogin.isBranch == 1)
+            {
+                if (ddlStatus.SelectedValue == "02") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
+                {
+                    ddlUserID.Enabled = false;
+                }
+                else ddlUserID.Enabled = true;
+            }
+
+        }
+
+        #endregion
 
     }
 }
