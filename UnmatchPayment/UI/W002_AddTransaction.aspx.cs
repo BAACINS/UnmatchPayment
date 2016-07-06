@@ -314,7 +314,16 @@ namespace UnmatchPayment.UI
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            //int _causeID = int.Parse(hdCauseID.Value);
+            //check Dep
+            C008_CheckDep checkDep = new C008_CheckDep();
+            if(txtDepNo.Enabled==true && txtDepNo.Text != string.Empty)
+            {
+                if (!checkDep.checkAccount(txtDepNo.Text))
+                {
+                    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('เลขที่บัญชีเงินฝากไม่ถูกต้อง');", true);
+                    return;
+                }
+            }
 
             //set detail Unmatchpayment
             tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.SingleOrDefault(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(TellerID));

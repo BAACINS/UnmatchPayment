@@ -137,6 +137,38 @@ namespace UnmatchPayment.Class
             }
 
         }
+
+        public bool checkAccount(string AccNo)
+        {
+            if (AccNo.Length < 10 || AccNo.Length > 12)
+                return false;
+            string strAccNo = AccNo.PadLeft(12, '0');
+            int checkDigit = Math.Abs((
+                (DecimalDigit(strAccNo, 2) * 8) +
+                ((DecimalDigit(strAccNo, 3) * 7) * (-1)) +
+                ((DecimalDigit(strAccNo, 4) * 9) * (-1)) +
+                (DecimalDigit(strAccNo, 5) * 9) +
+                (DecimalDigit(strAccNo, 6) * 8) +
+                (DecimalDigit(strAccNo, 7) * 7) +
+                (DecimalDigit(strAccNo, 8) * 4) +
+                (DecimalDigit(strAccNo, 9) * 3) +
+                (DecimalDigit(strAccNo, 10) * 2)) % 10
+                );
+            if (checkDigit != 0)
+                checkDigit = 10 - checkDigit;
+            var codeList = new string[] { "00", "01", "30" };
+            //not in
+            if (!codeList.Contains(strAccNo.Substring(0,2)))
+                checkDigit = (checkDigit + DecimalDigit(strAccNo, 0) + DecimalDigit(strAccNo, 1)) % 10;
+
+            return (checkDigit == DecimalDigit(strAccNo, 11));
+
+            //return true;
+        }
+        private int DecimalDigit(string strDigit,int position)
+        {
+            return Convert.ToInt16(strDigit.Substring(position, 1));
+        }
     }
     
 }

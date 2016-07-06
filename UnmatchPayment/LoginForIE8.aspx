@@ -16,7 +16,7 @@
                 color: white;
             }
             .main-content {
-                background: url("../Images/bgforie2.png") no-repeat center;
+                background: url("Images/bgforie2.png") no-repeat center;
                 height: 500px;
             }
             .body {

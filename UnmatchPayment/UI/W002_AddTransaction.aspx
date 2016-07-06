@@ -208,13 +208,19 @@
             <tbody>
                 <tr>
                     <td>เลขที่บัญชีเงินฝาก</td>
-                    <td>
+                    <td style="text-align:left;">
                         <asp:TextBox ID="txtDepNo" Width="250px" runat="server" CssClass="button" MaxLength="15"></asp:TextBox>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
                 </tr>
                 <tr>
                     <td>UploadFile :&nbsp;<asp:DropDownList ID="ddlFileType" runat="server" CssClass="dropDownList"></asp:DropDownList></td>
-                    <td>
+                    <td style="text-align:left;">
                         <asp:FileUpload ID="BrowsFile" runat="server" Height="28px" Width="450px" CssClass="textBox" />&nbsp;<asp:Button ID="btnUpload" runat="server" CssClass="button" Text="Upload" OnClick="btnUpload_Click" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align:left;">
+                        <asp:Label ID="lblUploadFileDetail" runat="server" Text="*File ต้องเป็น .pdf หรือ .jpg และมีขนาดไม่เกิน 600 KB เท่านั้น" ForeColor="Red"></asp:Label>
                     </td>
                 </tr>
                 <tr>
