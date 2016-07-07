@@ -63,7 +63,7 @@
     <asp:CheckBoxList ID="cbCauseList" runat="server">
     </asp:CheckBoxList>
     <div>
-        <table>
+        <table width="100%">
             <tr>
                 <td>
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
