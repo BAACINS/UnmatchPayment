@@ -59,7 +59,7 @@
             <td class="auto-style5"></td>
             <td class="auto-style3">
                 <asp:Button ID="btnPrint" runat="server" Text="พิมพ์รายงาน" CssClass="button"
-                    OnClientClick="return onSave();" OnClick="btnPrint_Click" /></td>
+                    OnClick="btnPrint_Click" /></td>
             <td></td>
             <td></td>
         </tr>
