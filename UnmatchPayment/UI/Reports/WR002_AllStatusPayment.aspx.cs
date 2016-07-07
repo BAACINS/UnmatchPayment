@@ -115,7 +115,7 @@ namespace UnmatchPayment.UI.Reports
 
         private void GetStatus()
         {
-            ddlStatus.DataSource = GetData.GetStatus();
+            ddlStatus.DataSource = GetData.GetStatus(UserLogin.isBranch.ToString());
             ddlStatus.DataTextField = "STATUSNAME";
             ddlStatus.DataValueField = "STATUSCODE";
             ddlStatus.DataBind();

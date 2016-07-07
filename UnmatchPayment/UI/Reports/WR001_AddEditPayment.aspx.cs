@@ -203,17 +203,20 @@ namespace UnmatchPayment.UI
             GetBranch();
         }
 
-
-
         #endregion
 
         protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlStatus.SelectedValue == "02") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
+            if (ddlStatus.SelectedValue.ToString() != "01") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
+            {
+                ddlReturnType.Enabled = true;
+                ddlUserID.Enabled = false;
+            }
+            else
             {
                 ddlReturnType.Enabled = false;
+                ddlUserID.Enabled = true;
             }
-            else ddlReturnType.Enabled = true;
         }
     }
 }
