@@ -260,6 +260,7 @@ namespace UnmatchPayment.UI
                 if (Application["TellerID"] != null)
                 {
                     int TellerID = int.Parse(Application["TellerID"].ToString());
+                    lbltellerPaymentID.Text = "รหัสอ้างอิง : " + TellerID.ToString();
                     var teller = (from tel in dbAcc.VW_TellerPaymentDetails
                                  where tel.TellerPaymentDetailID == TellerID
                                  select tel).FirstOrDefault();
