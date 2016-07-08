@@ -227,14 +227,20 @@ namespace UnmatchPayment.UI.Reports
 
         protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //GetStatus();
+
             if (UserLogin.isBranch == 1)
             {
                 if (ddlStatus.SelectedValue == "02") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
                 {
                     ddlUserID.Enabled = false;
+                    ddlUserID.BackColor = System.Drawing.ColorTranslator.FromHtml("#dddddd");
+
                 }
-                else ddlUserID.Enabled = true;
+                else
+                {
+                    ddlUserID.Enabled = true;
+                    ddlUserID.BackColor = System.Drawing.ColorTranslator.FromHtml("#f8f8f8");
+                }
             }
 
         }

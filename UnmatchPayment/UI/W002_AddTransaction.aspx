@@ -125,7 +125,8 @@
     </div>
     <br />
     <div>
-        <asp:Label ID="lbltellerPaymentID" runat="server" Font-Strikeout="False" Font-Underline="True"></asp:Label>
+        <asp:Label ID="lbltellerPaymentID" runat="server" Font-Strikeout="False" 
+            Font-Underline="True" Font-Names="TH Sarabun New" Font-Bold="true" Font-Size="30px"></asp:Label>
         <table class="features-table">
             <thead>
                 <tr>

@@ -210,12 +210,17 @@ namespace UnmatchPayment.UI
             if (ddlStatus.SelectedValue.ToString() != "01") //สาขาเลือกรายงานที่มีสถานะอนุมัติ
             {
                 ddlReturnType.Enabled = true;
+                ddlReturnType.BackColor = System.Drawing.ColorTranslator.FromHtml("#f8f8f8");
                 ddlUserID.Enabled = false;
+                ddlUserID.BackColor = System.Drawing.ColorTranslator.FromHtml("#dddddd");
+
             }
             else
             {
                 ddlReturnType.Enabled = false;
+                ddlReturnType.BackColor = System.Drawing.ColorTranslator.FromHtml("#dddddd");
                 ddlUserID.Enabled = true;
+                ddlUserID.BackColor = System.Drawing.ColorTranslator.FromHtml("#f8f8f8");
             }
         }
     }
