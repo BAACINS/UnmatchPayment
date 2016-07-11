@@ -146,7 +146,12 @@ namespace UnmatchPayment.UI
                 GetFileType();
                 if(Application["isEdit"] != null)
                 {
-                    if (Application["isEdit"].ToString() == "2")
+                    if (Application["isEdit"].ToString() == "01")
+                    {
+                        btnSave.Text = "ยกเลิกอนุมัติ";
+                        StatusCode = "01";
+                    }
+                    else if (Application["isEdit"].ToString() == "02")
                     {
                         btnSave.Text = "อนุมัติ";
                         StatusCode = "02";
@@ -325,6 +330,7 @@ namespace UnmatchPayment.UI
                     return;
                 }
             }
+            bool isCreate = false;
 
             //set detail Unmatchpayment
             tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.SingleOrDefault(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(TellerID));
@@ -332,6 +338,7 @@ namespace UnmatchPayment.UI
             {
                 UP = new tbUnmatchPayment();
                 dbAcc.tbUnmatchPayments.InsertOnSubmit(UP);
+                isCreate = true;
             }
 
             if (!string.IsNullOrEmpty(hdCauseID.Value))
@@ -388,13 +395,13 @@ namespace UnmatchPayment.UI
 
             if (Application["isEdit"] != null)
             {
-                if (Application["isEdit"].ToString() == "2") //Approve
+                if (Application["isEdit"].ToString() == "02") //Approve
                 {
                     UP.ApproveBy = Emp.USER_ID;
                     UP.ApproveDate = DateTime.Now;
                 }
             }
-            else //Insert
+            if(isCreate) //Insert
             {
                 UP.BranchCode = Emp.BRANCH_NO;
                 UP.CreateBy = Emp.USER_ID;
