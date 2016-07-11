@@ -74,7 +74,7 @@ namespace UnmatchPayment.UI
                          join cause in dbAcc.UnmatchCauses on claim.CauseID equals cause.CauseID
                          where statusList.Contains(claim.StatusCode)
                          && CauseList.Contains(claim.CauseID.ToString())
-                         && claim.ModifiedBy != Emp.USER_ID
+                         //&& claim.ModifiedBy != Emp.USER_ID
                          select new
                          {
                              claim.TellerPaymentDetailID,
@@ -185,40 +185,25 @@ namespace UnmatchPayment.UI
         {
             foreach (GridViewRow row in gvUnmatchList.Rows)
             {
-                RadioButton rdbSPIN = (RadioButton)row.FindControl("rdbSPIN");
-                RadioButton rdbGL = (RadioButton)row.FindControl("rdbGL");
                 CheckBox cbApproved = (CheckBox)row.FindControl("chkApp");
                 if (cbApproved != null)
                 {
-                    if (cbApproved.Checked.ToString().ToLower() == "true" && !(rdbGL.Enabled == true && rdbSPIN.Enabled == true && rdbGL.Checked == false && rdbSPIN.Checked == false))
+                    string _strTellerID = row.Cells[0].Text;
+
+                    if (!string.IsNullOrEmpty(_strTellerID) && cbApproved.Checked)
                     {
-                        string _strTellerID = row.Cells[0].Text;
+                        tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.Single(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(_strTellerID));
 
-                        if (!string.IsNullOrEmpty(_strTellerID))
-                        {
-                            tbUnmatchPayment UP = dbAcc.tbUnmatchPayments.Single(unMatched => unMatched.TellerPaymentDetailID == Convert.ToInt32(_strTellerID));
+                        UP.StatusCode = "01";
+                        UP.ModifiedBy = Emp.USER_ID;
+                        UP.ModifiedDate = DateTime.Now;
 
-                            UP.StatusCode = "02";
-                            UP.ApproveBy = Emp.USER_ID;
-                            UP.ApproveDate = DateTime.Now;
-                            UP.ModifiedBy = Emp.USER_ID;
-                            UP.ModifiedDate = DateTime.Now;
-                            //check Return Type
-                            if (rdbSPIN.Checked)
-                                UP.ReturnTypeID = 2;
-                            else if (rdbGL.Checked)
-                                UP.ReturnTypeID = 3;
-                            else
-                                UP.ReturnTypeID = 1;
-
-                            dbAcc.SubmitChanges();
-
-                        }
+                        dbAcc.SubmitChanges();
 
                     }
                 }
             }
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('อนุมัติเสร็จสิ้น');", true);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('ยกเลิกอนุมัติเสร็จสิ้น');", true);
             GetdataClaim();
         }
 
@@ -243,7 +228,6 @@ namespace UnmatchPayment.UI
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             GetdataClaim();
-
         }
     }
 }

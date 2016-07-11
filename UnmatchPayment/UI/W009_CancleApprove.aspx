@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W009_CancleApprove.aspx.cs" Inherits="UnmatchPayment.UI.W009_CancleApprove" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W009_CancleApprove.aspx.cs" MaintainScrollPositionOnPostback="True" Inherits="UnmatchPayment.UI.W009_CancleApprove" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="icheck.min.js"></script>
@@ -80,9 +80,9 @@
     </div>
     <br />
 
-    <p>
+    <p style="text-align:center">
         <asp:Label ID="lblDataNotFound" runat="server" Text="ไม่พบข้อมูล" ForeColor="Red"></asp:Label>
-        <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False">
+        <asp:GridView ID="gvUnmatchList" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" Width="100%">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="TellerPaymentDetailID" HeaderText="รหัสอ้างอิง" />
@@ -93,20 +93,6 @@
                 <asp:BoundField DataField="RefName" HeaderText="Ref อ้างอิงชื่อ" />
                 <asp:BoundField DataField="PaymentDate" HeaderText="วันที่ชำระ" />
                 <asp:BoundField DataField="CauseDescription" HeaderText="รายการ Unmatched" />
-                <asp:BoundField HeaderText="คืนเงินด้วย SPIN" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:RadioButton ID="rdbSPIN" Value="SPIN" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsSpin") %>' Checked='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsSpin"),DataBinder.Eval(Container.DataItem,"IsGL")) %>' />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                </asp:TemplateField>
-                <asp:BoundField HeaderText="คืนเงินด้วย GL" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:RadioButton ID="rdbGL" Value="GL" runat="server" GroupName="rdbReturnType" Enabled='<%# Eval("IsGL") %>' Checked='<%# CheckReturnDefault(DataBinder.Eval(Container.DataItem,"IsGL"),DataBinder.Eval(Container.DataItem,"IsSpin")) %>' />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                </asp:TemplateField>
 
                 <asp:BoundField HeaderText="ยกเลิกอนุมัติ" />
                 <asp:TemplateField>
@@ -131,7 +117,7 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
     </p>
-    <asp:Button ID="btnApprove" runat="server" Text="อนุมัติ" CssClass="button" OnClick="btnApprove_Click" />
+    <asp:Button ID="btnApprove" runat="server" Text="ยกเลิกอนุมัติ" CssClass="button" OnClick="btnApprove_Click" />
     <p>
     </p>
 
