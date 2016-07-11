@@ -257,6 +257,7 @@
     <Content Include="UI\W003_UnmatchListHQ.aspx" />
     <Content Include="UI\W005_UnmatchListBranchEdit.aspx" />
     <Content Include="UI\W006_Approve.aspx" />
+    <Content Include="UI\W009_CancleApprove.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -393,6 +394,13 @@
     </Compile>
     <Compile Include="UI\W006_Approve.aspx.designer.cs">
       <DependentUpon>W006_Approve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\W009_CancleApprove.aspx.cs">
+      <DependentUpon>W009_CancleApprove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\W009_CancleApprove.aspx.designer.cs">
+      <DependentUpon>W009_CancleApprove.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
