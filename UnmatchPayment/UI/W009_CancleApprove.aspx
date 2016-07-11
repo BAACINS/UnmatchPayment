@@ -107,14 +107,7 @@
                     </ItemTemplate>
                     <ItemStyle HorizontalAlign="Center"></ItemStyle>
                 </asp:TemplateField>
-                <asp:BoundField HeaderText="" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:Button ID="btnView" runat="server" Text=' แก้ไข '
-                            CssClass="button" OnClick="btnView_Click" CommandArgument='<%# Eval("TellerPaymentDetailID") %>' />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                </asp:TemplateField>
+
                 <asp:BoundField HeaderText="ยกเลิกอนุมัติ" />
                 <asp:TemplateField>
                     <HeaderTemplate>
