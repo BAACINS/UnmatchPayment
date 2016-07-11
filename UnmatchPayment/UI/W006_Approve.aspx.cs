@@ -183,7 +183,7 @@ namespace UnmatchPayment.UI
                 string url = string.Empty;
                 string _strTellerID = ((Button)sender).CommandArgument;
                 Application["TellerID"] = _strTellerID;
-                Application["isEdit"] = "2";
+                Application["isEdit"] = "02";
 
                 Response.Redirect("W002_AddTransaction.aspx");
             }
