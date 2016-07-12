@@ -62,12 +62,13 @@ body :-ms-input-placeholder {
 .logoContainer {
     color: black;
     max-width: 300px;
-    margin: auto;
+    margin-left:-150px;
     text-align: center;
     position:fixed;
-    left:0;
+    left:50%;
     right:0;
-    top:550px;
+    
+    bottom:0px;
 }
 .container h1 {
   font-size: 50px;
