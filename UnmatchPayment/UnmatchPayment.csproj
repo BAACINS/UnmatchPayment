@@ -123,6 +123,8 @@
       <LastGenOutput>dbAccount.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="UserManual\ManualforBranch.pdf" />
+    <Content Include="UserManual\ManualforHQ.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
