@@ -36,7 +36,31 @@ namespace UnmatchPayment.UI.Reports
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                GetRegion();
 
+                if (UserLogin.isBranch == 1)
+                {
+                    ddlRegion.SelectedValue = UserLogin.REGION_NO;
+                    ddlRegion.Enabled = false;
+                    this.GetProvince();
+                    ddlProvince.SelectedValue = UserLogin.PROVINCE_NO;
+                    ddlProvince.Enabled = false;
+                    this.GetBranch();
+                    ddlBranch.SelectedValue = ("0000" + UserLogin.BRANCH_NO).Substring(UserLogin.BRANCH_NO.Length);
+                    ddlBranch.Enabled = false;
+                }
+                else
+                {
+                    GetProvince();
+                    GetBranch();
+                }
+            }
+            else
+            {
+
+            }
         }
 
         #region METHOD
