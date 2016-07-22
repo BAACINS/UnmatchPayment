@@ -23,7 +23,7 @@
         <tr>
             <td class="auto-style5">สาขา :</td>
             <td colspan="3">
-                <asp:DropDownList ID="ddlBranch" runat="server" CssClass="dropDownList" AutoPostBack="True" OnSelectedIndexChanged="ddlBranch_SelectedIndexChanged"></asp:DropDownList></td>
+                <asp:DropDownList ID="ddlBranch" runat="server" CssClass="dropDownList" AutoPostBack="True"></asp:DropDownList></td>
 
         </tr>
         <tr>

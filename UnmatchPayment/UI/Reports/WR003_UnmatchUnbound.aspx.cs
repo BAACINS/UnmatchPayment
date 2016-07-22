@@ -57,10 +57,7 @@ namespace UnmatchPayment.UI.Reports
                     GetBranch();
                 }
             }
-            else
-            {
-
-            }
+            
         }
 
         #region METHOD
