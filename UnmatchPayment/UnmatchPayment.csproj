@@ -264,7 +264,9 @@
     <Content Include="UI\W005_UnmatchListBranchEdit.aspx" />
     <Content Include="UI\W006_Approve.aspx" />
     <Content Include="UI\W009_CancleApprove.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\C001_DataMng.cs" />
