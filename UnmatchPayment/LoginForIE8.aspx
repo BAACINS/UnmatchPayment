@@ -36,7 +36,7 @@
         <div class="main-content">
             <br />
 
-            <h1>Unmatch payment</h1>
+            <h1>ระบบ e-Error payment</h1>
             <%--<h2>เข้าสู่ระบบ</h2>--%>
             <br />
             <div class="body">
