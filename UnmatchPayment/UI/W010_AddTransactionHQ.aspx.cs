@@ -17,7 +17,7 @@ using UnmatchPayment.Database;
 
 namespace UnmatchPayment.UI
 {
-    public partial class W002_AddTransaction : System.Web.UI.Page
+    public partial class W010_AddTransactionHQ : System.Web.UI.Page
     {
         #region Property
         dbAccountDataContext dbAcc = new dbAccountDataContext();
@@ -144,19 +144,19 @@ namespace UnmatchPayment.UI
                 GetTellerpaymentDetail();
                 GetUnmatchCause();
                 GetFileType();
-                if(Application["isEdit"] != null)
-                {
-                    if (Application["isEdit"].ToString() == "01")
-                    {
-                        btnSave.Text = "ยกเลิกอนุมัติ";
-                        StatusCode = "01";
-                    }
-                    else if (Application["isEdit"].ToString() == "02")
-                    {
-                        btnSave.Text = "อนุมัติ";
-                        StatusCode = "02";
-                    }
-                }
+                //if(Application["isEdit"] != null)
+                //{
+                //    if (Application["isEdit"].ToString() == "01")
+                //    {
+                //        btnSave.Text = "ยกเลิกอนุมัติ";
+                //        StatusCode = "01";
+                //    }
+                //    else if (Application["isEdit"].ToString() == "02")
+                //    {
+                //        btnSave.Text = "อนุมัติ";
+                //        StatusCode = "02";
+                //    }
+                //}
                 if(Application["TellerID"] != null)
                 {
                     TellerID = Convert.ToInt32(Application["TellerID"]);
@@ -203,7 +203,9 @@ namespace UnmatchPayment.UI
                             isRefName = Convert.ToInt16(Cause.isRefName),
                             isPaymentdate = Convert.ToInt16(Cause.isPaymentdate),
                             isRefund = Convert.ToInt16(Cause.isRefund),
-                            isUplaodFile = Convert.ToInt16(Cause.isUploadFile)
+                            isUplaodFile = Convert.ToInt16(Cause.isUploadFile),
+                            isSpin = Convert.ToInt16(Cause.isSpin),
+                            isGL = Convert.ToInt16(Cause.isGL)
                         };
 
             dtUnmatchedCause = DataMNG.LINQToDataTable(dtAcc);
@@ -221,7 +223,9 @@ namespace UnmatchPayment.UI
                         + dtUnmatchedCause.Rows[i]["isRefName"].ToString() + ","
                         + dtUnmatchedCause.Rows[i]["isPaymentdate"].ToString() + ","
                         + dtUnmatchedCause.Rows[i]["isRefund"].ToString() + ","
-                        + dtUnmatchedCause.Rows[i]["isUplaodFile"].ToString()
+                        + dtUnmatchedCause.Rows[i]["isUplaodFile"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isSpin"].ToString() + ","
+                        + dtUnmatchedCause.Rows[i]["isGL"].ToString()
                         + "]";
                 string strCauseID = dtUnmatchedCause.Rows[i]["CauseID"].ToString();
                 string strCauseDes = dtUnmatchedCause.Rows[i]["CauseDescription"].ToString();
@@ -275,6 +279,7 @@ namespace UnmatchPayment.UI
                     lblRef2.Text = teller.Ref2;
                     lblRefName.Text = teller.CustomerName;
                     lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
+                    hdBranchCode.Value = teller.BranchCode;
 
                     //select data from UnmatchedPayment [1=Edit,else = insert]
                     string strIsEdit = Convert.ToString(Application["isEdit"]) ?? string.Empty;
@@ -392,6 +397,13 @@ namespace UnmatchPayment.UI
             //statusCode
             if (!string.IsNullOrEmpty(StatusCode))
                 UP.StatusCode = StatusCode;
+            //Return Type
+            if (rdSPIN.Checked && rdSPIN.Disabled == false)
+                UP.ReturnTypeID = 2;
+            else if (rdGL.Checked && rdGL.Disabled == false)
+                UP.ReturnTypeID = 3;
+            else
+                UP.ReturnTypeID = 1;
 
             if (Application["isEdit"] != null)
             {
@@ -403,7 +415,7 @@ namespace UnmatchPayment.UI
             }
             if(isCreate) //Insert
             {
-                UP.BranchCode = Emp.BRANCH_NO;
+                UP.BranchCode = hdBranchCode.Value.ToString();
                 UP.CreateBy = Emp.USER_ID;
                 UP.CreateDate = DateTime.Now;
             }

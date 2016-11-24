@@ -125,6 +125,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="UI\Reports\WR003_UnmatchUnbound.aspx" />
+    <Content Include="UI\W010_AddTransactionHQ.aspx" />
     <Content Include="UserManual\ManualforBranch.pdf" />
     <Content Include="UserManual\ManualforHQ.pdf" />
     <None Include="Web.Debug.config">
@@ -340,6 +341,13 @@
     </Compile>
     <Compile Include="UI\Reports\WR003_UnmatchUnbound.aspx.designer.cs">
       <DependentUpon>WR003_UnmatchUnbound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\W010_AddTransactionHQ.aspx.cs">
+      <DependentUpon>W010_AddTransactionHQ.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UI\W010_AddTransactionHQ.aspx.designer.cs">
+      <DependentUpon>W010_AddTransactionHQ.aspx</DependentUpon>
     </Compile>
     <Compile Include="UI\W007_BackEndConfig.aspx.cs">
       <DependentUpon>W007_BackEndConfig.aspx</DependentUpon>

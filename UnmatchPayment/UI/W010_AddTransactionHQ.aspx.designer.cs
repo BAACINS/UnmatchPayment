@@ -10,8 +10,7 @@
 namespace UnmatchPayment.UI {
     
     
-    public partial class W002_AddTransaction
-    {
+    public partial class W010_AddTransactionHQ {
         
         /// <summary>
         /// ltrbl control.
@@ -39,6 +38,15 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdlistCause;
+        
+        /// <summary>
+        /// hdBranchCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdBranchCode;
         
         /// <summary>
         /// lbltellerPaymentID control.
@@ -174,6 +182,24 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDepNo;
+        
+        /// <summary>
+        /// rdSPIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdSPIN;
+        
+        /// <summary>
+        /// rdGL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton rdGL;
         
         /// <summary>
         /// ddlFileType control.

@@ -75,7 +75,7 @@ namespace UnmatchPayment.UI
                 Application["TellerID"] = _strTellerID;
                 Application["isEdit"] = "02";
 
-                Response.Redirect("W002_AddTransaction.aspx");
+                Response.Redirect("W010_AddTransactionHQ.aspx");
             }
             catch (Exception ex)
             {
