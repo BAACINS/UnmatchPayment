@@ -276,6 +276,8 @@ namespace UnmatchPayment.UI
                     lblRefName.Text = teller.CustomerName;
                     lblPaymentDate.Text = DateTime.Parse(teller.PaymentDateTime.ToString()).ToString("dd-MM-yyyy",fmt);
 
+                    hdBranchCode.Value = teller.BranchCode;
+
                     //select data from UnmatchedPayment [1=Edit,else = insert]
                     string strIsEdit = Convert.ToString(Application["isEdit"]) ?? string.Empty;
                     if (new[] { "1", "2" }.Any(strIsEdit.Contains))
@@ -403,7 +405,7 @@ namespace UnmatchPayment.UI
             }
             if(isCreate) //Insert
             {
-                UP.BranchCode = Emp.BRANCH_NO;
+                UP.BranchCode = hdBranchCode.Value;
                 UP.CreateBy = Emp.USER_ID;
                 UP.CreateDate = DateTime.Now;
             }

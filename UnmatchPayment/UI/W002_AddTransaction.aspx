@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W002_AddTransaction.aspx.cs" Inherits="UnmatchPayment.UI.AddTransaction" MaintainScrollPositionOnPostback="True" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="W002_AddTransaction.aspx.cs" Inherits="UnmatchPayment.UI.W002_AddTransaction" MaintainScrollPositionOnPostback="True" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Src="~/UC/Calendar.ascx" TagPrefix="uc1" TagName="Calendar" %>
@@ -108,7 +108,7 @@
 
     <p>
         <h1>บันทึกรายการ Unmatch</h1>
-    </p>
+    &nbsp;</p>
     <p class="underLine"></p>
 
     <div>
@@ -119,6 +119,7 @@
                     <asp:Literal ID="ltrbl" runat="server"></asp:Literal>
                     <asp:HiddenField ID="hdCauseID" runat="server" />
                     <asp:HiddenField ID="hdlistCause" runat="server" />
+                    <asp:HiddenField ID="hdBranchCode" runat="server" />
                 </td>
             </tr>
         </table>

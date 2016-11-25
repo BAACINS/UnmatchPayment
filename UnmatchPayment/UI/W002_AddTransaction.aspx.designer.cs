@@ -10,8 +10,7 @@
 namespace UnmatchPayment.UI {
     
     
-    public partial class W002_AddTransaction
-    {
+    public partial class W002_AddTransaction {
         
         /// <summary>
         /// ltrbl control.
@@ -39,6 +38,15 @@ namespace UnmatchPayment.UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hdlistCause;
+        
+        /// <summary>
+        /// hdBranchCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdBranchCode;
         
         /// <summary>
         /// lbltellerPaymentID control.
