@@ -108,6 +108,25 @@
                 alert('กรุณาแนบไฟล์');
                 return false;
             }
+            else if(document.getElementById('<%=rdSPIN.ClientID%>').disabled == false &&
+                document.getElementById('<%=rdSPIN.ClientID%>').checked == false &&
+                document.getElementById('<%=rdGL.ClientID%>').disabled == true){
+                alert('กรุณาเลือกประเภทการคืนเงิน');
+                return false;
+            }
+            else if(document.getElementById('<%=rdGL.ClientID%>').disabled == false &&
+                document.getElementById('<%=rdGL.ClientID%>').checked == false &&
+                document.getElementById('<%=rdSPIN.ClientID%>').disabled == true){
+                alert('กรุณาเลือกประเภทการคืนเงิน');
+                return false;
+            }
+            else if(document.getElementById('<%=rdGL.ClientID%>').disabled == false &&
+                document.getElementById('<%=rdGL.ClientID%>').checked == false &&
+                document.getElementById('<%=rdSPIN.ClientID%>').disabled == false &&
+                document.getElementById('<%=rdSPIN.ClientID%>').checked == false){
+                alert('กรุณาเลือกประเภทการคืนเงิน');
+                return false;
+            }
 }
     </script>
 

@@ -140,7 +140,7 @@ namespace UnmatchPayment.UI
             if (!IsPostBack)
             {
                 urlPrev = Request.ServerVariables["HTTP_REFERER"];
-                StatusCode = "01";
+                StatusCode = "02";
                 GetTellerpaymentDetail();
                 GetUnmatchCause();
                 GetFileType();
@@ -335,6 +335,13 @@ namespace UnmatchPayment.UI
                     return;
                 }
             }
+            //else if((rdGL.Disabled == false && rdGL.Checked == false && rdSPIN.Disabled == true) 
+            //    || (rdSPIN.Disabled == false && rdSPIN.Checked == false && rdGL.Disabled == true)
+            //    || (rdGL.Disabled == false && rdGL.Checked == false && rdSPIN.Disabled == false && rdSPIN.Checked == false))
+            //{
+            //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('กรุณาเลือกประเภทการจ่ายคืน');", true);
+            //    return;
+            //}
             bool isCreate = false;
 
             //set detail Unmatchpayment
