@@ -432,7 +432,7 @@ namespace UnmatchPayment.UI
             dbAcc.SubmitChanges();
             //DataMNG.EditUnmatchpayment(UP);
 
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('บันทึกเสร็จสิ้น');window.location.replace('" + urlPrev + "');", true);
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "js", "alert('อนุมัติเสร็จสิ้น');window.location.replace('" + urlPrev + "');", true);
         }
 
         protected void btnUpload_Click(object sender, EventArgs e)
